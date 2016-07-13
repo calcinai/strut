@@ -7,7 +7,7 @@
   },
 
   "autoload": {
-    "psr-4": { "Calcinai\\Strut\\": "src/" }
+    "psr-4": { "Calcinai\\Strut\\": "src/Strut" }
   }
 
 }
