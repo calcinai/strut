@@ -1,0 +1,12 @@
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.idea/*
+test/*
+vendor
+ehthumbs.db
+Thumbs.db
+composer.lock
+composer.phar
