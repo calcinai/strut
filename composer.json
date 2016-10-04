@@ -1,6 +1,8 @@
 {
   "name": "calcinai/strut",
   "description": "Library for creating and manipulating Swagger schemas",
+  "license": "MIT",
+
 
   "require": {
     "phindmarsh/statham": "^1.0"
