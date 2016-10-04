@@ -18,41 +18,6 @@ use Calcinai\Strut\Definitions\Schema\Properties\Properties;
 use Calcinai\Strut\Swagger;
 
 
-$pet = \Calcinai\Strut\Definitions\Schema::create()
-    ->setProperties()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    "Pet": {
-//        "required": [
-//            "id",
-//            "name"
-//        ],
-//      "properties": {
-//            "id": {
-//                "type": "integer",
-//                "format": "int64"
-//        },
-//        "name": {
-//                "type": "string"
-//        },
-//        "tag": {
-//                "type": "string"
-//        }
-//      }
-//    },
 
 
 
