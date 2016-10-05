@@ -21,13 +21,7 @@ class FileSchema extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
-    
-    /**
-     * If the schema allows arbitrary properties
-     * @var bool
-     */
-    protected static $allow_additional_properties = false;
+    protected static $pattern_properties = ['^x-' => ['mixed']];
     
     /**
      * @param string $format
@@ -84,7 +78,7 @@ class FileSchema extends BaseSchema
     }
     
     /**
-     * @param  $default
+     * @param mixed $default
      * @return $this
      */
     public function setDefault($default)
@@ -94,7 +88,7 @@ class FileSchema extends BaseSchema
     }
     
     /**
-     * @return 
+     * @return mixed
      */
     public function getDefault()
     {
@@ -102,7 +96,7 @@ class FileSchema extends BaseSchema
     }
     
     /**
-     * @param  $required
+     * @param string $required
      * @return $this
      */
     public function addRequired($required)
@@ -112,7 +106,7 @@ class FileSchema extends BaseSchema
     }
     
     /**
-     * @return []
+     * @return string[]
      */
     public function getRequired()
     {
@@ -176,7 +170,7 @@ class FileSchema extends BaseSchema
     }
     
     /**
-     * @param  $example
+     * @param mixed $example
      * @return $this
      */
     public function setExample($example)
@@ -186,7 +180,7 @@ class FileSchema extends BaseSchema
     }
     
     /**
-     * @return 
+     * @return mixed
      */
     public function getExample()
     {

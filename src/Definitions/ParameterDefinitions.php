@@ -21,10 +21,4 @@ class ParameterDefinitions extends BaseSchema
      * @var array
      */
     protected static $pattern_properties = [];
-    
-    /**
-     * If the schema allows arbitrary properties
-     * @var bool
-     */
-    protected static $allow_additional_properties = false;
 }

@@ -6,7 +6,6 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Calcinai\Strut\Definitions\Headers;
 use Calcinai\Strut\Definitions\Info;
 use Calcinai\Strut\Definitions\Operation;
 use Calcinai\Strut\Definitions\Paths;
@@ -14,10 +13,31 @@ use Calcinai\Strut\Definitions\PathItem;
 use Calcinai\Strut\Definitions\QueryParameterSubSchema;
 use Calcinai\Strut\Definitions\Response;
 use Calcinai\Strut\Definitions\Responses;
-use Calcinai\Strut\Definitions\Schema\Properties\Properties;
 use Calcinai\Strut\Swagger;
 
 
+//$pet = Calcinai\Strut\Definitions\Definitions::create()
+//    ->set()
+
+
+//    "Pet": {
+//        "required": [
+//            "id",
+//            "name"
+//        ],
+//      "properties": {
+//        "id": {
+//            "type": "integer",
+//            "format": "int64"
+//        },
+//        "name": {
+//           "type": "string"
+//        },
+//        "tag": {
+//           "type": "string"
+//        }
+//      }
+//    },
 
 
 

@@ -17,13 +17,7 @@ class BodyParameter extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
-    
-    /**
-     * If the schema allows arbitrary properties
-     * @var bool
-     */
-    protected static $allow_additional_properties = false;
+    protected static $pattern_properties = ['^x-' => ['mixed']];
     
     /**
      * A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.

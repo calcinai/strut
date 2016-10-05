@@ -17,13 +17,7 @@ class Response extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
-    
-    /**
-     * If the schema allows arbitrary properties
-     * @var bool
-     */
-    protected static $allow_additional_properties = false;
+    protected static $pattern_properties = ['^x-' => ['mixed']];
     
     /**
      * @param string $description
@@ -44,17 +38,19 @@ class Response extends BaseSchema
     }
     
     /**
-     * @param Definitions\Schema $schema
+     * @param Definitions\Schema|
+     *        Definitions\FileSchema $schema
      * @return $this
      */
-    public function setSchema(Definitions\Schema $schema)
+    public function setSchema($schema)
     {
         $this->data['schema'] = $schema;
         return $this;
     }
     
     /**
-     * @return Definitions\Schema
+     * @return Definitions\Schema|
+     *         Definitions\FileSchema
      */
     public function getSchema()
     {
@@ -62,17 +58,17 @@ class Response extends BaseSchema
     }
     
     /**
-     * @param Definitions\Headers $headers
+     * @param Definitions\Header $headers
      * @return $this
      */
-    public function setHeaders(Definitions\Headers $headers)
+    public function setHeaders(Definitions\Header $headers)
     {
         $this->data['headers'] = $headers;
         return $this;
     }
     
     /**
-     * @return Definitions\Headers
+     * @return Definitions\Header
      */
     public function getHeaders()
     {

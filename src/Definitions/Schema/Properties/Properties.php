@@ -20,12 +20,6 @@ class Properties extends BaseSchema
     protected static $pattern_properties = [];
     
     /**
-     * If the schema allows arbitrary properties
-     * @var bool
-     */
-    protected static $allow_additional_properties = false;
-    
-    /**
      * @param string $ref
      * @return $this
      */
@@ -98,7 +92,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @param  $default
+     * @param mixed $default
      * @return $this
      */
     public function setDefault($default)
@@ -108,7 +102,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @return 
+     * @return mixed
      */
     public function getDefault()
     {
@@ -224,7 +218,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @param int $minLength
+     * @param mixed $minLength
      * @return $this
      */
     public function setMinLength($minLength)
@@ -234,7 +228,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return mixed
      */
     public function getMinLength()
     {
@@ -278,7 +272,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @param int $minItems
+     * @param mixed $minItems
      * @return $this
      */
     public function setMinItems($minItems)
@@ -288,7 +282,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return mixed
      */
     public function getMinItems()
     {
@@ -332,7 +326,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @param int $minProperties
+     * @param mixed $minProperties
      * @return $this
      */
     public function setMinProperties($minProperties)
@@ -342,7 +336,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return mixed
      */
     public function getMinProperties()
     {
@@ -350,7 +344,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @param  $required
+     * @param string $required
      * @return $this
      */
     public function addRequired($required)
@@ -360,7 +354,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @return []
+     * @return string[]
      */
     public function getRequired()
     {
@@ -368,7 +362,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @param  $enum
+     * @param mixed $enum
      * @return $this
      */
     public function addEnum($enum)
@@ -378,7 +372,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @return []
+     * @return mixed[]
      */
     public function getEnum()
     {
@@ -386,7 +380,8 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @param Definitions\Schema $additionalProperties
+     * @param Definitions\Schema|
+     *        bool $additionalProperties
      * @return $this
      */
     public function setAdditionalProperties(Definitions\Schema $additionalProperties)
@@ -396,7 +391,8 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @return Definitions\Schema
+     * @return Definitions\Schema|
+     *         bool
      */
     public function getAdditionalProperties()
     {
@@ -404,7 +400,8 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @param  $type
+     * @param mixed|
+     *        mixed $type
      * @return $this
      */
     public function setType($type)
@@ -414,7 +411,8 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @return 
+     * @return mixed|
+     *         mixed
      */
     public function getType()
     {
@@ -422,17 +420,19 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @param Definitions\Schema $items
+     * @param Definitions\Schema|
+     *        Definitions\Schema $items
      * @return $this
      */
-    public function setItems(Definitions\Schema $items)
+    public function setItems($items)
     {
         $this->data['items'] = $items;
         return $this;
     }
     
     /**
-     * @return Definitions\Schema
+     * @return Definitions\Schema|
+     *         Definitions\Schema
      */
     public function getItems()
     {
@@ -440,17 +440,17 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @param  $allOf
+     * @param Definitions\Schema $allOf
      * @return $this
      */
-    public function addAllOf($allOf)
+    public function addAllOf(Definitions\Schema $allOf)
     {
         $this->data['allOf'][] =& $allOf;
         return $this;
     }
     
     /**
-     * @return []
+     * @return Definitions\Schema[]
      */
     public function getAllOf()
     {
@@ -458,17 +458,17 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @param Definitions\Schema\Properties\Properties $properties
+     * @param Definitions\Schema $properties
      * @return $this
      */
-    public function setProperties(Definitions\Schema\Properties\Properties $properties)
+    public function setProperties(Definitions\Schema $properties)
     {
         $this->data['properties'] = $properties;
         return $this;
     }
     
     /**
-     * @return Definitions\Schema\Properties\Properties
+     * @return Definitions\Schema
      */
     public function getProperties()
     {
@@ -550,7 +550,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @param  $example
+     * @param mixed $example
      * @return $this
      */
     public function setExample($example)
@@ -560,7 +560,7 @@ class Properties extends BaseSchema
     }
     
     /**
-     * @return 
+     * @return mixed
      */
     public function getExample()
     {

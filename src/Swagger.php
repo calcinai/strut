@@ -2,7 +2,6 @@
 
 namespace Calcinai\Strut;
 
-use Calcinai\Strut\BaseSchema;
 use Calcinai\Strut\Definitions;
 class Swagger extends BaseSchema
 {
@@ -17,13 +16,7 @@ class Swagger extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
-    
-    /**
-     * If the schema allows arbitrary properties
-     * @var bool
-     */
-    protected static $allow_additional_properties = false;
+    protected static $pattern_properties = ['^x-' => ['mixed']];
     
     /**
      * The Swagger version of this document.
@@ -107,7 +100,7 @@ class Swagger extends BaseSchema
     
     /**
      * The transfer protocol of the API.
-     * @param  $schemes
+     * @param string $schemes
      * @return $this
      */
     public function addScheme($schemes)
@@ -118,7 +111,7 @@ class Swagger extends BaseSchema
     
     /**
      * The transfer protocol of the API.
-     * @return []
+     * @return string[]
      */
     public function getSchemes()
     {
@@ -127,7 +120,7 @@ class Swagger extends BaseSchema
     
     /**
      * A list of MIME types accepted by the API.
-     * @param  $consumes
+     * @param mixed $consumes
      * @return $this
      */
     public function setConsumes($consumes)
@@ -138,7 +131,7 @@ class Swagger extends BaseSchema
     
     /**
      * A list of MIME types accepted by the API.
-     * @return 
+     * @return mixed
      */
     public function getConsumes()
     {
@@ -147,7 +140,7 @@ class Swagger extends BaseSchema
     
     /**
      * A list of MIME types the API can produce.
-     * @param  $produces
+     * @param mixed $produces
      * @return $this
      */
     public function setProduces($produces)
@@ -158,7 +151,7 @@ class Swagger extends BaseSchema
     
     /**
      * A list of MIME types the API can produce.
-     * @return 
+     * @return mixed
      */
     public function getProduces()
     {
@@ -187,10 +180,10 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON objects describing the schemas being consumed and produced by the API.
-     * @param Definitions\Definitions $definitions
+     * @param Definitions\Schema $definitions
      * @return $this
      */
-    public function setDefinitions(Definitions\Definitions $definitions)
+    public function setDefinitions(Definitions\Schema $definitions)
     {
         $this->data['definitions'] = $definitions;
         return $this;
@@ -198,7 +191,7 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON objects describing the schemas being consumed and produced by the API.
-     * @return Definitions\Definitions
+     * @return Definitions\Schema
      */
     public function getDefinitions()
     {
@@ -207,10 +200,19 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON representations for parameters
-     * @param Definitions\ParameterDefinitions $parameters
+     * @param Definitions\BodyParameter|
+     *        Definitions\HeaderParameterSubSchema|
+     *        Definitions\FormDataParameterSubSchema|
+     *        Definitions\QueryParameterSubSchema|
+     *        Definitions\PathParameterSubSchema|
+     *        Definitions\BodyParameter|
+     *        Definitions\HeaderParameterSubSchema|
+     *        Definitions\FormDataParameterSubSchema|
+     *        Definitions\QueryParameterSubSchema|
+     *        Definitions\PathParameterSubSchema $parameters
      * @return $this
      */
-    public function setParameters(Definitions\ParameterDefinitions $parameters)
+    public function setParameters($parameters)
     {
         $this->data['parameters'] = $parameters;
         return $this;
@@ -218,7 +220,16 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON representations for parameters
-     * @return Definitions\ParameterDefinitions
+     * @return Definitions\BodyParameter|
+     *         Definitions\HeaderParameterSubSchema|
+     *         Definitions\FormDataParameterSubSchema|
+     *         Definitions\QueryParameterSubSchema|
+     *         Definitions\PathParameterSubSchema|
+     *         Definitions\BodyParameter|
+     *         Definitions\HeaderParameterSubSchema|
+     *         Definitions\FormDataParameterSubSchema|
+     *         Definitions\QueryParameterSubSchema|
+     *         Definitions\PathParameterSubSchema
      */
     public function getParameters()
     {
@@ -227,10 +238,10 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON representations for parameters
-     * @param Definitions\ResponseDefinitions $responses
+     * @param Definitions\Response $responses
      * @return $this
      */
-    public function setResponses(Definitions\ResponseDefinitions $responses)
+    public function setResponses(Definitions\Response $responses)
     {
         $this->data['responses'] = $responses;
         return $this;
@@ -238,7 +249,7 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON representations for parameters
-     * @return Definitions\ResponseDefinitions
+     * @return Definitions\Response
      */
     public function getResponses()
     {
@@ -246,17 +257,17 @@ class Swagger extends BaseSchema
     }
     
     /**
-     * @param  $security
+     * @param string $security
      * @return $this
      */
-    public function addSecurity($security)
+    public function addSecurity(Definitions\SecurityRequirement $security)
     {
         $this->data['security'][] =& $security;
         return $this;
     }
     
     /**
-     * @return []
+     * @return string[]
      */
     public function getSecurity()
     {
@@ -264,17 +275,27 @@ class Swagger extends BaseSchema
     }
     
     /**
-     * @param Definitions\SecurityDefinitions $securityDefinitions
+     * @param Definitions\BasicAuthenticationSecurity|
+     *        Definitions\ApiKeySecurity|
+     *        Definitions\Oauth2ImplicitSecurity|
+     *        Definitions\Oauth2PasswordSecurity|
+     *        Definitions\Oauth2ApplicationSecurity|
+     *        Definitions\Oauth2AccessCodeSecurity $securityDefinitions
      * @return $this
      */
-    public function setSecurityDefinitions(Definitions\SecurityDefinitions $securityDefinitions)
+    public function setSecurityDefinitions($securityDefinitions)
     {
         $this->data['securityDefinitions'] = $securityDefinitions;
         return $this;
     }
     
     /**
-     * @return Definitions\SecurityDefinitions
+     * @return Definitions\BasicAuthenticationSecurity|
+     *         Definitions\ApiKeySecurity|
+     *         Definitions\Oauth2ImplicitSecurity|
+     *         Definitions\Oauth2PasswordSecurity|
+     *         Definitions\Oauth2ApplicationSecurity|
+     *         Definitions\Oauth2AccessCodeSecurity
      */
     public function getSecurityDefinitions()
     {
@@ -282,17 +303,17 @@ class Swagger extends BaseSchema
     }
     
     /**
-     * @param  $tags
+     * @param Definitions\Tag $tags
      * @return $this
      */
-    public function addTag($tags)
+    public function addTag(Definitions\Tag $tags)
     {
         $this->data['tags'][] =& $tags;
         return $this;
     }
     
     /**
-     * @return []
+     * @return Definitions\Tag[]
      */
     public function getTags()
     {

@@ -17,16 +17,10 @@ class Operation extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
+    protected static $pattern_properties = ['^x-' => ['mixed']];
     
     /**
-     * If the schema allows arbitrary properties
-     * @var bool
-     */
-    protected static $allow_additional_properties = false;
-    
-    /**
-     * @param  $tags
+     * @param string $tags
      * @return $this
      */
     public function addTag($tags)
@@ -36,7 +30,7 @@ class Operation extends BaseSchema
     }
     
     /**
-     * @return []
+     * @return string[]
      */
     public function getTags()
     {
@@ -125,7 +119,7 @@ class Operation extends BaseSchema
     
     /**
      * A list of MIME types the API can produce.
-     * @param  $produces
+     * @param mixed $produces
      * @return $this
      */
     public function setProduces($produces)
@@ -136,7 +130,7 @@ class Operation extends BaseSchema
     
     /**
      * A list of MIME types the API can produce.
-     * @return 
+     * @return mixed
      */
     public function getProduces()
     {
@@ -145,7 +139,7 @@ class Operation extends BaseSchema
     
     /**
      * A list of MIME types the API can consume.
-     * @param  $consumes
+     * @param mixed $consumes
      * @return $this
      */
     public function setConsumes($consumes)
@@ -156,7 +150,7 @@ class Operation extends BaseSchema
     
     /**
      * A list of MIME types the API can consume.
-     * @return 
+     * @return mixed
      */
     public function getConsumes()
     {
@@ -165,7 +159,17 @@ class Operation extends BaseSchema
     
     /**
      * The parameters needed to send a valid API call.
-     * @param  $parameters
+     * @param Definitions\BodyParameter|
+     *        Definitions\HeaderParameterSubSchema|
+     *        Definitions\FormDataParameterSubSchema|
+     *        Definitions\QueryParameterSubSchema|
+     *        Definitions\PathParameterSubSchema|
+     *        Definitions\BodyParameter|
+     *        Definitions\HeaderParameterSubSchema|
+     *        Definitions\FormDataParameterSubSchema|
+     *        Definitions\QueryParameterSubSchema|
+     *        Definitions\PathParameterSubSchema|
+     *        Definitions\JsonReference $parameters
      * @return $this
      */
     public function addParameter($parameters)
@@ -176,7 +180,17 @@ class Operation extends BaseSchema
     
     /**
      * The parameters needed to send a valid API call.
-     * @return []
+     * @return Definitions\BodyParameter|
+     *         Definitions\HeaderParameterSubSchema|
+     *         Definitions\FormDataParameterSubSchema|
+     *         Definitions\QueryParameterSubSchema|
+     *         Definitions\PathParameterSubSchema|
+     *         Definitions\BodyParameter|
+     *         Definitions\HeaderParameterSubSchema|
+     *         Definitions\FormDataParameterSubSchema|
+     *         Definitions\QueryParameterSubSchema|
+     *         Definitions\PathParameterSubSchema|
+     *         Definitions\JsonReference[]
      */
     public function getParameters()
     {
@@ -205,7 +219,7 @@ class Operation extends BaseSchema
     
     /**
      * The transfer protocol of the API.
-     * @param  $schemes
+     * @param string $schemes
      * @return $this
      */
     public function addScheme($schemes)
@@ -216,7 +230,7 @@ class Operation extends BaseSchema
     
     /**
      * The transfer protocol of the API.
-     * @return []
+     * @return string[]
      */
     public function getSchemes()
     {
@@ -242,17 +256,17 @@ class Operation extends BaseSchema
     }
     
     /**
-     * @param  $security
+     * @param string $security
      * @return $this
      */
-    public function addSecurity($security)
+    public function addSecurity(Definitions\SecurityRequirement $security)
     {
         $this->data['security'][] =& $security;
         return $this;
     }
     
     /**
-     * @return []
+     * @return string[]
      */
     public function getSecurity()
     {

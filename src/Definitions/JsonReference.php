@@ -19,12 +19,6 @@ class JsonReference extends BaseSchema
     protected static $pattern_properties = [];
     
     /**
-     * If the schema allows arbitrary properties
-     * @var bool
-     */
-    protected static $allow_additional_properties = false;
-    
-    /**
      * @param string $ref
      * @return $this
      */

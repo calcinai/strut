@@ -20,12 +20,6 @@ class Headers extends BaseSchema
     protected static $pattern_properties = [];
     
     /**
-     * If the schema allows arbitrary properties
-     * @var bool
-     */
-    protected static $allow_additional_properties = false;
-    
-    /**
      * @param string $type
      * @return $this
      */
@@ -98,7 +92,7 @@ class Headers extends BaseSchema
     }
     
     /**
-     * @param  $default
+     * @param mixed $default
      * @return $this
      */
     public function setDefault($default)
@@ -108,7 +102,7 @@ class Headers extends BaseSchema
     }
     
     /**
-     * @return 
+     * @return mixed
      */
     public function getDefault()
     {
@@ -206,7 +200,7 @@ class Headers extends BaseSchema
     }
     
     /**
-     * @param int $minLength
+     * @param mixed $minLength
      * @return $this
      */
     public function setMinLength($minLength)
@@ -216,7 +210,7 @@ class Headers extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return mixed
      */
     public function getMinLength()
     {
@@ -260,7 +254,7 @@ class Headers extends BaseSchema
     }
     
     /**
-     * @param int $minItems
+     * @param mixed $minItems
      * @return $this
      */
     public function setMinItems($minItems)
@@ -270,7 +264,7 @@ class Headers extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return mixed
      */
     public function getMinItems()
     {
@@ -296,7 +290,7 @@ class Headers extends BaseSchema
     }
     
     /**
-     * @param  $enum
+     * @param mixed $enum
      * @return $this
      */
     public function addEnum($enum)
@@ -306,7 +300,7 @@ class Headers extends BaseSchema
     }
     
     /**
-     * @return []
+     * @return mixed[]
      */
     public function getEnum()
     {

@@ -17,13 +17,7 @@ class QueryParameterSubSchema extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
-    
-    /**
-     * If the schema allows arbitrary properties
-     * @var bool
-     */
-    protected static $allow_additional_properties = false;
+    protected static $pattern_properties = ['^x-' => ['mixed']];
     
     /**
      * Determines whether or not this parameter is required or optional.
@@ -198,7 +192,7 @@ class QueryParameterSubSchema extends BaseSchema
     }
     
     /**
-     * @param  $default
+     * @param mixed $default
      * @return $this
      */
     public function setDefault($default)
@@ -208,7 +202,7 @@ class QueryParameterSubSchema extends BaseSchema
     }
     
     /**
-     * @return 
+     * @return mixed
      */
     public function getDefault()
     {
@@ -306,7 +300,7 @@ class QueryParameterSubSchema extends BaseSchema
     }
     
     /**
-     * @param int $minLength
+     * @param mixed $minLength
      * @return $this
      */
     public function setMinLength($minLength)
@@ -316,7 +310,7 @@ class QueryParameterSubSchema extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return mixed
      */
     public function getMinLength()
     {
@@ -360,7 +354,7 @@ class QueryParameterSubSchema extends BaseSchema
     }
     
     /**
-     * @param int $minItems
+     * @param mixed $minItems
      * @return $this
      */
     public function setMinItems($minItems)
@@ -370,7 +364,7 @@ class QueryParameterSubSchema extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return mixed
      */
     public function getMinItems()
     {
@@ -396,7 +390,7 @@ class QueryParameterSubSchema extends BaseSchema
     }
     
     /**
-     * @param  $enum
+     * @param mixed $enum
      * @return $this
      */
     public function addEnum($enum)
@@ -406,7 +400,7 @@ class QueryParameterSubSchema extends BaseSchema
     }
     
     /**
-     * @return []
+     * @return mixed[]
      */
     public function getEnum()
     {

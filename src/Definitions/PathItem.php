@@ -17,13 +17,7 @@ class PathItem extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
-    
-    /**
-     * If the schema allows arbitrary properties
-     * @var bool
-     */
-    protected static $allow_additional_properties = false;
+    protected static $pattern_properties = ['^x-' => ['mixed']];
     
     /**
      * @param string $ref
@@ -171,7 +165,17 @@ class PathItem extends BaseSchema
     
     /**
      * The parameters needed to send a valid API call.
-     * @param  $parameters
+     * @param Definitions\BodyParameter|
+     *        Definitions\HeaderParameterSubSchema|
+     *        Definitions\FormDataParameterSubSchema|
+     *        Definitions\QueryParameterSubSchema|
+     *        Definitions\PathParameterSubSchema|
+     *        Definitions\BodyParameter|
+     *        Definitions\HeaderParameterSubSchema|
+     *        Definitions\FormDataParameterSubSchema|
+     *        Definitions\QueryParameterSubSchema|
+     *        Definitions\PathParameterSubSchema|
+     *        Definitions\JsonReference $parameters
      * @return $this
      */
     public function addParameter($parameters)
@@ -182,7 +186,17 @@ class PathItem extends BaseSchema
     
     /**
      * The parameters needed to send a valid API call.
-     * @return []
+     * @return Definitions\BodyParameter|
+     *         Definitions\HeaderParameterSubSchema|
+     *         Definitions\FormDataParameterSubSchema|
+     *         Definitions\QueryParameterSubSchema|
+     *         Definitions\PathParameterSubSchema|
+     *         Definitions\BodyParameter|
+     *         Definitions\HeaderParameterSubSchema|
+     *         Definitions\FormDataParameterSubSchema|
+     *         Definitions\QueryParameterSubSchema|
+     *         Definitions\PathParameterSubSchema|
+     *         Definitions\JsonReference[]
      */
     public function getParameters()
     {
