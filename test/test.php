@@ -6,6 +6,8 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use Calcinai\Strut\Swagger;
+use Calcinai\Strut\Definitions\Definitions;
 use Calcinai\Strut\Definitions\Info;
 use Calcinai\Strut\Definitions\Operation;
 use Calcinai\Strut\Definitions\Paths;
@@ -13,32 +15,23 @@ use Calcinai\Strut\Definitions\PathItem;
 use Calcinai\Strut\Definitions\QueryParameterSubSchema;
 use Calcinai\Strut\Definitions\Response;
 use Calcinai\Strut\Definitions\Responses;
-use Calcinai\Strut\Swagger;
+use Calcinai\Strut\Definitions\Schema;
+use Calcinai\Strut\Definitions\Schema\Properties\Properties;
 
 
-//$pet = Calcinai\Strut\Definitions\Definitions::create()
-//    ->set()
-
-
-//    "Pet": {
-//        "required": [
-//            "id",
-//            "name"
-//        ],
-//      "properties": {
-//        "id": {
-//            "type": "integer",
-//            "format": "int64"
-//        },
-//        "name": {
-//           "type": "string"
-//        },
-//        "tag": {
-//           "type": "string"
-//        }
-//      }
-//    },
-
+$pet = Calcinai\Strut\Definitions\Schema::create()
+    ->setProperties(Properties::create()
+        ->set('id', Schema::create()
+            ->setType('integer')
+            ->setFormat('int64')
+        )
+        ->set('name', Schema::create()
+            ->setType('string')
+        )
+        ->set('tag', Schema::create()
+            ->setType('string')
+        )
+    );
 
 
 $schema = Swagger::create()
@@ -82,7 +75,11 @@ $schema = Swagger::create()
                 )
             )
         )
-    );
+    )
+    ->setDefinitions(Definitions::create()
+        ->set('Pet', $pet)
+    )
+;
 
 
 print_r(json_encode($schema, JSON_PRETTY_PRINT));

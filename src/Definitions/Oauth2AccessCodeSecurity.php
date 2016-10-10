@@ -14,6 +14,12 @@ class Oauth2AccessCodeSecurity extends BaseSchema
     protected $data = ['type' => 'oauth2', 'flow' => 'accessCode'];
     
     /**
+     * Allowed additional properties
+     * @var array
+     */
+    protected static $additional_properties = false;
+    
+    /**
      * Array to store any allowed pattern properties
      * @var array
      */
@@ -56,7 +62,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
     }
     
     /**
-     * @param string $scopes
+     * @param Definitions\Oauth2Scopes $scopes
      * @return $this
      */
     public function setScopes(Definitions\Oauth2Scopes $scopes)
@@ -66,7 +72,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
     }
     
     /**
-     * @return string
+     * @return Definitions\Oauth2Scopes
      */
     public function getScopes()
     {

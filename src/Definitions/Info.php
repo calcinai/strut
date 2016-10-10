@@ -18,6 +18,12 @@ class Info extends BaseSchema
     protected $data = [];
     
     /**
+     * Allowed additional properties
+     * @var array
+     */
+    protected static $additional_properties = false;
+    
+    /**
      * Array to store any allowed pattern properties
      * @var array
      */

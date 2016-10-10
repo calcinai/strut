@@ -17,6 +17,12 @@ class ParameterDefinitions extends BaseSchema
     protected $data = [];
     
     /**
+     * Allowed additional properties
+     * @var array
+     */
+    protected static $additional_properties = ['Definitions\\BodyParameter', 'Definitions\\HeaderParameterSubSchema', 'Definitions\\FormDataParameterSubSchema', 'Definitions\\QueryParameterSubSchema', 'Definitions\\PathParameterSubSchema', 'Definitions\\BodyParameter', 'Definitions\\HeaderParameterSubSchema', 'Definitions\\FormDataParameterSubSchema', 'Definitions\\QueryParameterSubSchema', 'Definitions\\PathParameterSubSchema'];
+    
+    /**
      * Array to store any allowed pattern properties
      * @var array
      */

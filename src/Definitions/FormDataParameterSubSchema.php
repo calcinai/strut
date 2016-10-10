@@ -14,6 +14,12 @@ class FormDataParameterSubSchema extends BaseSchema
     protected $data = ['in' => 'formData', 'collectionFormat' => 'csv'];
     
     /**
+     * Allowed additional properties
+     * @var array
+     */
+    protected static $additional_properties = false;
+    
+    /**
      * Array to store any allowed pattern properties
      * @var array
      */

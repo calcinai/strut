@@ -14,6 +14,12 @@ class Response extends BaseSchema
     protected $data = [];
     
     /**
+     * Allowed additional properties
+     * @var array
+     */
+    protected static $additional_properties = false;
+    
+    /**
      * Array to store any allowed pattern properties
      * @var array
      */
@@ -58,17 +64,17 @@ class Response extends BaseSchema
     }
     
     /**
-     * @param Definitions\Header $headers
+     * @param Definitions\Headers $headers
      * @return $this
      */
-    public function setHeaders(Definitions\Header $headers)
+    public function setHeaders(Definitions\Headers $headers)
     {
         $this->data['headers'] = $headers;
         return $this;
     }
     
     /**
-     * @return Definitions\Header
+     * @return Definitions\Headers
      */
     public function getHeaders()
     {

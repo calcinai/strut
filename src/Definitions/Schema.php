@@ -18,6 +18,12 @@ class Schema extends BaseSchema
     protected $data = [];
     
     /**
+     * Allowed additional properties
+     * @var array
+     */
+    protected static $additional_properties = false;
+    
+    /**
      * Array to store any allowed pattern properties
      * @var array
      */
@@ -462,17 +468,17 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param Definitions\Schema $properties
+     * @param Definitions\Schema\Properties\Properties $properties
      * @return $this
      */
-    public function setProperties(Definitions\Schema $properties)
+    public function setProperties(Definitions\Schema\Properties\Properties $properties)
     {
         $this->data['properties'] = $properties;
         return $this;
     }
     
     /**
-     * @return Definitions\Schema
+     * @return Definitions\Schema\Properties\Properties
      */
     public function getProperties()
     {

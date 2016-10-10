@@ -14,6 +14,12 @@ class QueryParameterSubSchema extends BaseSchema
     protected $data = ['in' => 'query', 'collectionFormat' => 'csv'];
     
     /**
+     * Allowed additional properties
+     * @var array
+     */
+    protected static $additional_properties = false;
+    
+    /**
      * Array to store any allowed pattern properties
      * @var array
      */

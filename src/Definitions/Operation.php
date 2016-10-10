@@ -14,6 +14,12 @@ class Operation extends BaseSchema
     protected $data = [];
     
     /**
+     * Allowed additional properties
+     * @var array
+     */
+    protected static $additional_properties = false;
+    
+    /**
      * Array to store any allowed pattern properties
      * @var array
      */
@@ -256,7 +262,7 @@ class Operation extends BaseSchema
     }
     
     /**
-     * @param string $security
+     * @param Definitions\SecurityRequirement $security
      * @return $this
      */
     public function addSecurity(Definitions\SecurityRequirement $security)
@@ -266,7 +272,7 @@ class Operation extends BaseSchema
     }
     
     /**
-     * @return string[]
+     * @return Definitions\SecurityRequirement[]
      */
     public function getSecurity()
     {

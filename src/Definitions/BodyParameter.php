@@ -14,6 +14,12 @@ class BodyParameter extends BaseSchema
     protected $data = ['in' => 'body'];
     
     /**
+     * Allowed additional properties
+     * @var array
+     */
+    protected static $additional_properties = false;
+    
+    /**
      * Array to store any allowed pattern properties
      * @var array
      */

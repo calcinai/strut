@@ -13,6 +13,12 @@ class Swagger extends BaseSchema
     protected $data = ['swagger' => '2.0'];
     
     /**
+     * Allowed additional properties
+     * @var array
+     */
+    protected static $additional_properties = false;
+    
+    /**
      * Array to store any allowed pattern properties
      * @var array
      */
@@ -180,10 +186,10 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON objects describing the schemas being consumed and produced by the API.
-     * @param Definitions\Schema $definitions
+     * @param Definitions\Definitions $definitions
      * @return $this
      */
-    public function setDefinitions(Definitions\Schema $definitions)
+    public function setDefinitions(Definitions\Definitions $definitions)
     {
         $this->data['definitions'] = $definitions;
         return $this;
@@ -191,7 +197,7 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON objects describing the schemas being consumed and produced by the API.
-     * @return Definitions\Schema
+     * @return Definitions\Definitions
      */
     public function getDefinitions()
     {
@@ -200,19 +206,10 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON representations for parameters
-     * @param Definitions\BodyParameter|
-     *        Definitions\HeaderParameterSubSchema|
-     *        Definitions\FormDataParameterSubSchema|
-     *        Definitions\QueryParameterSubSchema|
-     *        Definitions\PathParameterSubSchema|
-     *        Definitions\BodyParameter|
-     *        Definitions\HeaderParameterSubSchema|
-     *        Definitions\FormDataParameterSubSchema|
-     *        Definitions\QueryParameterSubSchema|
-     *        Definitions\PathParameterSubSchema $parameters
+     * @param Definitions\ParameterDefinitions $parameters
      * @return $this
      */
-    public function setParameters($parameters)
+    public function setParameters(Definitions\ParameterDefinitions $parameters)
     {
         $this->data['parameters'] = $parameters;
         return $this;
@@ -220,16 +217,7 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON representations for parameters
-     * @return Definitions\BodyParameter|
-     *         Definitions\HeaderParameterSubSchema|
-     *         Definitions\FormDataParameterSubSchema|
-     *         Definitions\QueryParameterSubSchema|
-     *         Definitions\PathParameterSubSchema|
-     *         Definitions\BodyParameter|
-     *         Definitions\HeaderParameterSubSchema|
-     *         Definitions\FormDataParameterSubSchema|
-     *         Definitions\QueryParameterSubSchema|
-     *         Definitions\PathParameterSubSchema
+     * @return Definitions\ParameterDefinitions
      */
     public function getParameters()
     {
@@ -238,10 +226,10 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON representations for parameters
-     * @param Definitions\Response $responses
+     * @param Definitions\ResponseDefinitions $responses
      * @return $this
      */
-    public function setResponses(Definitions\Response $responses)
+    public function setResponses(Definitions\ResponseDefinitions $responses)
     {
         $this->data['responses'] = $responses;
         return $this;
@@ -249,7 +237,7 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON representations for parameters
-     * @return Definitions\Response
+     * @return Definitions\ResponseDefinitions
      */
     public function getResponses()
     {
@@ -257,7 +245,7 @@ class Swagger extends BaseSchema
     }
     
     /**
-     * @param string $security
+     * @param Definitions\SecurityRequirement $security
      * @return $this
      */
     public function addSecurity(Definitions\SecurityRequirement $security)
@@ -267,7 +255,7 @@ class Swagger extends BaseSchema
     }
     
     /**
-     * @return string[]
+     * @return Definitions\SecurityRequirement[]
      */
     public function getSecurity()
     {
@@ -275,27 +263,17 @@ class Swagger extends BaseSchema
     }
     
     /**
-     * @param Definitions\BasicAuthenticationSecurity|
-     *        Definitions\ApiKeySecurity|
-     *        Definitions\Oauth2ImplicitSecurity|
-     *        Definitions\Oauth2PasswordSecurity|
-     *        Definitions\Oauth2ApplicationSecurity|
-     *        Definitions\Oauth2AccessCodeSecurity $securityDefinitions
+     * @param Definitions\SecurityDefinitions $securityDefinitions
      * @return $this
      */
-    public function setSecurityDefinitions($securityDefinitions)
+    public function setSecurityDefinitions(Definitions\SecurityDefinitions $securityDefinitions)
     {
         $this->data['securityDefinitions'] = $securityDefinitions;
         return $this;
     }
     
     /**
-     * @return Definitions\BasicAuthenticationSecurity|
-     *         Definitions\ApiKeySecurity|
-     *         Definitions\Oauth2ImplicitSecurity|
-     *         Definitions\Oauth2PasswordSecurity|
-     *         Definitions\Oauth2ApplicationSecurity|
-     *         Definitions\Oauth2AccessCodeSecurity
+     * @return Definitions\SecurityDefinitions
      */
     public function getSecurityDefinitions()
     {

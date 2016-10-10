@@ -13,6 +13,12 @@ class Oauth2Scopes extends BaseSchema
     protected $data = [];
     
     /**
+     * Allowed additional properties
+     * @var array
+     */
+    protected static $additional_properties = [];
+    
+    /**
      * Array to store any allowed pattern properties
      * @var array
      */
