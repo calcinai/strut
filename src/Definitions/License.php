@@ -22,7 +22,7 @@ class License extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => ['mixed']];
+    protected static $pattern_properties = ['^x-' => []];
     
     /**
      * The name of the license type. It's encouraged to use an OSI compatible license.

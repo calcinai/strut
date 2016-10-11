@@ -26,5 +26,5 @@ class Responses extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^([0-9]{3})$|^(default)$' => ['Definitions\\Response', 'Definitions\\JsonReference'], '^x-' => ['mixed']];
+    protected static $pattern_properties = ['^([0-9]{3})$|^(default)$' => ['Definitions\\Response', 'Definitions\\JsonReference'], '^x-' => []];
 }

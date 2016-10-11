@@ -79,6 +79,7 @@ $schema = Swagger::create()
     ->setDefinitions(Definitions::create()
         ->set('Pet', $pet)
     )
+
 ;
 
 

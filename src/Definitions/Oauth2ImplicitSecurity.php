@@ -23,7 +23,7 @@ class Oauth2ImplicitSecurity extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => ['mixed']];
+    protected static $pattern_properties = ['^x-' => []];
     
     /**
      * @param string $type

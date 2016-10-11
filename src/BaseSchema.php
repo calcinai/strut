@@ -9,7 +9,13 @@ abstract class BaseSchema implements \JsonSerializable
 {
     protected $data;
     protected static $pattern_properties = [];
-    protected static $additional_properties = false;
+    /**
+     * This needs to be an array in the case that thse schema has more than one
+     * subschema in a oneof, there's no point having to have an intermediary object.
+     *
+     * @var bool|array
+     */
+    protected static $additional_properties = [];
     /**
      * Pattern property setter.  Could do with a clean up - too many return points
      *
@@ -21,61 +27,43 @@ abstract class BaseSchema implements \JsonSerializable
     public function set($property_name, $value)
     {
         $this->validateProperty($property_name, $value);
-        //        foreach(static::$pattern_properties as $pattern => $types){
-        //
-        //            //Find an unused delimiter
-        //            foreach(['/','#','+','~','%'] as $delimiter){
-        //                if(strpos($pattern, $delimiter) === false){
-        //                    break;
-        //                }
-        //            }
-        //
-        //            /** @noinspection PhpUndefinedVariableInspection ...well, it is */
-        //            if(preg_match("$delimiter$pattern$delimiter", $property_name)){
-        //
-        //                //If there's no rule, success anyway
-        //                if(!isset($types[0])){
-        //                    //Success
-        //                    $this->data[$property_name] = $value;
-        //                    return $this;
-        //                }
-        //
-        //                foreach($types as $type){
-        //                    $fqcn = sprintf('%s\\%s', __NAMESPACE__, $type);
-        //                    if($value instanceof $fqcn){
-        //                        //Success
-        //                        $this->data[$property_name] = $value;
-        //                        return $this;
-        //                    }
-        //                }
-        //
-        //                //Otherwise it fails
-        //                throw new \InvalidArgumentException(sprintf('[%s] does not accept [%s], accepts [%s]',
-        //                        $property_name,
-        //                        is_object($value) ? get_class($value) : gettype($value),
-        //                        implode('|', $types))
-        //                );
-        //            }
-        //        }
-        //
-        ////        //TODO - This handling needs to be extended in case there's an object for unnamed additional props
-        ////        if(static::$allow_additional_properties){
-        ////            $this->data[$property_name] = $value;
-        ////            return $this;
-        ////        }
-        //
-        //        throw new \InvalidArgumentException(sprintf('[%s] does not accept property [%s]', get_class($this), $property_name));
         $this->data[$property_name] = $value;
         return $this;
     }
     private function validateProperty($property_name, $value)
     {
-        self::getFQCN(static::$additional_properties);
         if (is_bool(static::$additional_properties) && static::$additional_properties) {
             return true;
-        } elseif (is_string(static::$additional_properties)) {
-            var_dump(self::getFQCN(static::$additional_properties));
+        } elseif (is_array(static::$additional_properties)) {
+            foreach (static::$additional_properties as $allowed_class) {
+                $fq_class = self::getFQCN($allowed_class);
+                if ($value instanceof $fq_class) {
+                    return true;
+                }
+            }
         }
+        foreach (static::$pattern_properties as $pattern => $types) {
+            //Find an unused delimiter
+            foreach (['/', '#', '+', '~', '%'] as $delimiter) {
+                if (strpos($pattern, $delimiter) === false) {
+                    break;
+                }
+            }
+            /** @noinspection PhpUndefinedVariableInspection ...well, it is */
+            if (preg_match("{$delimiter}{$pattern}{$delimiter}", $property_name)) {
+                //If there's no rule, success anyway
+                if (!isset($types[0])) {
+                    return true;
+                }
+                foreach ($types as $allowed_class) {
+                    $fq_class = self::getFQCN($allowed_class);
+                    if ($value instanceof $fq_class) {
+                        return true;
+                    }
+                }
+            }
+        }
+        throw new \InvalidArgumentException(sprintf('[%s] does not accept property [%s]', get_class($this), $property_name));
     }
     public static function getFQCN($relative_class)
     {
