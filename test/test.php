@@ -6,6 +6,8 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use Calcinai\Strut\Definitions\Header;
+use Calcinai\Strut\Definitions\Headers;
 use Calcinai\Strut\Swagger;
 use Calcinai\Strut\Definitions\Definitions;
 use Calcinai\Strut\Definitions\Info;
@@ -70,6 +72,12 @@ $schema = Swagger::create()
                 ->setResponses(Responses::create()
                     ->set('200', Response::create()
                         ->setDescription('A paged array of pets')
+                        ->setHeaders(Headers::create()
+                            ->set('x-next', Header::create()
+                                ->setType('string')
+                                ->setDescription('A link to the next page of responses')
+                            )
+                        )
                         ->setSchema($pet)
                     )
                 )
@@ -89,20 +97,20 @@ print_r(json_encode($schema, JSON_PRETTY_PRINT));
 //        "responses": {
 //                "200": {
 //                    "description": "An paged array of pets",
-//                          "headers": {
-//                        "x-next": {
-//                            "type": "string",
-//                            "description": "A link to the next page of responses"
-//              }
-//            },
-//            "schema": {
+//                    "headers": {
+//                         "x-next": {
+//                             "type": "string",
+//                              "description": "A link to the next page of responses"
+//                          }
+//                     },
+//                     "schema": {
 //                        "$ref": "#/definitions/Pets"
-//            }
-//          },
-//          "default": {
+//                     }
+//                 },
+//                 "default": {
 //                    "description": "unexpected error",
-//            "schema": {
-//                        "$ref": "#/definitions/Error"
+//                     "schema": {
+//                          "$ref": "#/definitions/Error"
 //            }
 //          }
 //        }
