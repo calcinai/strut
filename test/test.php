@@ -6,8 +6,6 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Calcinai\Strut\Definitions\Header;
-use Calcinai\Strut\Definitions\Headers;
 use Calcinai\Strut\Swagger;
 use Calcinai\Strut\Definitions\Definitions;
 use Calcinai\Strut\Definitions\Info;
@@ -15,13 +13,19 @@ use Calcinai\Strut\Definitions\Operation;
 use Calcinai\Strut\Definitions\Paths;
 use Calcinai\Strut\Definitions\PathItem;
 use Calcinai\Strut\Definitions\QueryParameterSubSchema;
-use Calcinai\Strut\Definitions\Response;
 use Calcinai\Strut\Definitions\Responses;
+use Calcinai\Strut\Definitions\Response;
+use Calcinai\Strut\Definitions\Headers;
+use Calcinai\Strut\Definitions\Header;
+use Calcinai\Strut\Definitions\JsonReference;
+use Calcinai\Strut\Definitions\License;
 use Calcinai\Strut\Definitions\Schema;
 use Calcinai\Strut\Definitions\Schema\Properties\Properties;
 
+$pet = Schema::create()
+    ->addRequired('id')
+    ->addRequired('name')
 
-$pet = Calcinai\Strut\Definitions\Schema::create()
     ->setProperties(Properties::create()
         ->set('id', Schema::create()
             ->setType('integer')
@@ -35,13 +39,33 @@ $pet = Calcinai\Strut\Definitions\Schema::create()
         )
     );
 
+$pets = Schema::create()
+    ->setType('array')
+    ->setItems($pet);
 
-$schema = Swagger::create()
+
+$error = Schema::create()
+    ->addRequired('code')
+    ->addRequired('message')
+
+    ->setProperties(Properties::create()
+        ->set('code', Schema::create()
+            ->setType('integer')
+            ->setFormat('int32')
+        )
+        ->set('error', Schema::create()
+            ->setType('string')
+        )
+    );
+
+
+$swagger = Swagger::create()
     ->setInfo(
         Info::create()
             ->setTitle('Swagger Petstore')
             ->setVersion('1.0.0')
-            ->setLicense(\Calcinai\Strut\Definitions\License::create()
+            ->setLicense(
+                License::create()
                 ->setName('MIT')
             )
     )
@@ -78,7 +102,11 @@ $schema = Swagger::create()
                                 ->setDescription('A link to the next page of responses')
                             )
                         )
-                        ->setSchema($pet)
+                        ->setSchema($pets)
+                    )
+                    ->set('default', Response::create()
+                        ->setDescription('Unexpected error')
+                        ->setSchema($error)
                     )
                 )
             )
@@ -86,35 +114,16 @@ $schema = Swagger::create()
     )
     ->setDefinitions(Definitions::create()
         ->set('Pet', $pet)
+        ->set('Pets', $pets)
+        ->set('Error', $error)
     )
 
 ;
 
 
-print_r(json_encode($schema, JSON_PRETTY_PRINT));
+print_r(json_encode($swagger, JSON_PRETTY_PRINT));
 
 
-//        "responses": {
-//                "200": {
-//                    "description": "An paged array of pets",
-//                    "headers": {
-//                         "x-next": {
-//                             "type": "string",
-//                              "description": "A link to the next page of responses"
-//                          }
-//                     },
-//                     "schema": {
-//                        "$ref": "#/definitions/Pets"
-//                     }
-//                 },
-//                 "default": {
-//                    "description": "unexpected error",
-//                     "schema": {
-//                          "$ref": "#/definitions/Error"
-//            }
-//          }
-//        }
-//      },
 //      "post": {
 //            "summary": "Create a pet",
 //        "operationId": "createPets",
@@ -167,45 +176,8 @@ print_r(json_encode($schema, JSON_PRETTY_PRINT));
 //      }
 //    }
 //  },
-//  "definitions": {
-//    "Pet": {
-//        "required": [
-//            "id",
-//            "name"
-//        ],
-//      "properties": {
-//            "id": {
-//                "type": "integer",
-//          "format": "int64"
-//        },
-//        "name": {
-//                "type": "string"
-//        },
-//        "tag": {
-//                "type": "string"
-//        }
-//      }
-//    },
-//    "Pets": {
-//        "type": "array",
-//      "items": {
-//            "$ref": "#/definitions/Pet"
-//      }
-//    },
-//    "Error": {
-//        "required": [
-//            "code",
-//            "message"
-//        ],
-//      "properties": {
-//            "code": {
-//                "type": "integer",
-//          "format": "int32"
-//        },
-//        "message": {
-//                "type": "string"
-//        }
-//      }
+//
+//
 //    }
 //  }
 //}
