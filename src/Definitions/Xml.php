@@ -3,9 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+
 class Xml extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -30,7 +30,7 @@ class Xml extends BaseSchema
      */
     public function setName($name)
     {
-        $this->data['name'] = $name;
+        $this->setInternalData('name', $name);
         return $this;
     }
     
@@ -48,7 +48,7 @@ class Xml extends BaseSchema
      */
     public function setNamespace($namespace)
     {
-        $this->data['namespace'] = $namespace;
+        $this->setInternalData('namespace', $namespace);
         return $this;
     }
     
@@ -66,7 +66,7 @@ class Xml extends BaseSchema
      */
     public function setPrefix($prefix)
     {
-        $this->data['prefix'] = $prefix;
+        $this->setInternalData('prefix', $prefix);
         return $this;
     }
     
@@ -84,7 +84,7 @@ class Xml extends BaseSchema
      */
     public function setAttribute($attribute)
     {
-        $this->data['attribute'] = $attribute;
+        $this->setInternalData('attribute', $attribute);
         return $this;
     }
     
@@ -102,7 +102,7 @@ class Xml extends BaseSchema
      */
     public function setWrapped($wrapped)
     {
-        $this->data['wrapped'] = $wrapped;
+        $this->setInternalData('wrapped', $wrapped);
         return $this;
     }
     
@@ -113,4 +113,5 @@ class Xml extends BaseSchema
     {
         return $this->data['wrapped'];
     }
+
 }

@@ -3,13 +3,12 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-
 /**
  * information about external documentation
  */
+
 class ExternalDocs extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -34,7 +33,7 @@ class ExternalDocs extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->setInternalData('description', $description);
         return $this;
     }
     
@@ -52,7 +51,7 @@ class ExternalDocs extends BaseSchema
      */
     public function setUrl($url)
     {
-        $this->data['url'] = $url;
+        $this->setInternalData('url', $url);
         return $this;
     }
     
@@ -63,4 +62,5 @@ class ExternalDocs extends BaseSchema
     {
         return $this->data['url'];
     }
+
 }

@@ -3,10 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-use Calcinai\Strut\Definitions;
+
 class Tag extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -31,7 +30,7 @@ class Tag extends BaseSchema
      */
     public function setName($name)
     {
-        $this->data['name'] = $name;
+        $this->setInternalData('name', $name);
         return $this;
     }
     
@@ -49,7 +48,7 @@ class Tag extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->setInternalData('description', $description);
         return $this;
     }
     
@@ -66,9 +65,9 @@ class Tag extends BaseSchema
      * @param Definitions\ExternalDocs $externalDocs
      * @return $this
      */
-    public function setExternalDocs(Definitions\ExternalDocs $externalDocs)
+    public function setExternalDocs(\Calcinai\Strut\Definitions\ExternalDocs $externalDocs)
     {
-        $this->data['externalDocs'] = $externalDocs;
+        $this->setInternalData('externalDocs', $externalDocs);
         return $this;
     }
     
@@ -80,4 +79,5 @@ class Tag extends BaseSchema
     {
         return $this->data['externalDocs'];
     }
+
 }

@@ -3,10 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-use Calcinai\Strut\Definitions;
+
 class Response extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -31,7 +30,7 @@ class Response extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->setInternalData('description', $description);
         return $this;
     }
     
@@ -50,7 +49,7 @@ class Response extends BaseSchema
      */
     public function setSchema($schema)
     {
-        $this->data['schema'] = $schema;
+        $this->setInternalData('schema', $schema);
         return $this;
     }
     
@@ -67,9 +66,9 @@ class Response extends BaseSchema
      * @param Definitions\Headers $headers
      * @return $this
      */
-    public function setHeaders(Definitions\Headers $headers)
+    public function setHeaders(\Calcinai\Strut\Definitions\Headers $headers)
     {
-        $this->data['headers'] = $headers;
+        $this->setInternalData('headers', $headers);
         return $this;
     }
     
@@ -85,9 +84,9 @@ class Response extends BaseSchema
      * @param Definitions\Examples $examples
      * @return $this
      */
-    public function setExamples(Definitions\Examples $examples)
+    public function setExamples(\Calcinai\Strut\Definitions\Examples $examples)
     {
-        $this->data['examples'] = $examples;
+        $this->setInternalData('examples', $examples);
         return $this;
     }
     
@@ -98,4 +97,5 @@ class Response extends BaseSchema
     {
         return $this->data['examples'];
     }
+
 }

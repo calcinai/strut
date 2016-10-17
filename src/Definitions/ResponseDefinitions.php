@@ -3,13 +3,12 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-
 /**
  * One or more JSON representations for parameters
  */
+
 class ResponseDefinitions extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -27,4 +26,5 @@ class ResponseDefinitions extends BaseSchema
      * @var array
      */
     protected static $pattern_properties = [];
+
 }

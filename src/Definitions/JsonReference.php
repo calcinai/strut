@@ -3,9 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+
 class JsonReference extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -30,7 +30,7 @@ class JsonReference extends BaseSchema
      */
     public function setRef($ref)
     {
-        $this->data['$ref'] = $ref;
+        $this->setInternalData('$ref', $ref);
         return $this;
     }
     
@@ -41,4 +41,5 @@ class JsonReference extends BaseSchema
     {
         return $this->data['$ref'];
     }
+
 }

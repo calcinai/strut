@@ -3,13 +3,12 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-
 /**
  * Contact information for the owners of the API.
  */
+
 class Contact extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -35,7 +34,7 @@ class Contact extends BaseSchema
      */
     public function setName($name)
     {
-        $this->data['name'] = $name;
+        $this->setInternalData('name', $name);
         return $this;
     }
     
@@ -55,7 +54,7 @@ class Contact extends BaseSchema
      */
     public function setUrl($url)
     {
-        $this->data['url'] = $url;
+        $this->setInternalData('url', $url);
         return $this;
     }
     
@@ -75,7 +74,7 @@ class Contact extends BaseSchema
      */
     public function setEmail($email)
     {
-        $this->data['email'] = $email;
+        $this->setInternalData('email', $email);
         return $this;
     }
     
@@ -87,4 +86,5 @@ class Contact extends BaseSchema
     {
         return $this->data['email'];
     }
+
 }

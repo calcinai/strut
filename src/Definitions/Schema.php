@@ -3,14 +3,12 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-use Calcinai\Strut\Definitions;
-
 /**
  * A deterministic version of a JSON Schema object.
  */
+
 class Schema extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -35,7 +33,7 @@ class Schema extends BaseSchema
      */
     public function setRef($ref)
     {
-        $this->data['$ref'] = $ref;
+        $this->setInternalData('$ref', $ref);
         return $this;
     }
     
@@ -53,7 +51,7 @@ class Schema extends BaseSchema
      */
     public function setFormat($format)
     {
-        $this->data['format'] = $format;
+        $this->setInternalData('format', $format);
         return $this;
     }
     
@@ -71,7 +69,7 @@ class Schema extends BaseSchema
      */
     public function setTitle($title)
     {
-        $this->data['title'] = $title;
+        $this->setInternalData('title', $title);
         return $this;
     }
     
@@ -89,7 +87,7 @@ class Schema extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->setInternalData('description', $description);
         return $this;
     }
     
@@ -107,7 +105,7 @@ class Schema extends BaseSchema
      */
     public function setDefault($default)
     {
-        $this->data['default'] = $default;
+        $this->setInternalData('default', $default);
         return $this;
     }
     
@@ -125,7 +123,7 @@ class Schema extends BaseSchema
      */
     public function setMultipleOf($multipleOf)
     {
-        $this->data['multipleOf'] = $multipleOf;
+        $this->setInternalData('multipleOf', $multipleOf);
         return $this;
     }
     
@@ -143,7 +141,7 @@ class Schema extends BaseSchema
      */
     public function setMaximum($maximum)
     {
-        $this->data['maximum'] = $maximum;
+        $this->setInternalData('maximum', $maximum);
         return $this;
     }
     
@@ -161,7 +159,7 @@ class Schema extends BaseSchema
      */
     public function setExclusiveMaximum($exclusiveMaximum)
     {
-        $this->data['exclusiveMaximum'] = $exclusiveMaximum;
+        $this->setInternalData('exclusiveMaximum', $exclusiveMaximum);
         return $this;
     }
     
@@ -179,7 +177,7 @@ class Schema extends BaseSchema
      */
     public function setMinimum($minimum)
     {
-        $this->data['minimum'] = $minimum;
+        $this->setInternalData('minimum', $minimum);
         return $this;
     }
     
@@ -197,7 +195,7 @@ class Schema extends BaseSchema
      */
     public function setExclusiveMinimum($exclusiveMinimum)
     {
-        $this->data['exclusiveMinimum'] = $exclusiveMinimum;
+        $this->setInternalData('exclusiveMinimum', $exclusiveMinimum);
         return $this;
     }
     
@@ -215,7 +213,7 @@ class Schema extends BaseSchema
      */
     public function setMaxLength($maxLength)
     {
-        $this->data['maxLength'] = $maxLength;
+        $this->setInternalData('maxLength', $maxLength);
         return $this;
     }
     
@@ -233,7 +231,7 @@ class Schema extends BaseSchema
      */
     public function setMinLength($minLength)
     {
-        $this->data['minLength'] = $minLength;
+        $this->setInternalData('minLength', $minLength);
         return $this;
     }
     
@@ -251,7 +249,7 @@ class Schema extends BaseSchema
      */
     public function setPattern($pattern)
     {
-        $this->data['pattern'] = $pattern;
+        $this->setInternalData('pattern', $pattern);
         return $this;
     }
     
@@ -269,7 +267,7 @@ class Schema extends BaseSchema
      */
     public function setMaxItems($maxItems)
     {
-        $this->data['maxItems'] = $maxItems;
+        $this->setInternalData('maxItems', $maxItems);
         return $this;
     }
     
@@ -287,7 +285,7 @@ class Schema extends BaseSchema
      */
     public function setMinItems($minItems)
     {
-        $this->data['minItems'] = $minItems;
+        $this->setInternalData('minItems', $minItems);
         return $this;
     }
     
@@ -305,7 +303,7 @@ class Schema extends BaseSchema
      */
     public function setUniqueItems($uniqueItems)
     {
-        $this->data['uniqueItems'] = $uniqueItems;
+        $this->setInternalData('uniqueItems', $uniqueItems);
         return $this;
     }
     
@@ -323,7 +321,7 @@ class Schema extends BaseSchema
      */
     public function setMaxProperties($maxProperties)
     {
-        $this->data['maxProperties'] = $maxProperties;
+        $this->setInternalData('maxProperties', $maxProperties);
         return $this;
     }
     
@@ -341,7 +339,7 @@ class Schema extends BaseSchema
      */
     public function setMinProperties($minProperties)
     {
-        $this->data['minProperties'] = $minProperties;
+        $this->setInternalData('minProperties', $minProperties);
         return $this;
     }
     
@@ -359,7 +357,7 @@ class Schema extends BaseSchema
      */
     public function addRequired($required)
     {
-        $this->data['required'][] =& $required;
+        $this->addInternalData('required', $required);
         return $this;
     }
     
@@ -377,7 +375,7 @@ class Schema extends BaseSchema
      */
     public function addEnum($enum)
     {
-        $this->data['enum'][] =& $enum;
+        $this->addInternalData('enum', $enum);
         return $this;
     }
     
@@ -394,9 +392,9 @@ class Schema extends BaseSchema
      *        bool $additionalProperties
      * @return $this
      */
-    public function setAdditionalProperties(Definitions\Schema $additionalProperties)
+    public function setAdditionalProperties(\Calcinai\Strut\Definitions\Schema $additionalProperties)
     {
-        $this->data['additionalProperties'] = $additionalProperties;
+        $this->setInternalData('additionalProperties', $additionalProperties);
         return $this;
     }
     
@@ -416,7 +414,7 @@ class Schema extends BaseSchema
      */
     public function setType($type)
     {
-        $this->data['type'] = $type;
+        $this->setInternalData('type', $type);
         return $this;
     }
     
@@ -436,7 +434,7 @@ class Schema extends BaseSchema
      */
     public function setItems($items)
     {
-        $this->data['items'] = $items;
+        $this->setInternalData('items', $items);
         return $this;
     }
     
@@ -453,9 +451,9 @@ class Schema extends BaseSchema
      * @param Definitions\Schema $allOf
      * @return $this
      */
-    public function addAllOf(Definitions\Schema $allOf)
+    public function addAllOf(\Calcinai\Strut\Definitions\Schema $allOf)
     {
-        $this->data['allOf'][] =& $allOf;
+        $this->addInternalData('allOf', $allOf);
         return $this;
     }
     
@@ -471,9 +469,9 @@ class Schema extends BaseSchema
      * @param Definitions\Schema\Properties\Properties $properties
      * @return $this
      */
-    public function setProperties(Definitions\Schema\Properties\Properties $properties)
+    public function setProperties(\Calcinai\Strut\Definitions\Schema\Properties\Properties $properties)
     {
-        $this->data['properties'] = $properties;
+        $this->setInternalData('properties', $properties);
         return $this;
     }
     
@@ -491,7 +489,7 @@ class Schema extends BaseSchema
      */
     public function setDiscriminator($discriminator)
     {
-        $this->data['discriminator'] = $discriminator;
+        $this->setInternalData('discriminator', $discriminator);
         return $this;
     }
     
@@ -509,7 +507,7 @@ class Schema extends BaseSchema
      */
     public function setReadOnly($readOnly)
     {
-        $this->data['readOnly'] = $readOnly;
+        $this->setInternalData('readOnly', $readOnly);
         return $this;
     }
     
@@ -525,9 +523,9 @@ class Schema extends BaseSchema
      * @param Definitions\Xml $xml
      * @return $this
      */
-    public function setXml(Definitions\Xml $xml)
+    public function setXml(\Calcinai\Strut\Definitions\Xml $xml)
     {
-        $this->data['xml'] = $xml;
+        $this->setInternalData('xml', $xml);
         return $this;
     }
     
@@ -541,12 +539,12 @@ class Schema extends BaseSchema
     
     /**
      * information about external documentation
-     * @param Definitions\ExternalDocs $externalDocs
+     * @param \Definitions\ExternalDocs $externalDocs
      * @return $this
      */
-    public function setExternalDocs(Definitions\ExternalDocs $externalDocs)
+    public function setExternalDocs(\Calcinai\Strut\Definitions\ExternalDocs $externalDocs)
     {
-        $this->data['externalDocs'] = $externalDocs;
+        $this->setInternalData('externalDocs', $externalDocs);
         return $this;
     }
     
@@ -565,7 +563,7 @@ class Schema extends BaseSchema
      */
     public function setExample($example)
     {
-        $this->data['example'] = $example;
+        $this->setInternalData('example', $example);
         return $this;
     }
     
@@ -576,4 +574,5 @@ class Schema extends BaseSchema
     {
         return $this->data['example'];
     }
+
 }

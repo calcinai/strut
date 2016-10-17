@@ -3,10 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-use Calcinai\Strut\Definitions;
+
 class BodyParameter extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -32,7 +31,7 @@ class BodyParameter extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->setInternalData('description', $description);
         return $this;
     }
     
@@ -52,7 +51,7 @@ class BodyParameter extends BaseSchema
      */
     public function setName($name)
     {
-        $this->data['name'] = $name;
+        $this->setInternalData('name', $name);
         return $this;
     }
     
@@ -72,7 +71,7 @@ class BodyParameter extends BaseSchema
      */
     public function setIn($in)
     {
-        $this->data['in'] = $in;
+        $this->setInternalData('in', $in);
         return $this;
     }
     
@@ -92,7 +91,7 @@ class BodyParameter extends BaseSchema
      */
     public function setRequired($required)
     {
-        $this->data['required'] = $required;
+        $this->setInternalData('required', $required);
         return $this;
     }
     
@@ -110,9 +109,9 @@ class BodyParameter extends BaseSchema
      * @param Definitions\Schema $schema
      * @return $this
      */
-    public function setSchema(Definitions\Schema $schema)
+    public function setSchema(\Calcinai\Strut\Definitions\Schema $schema)
     {
-        $this->data['schema'] = $schema;
+        $this->setInternalData('schema', $schema);
         return $this;
     }
     
@@ -124,4 +123,5 @@ class BodyParameter extends BaseSchema
     {
         return $this->data['schema'];
     }
+
 }

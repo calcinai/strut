@@ -3,9 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+
 class BasicAuthenticationSecurity extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -30,7 +30,7 @@ class BasicAuthenticationSecurity extends BaseSchema
      */
     public function setType($type)
     {
-        $this->data['type'] = $type;
+        $this->setInternalData('type', $type);
         return $this;
     }
     
@@ -48,7 +48,7 @@ class BasicAuthenticationSecurity extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->setInternalData('description', $description);
         return $this;
     }
     
@@ -59,4 +59,5 @@ class BasicAuthenticationSecurity extends BaseSchema
     {
         return $this->data['description'];
     }
+
 }

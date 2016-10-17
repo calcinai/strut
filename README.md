@@ -1,7 +1,7 @@
 # Strut
 Yet another OpenAPI/Swagger manipulation library!
 
-This library is almost 100% generated code by [Gendarme](https://github.com/calcinai/gendarme). The reasoning behind this is that all the infomation required to manipulate a schema outlined in the specification.
+This library is almost 100% generated code by [Gendarme](https://github.com/calcinai/gendarme). The reasoning behind this is that all the information required to manipulate a schema outlined in the specification.
 
 ## Installation
 via composer
@@ -13,12 +13,50 @@ composer require calcinai/strut
 The test case for this is the OpenAPI petstore, the following is an example of how that schema would be programatically generated:
 
 ```php
-$schema = Swagger::create()
+$pet = Schema::create()
+    ->addRequired('id')
+    ->addRequired('name')
+
+    ->setProperties(Properties::create()
+        ->set('id', Schema::create()
+            ->setType('integer')
+            ->setFormat('int64')
+        )
+        ->set('name', Schema::create()
+            ->setType('string')
+        )
+        ->set('tag', Schema::create()
+            ->setType('string')
+        )
+    );
+
+$pets = Schema::create()
+    ->setType('array')
+    ->setItems($pet);
+
+
+$error = Schema::create()
+    ->addRequired('code')
+    ->addRequired('message')
+
+    ->setProperties(Properties::create()
+        ->set('code', Schema::create()
+            ->setType('integer')
+            ->setFormat('int32')
+        )
+        ->set('error', Schema::create()
+            ->setType('string')
+        )
+    );
+
+
+$swagger = Swagger::create()
     ->setInfo(
         Info::create()
             ->setTitle('Swagger Petstore')
             ->setVersion('1.0.0')
-            ->setLicense(\Calcinai\Strut\Definitions\License::create()
+            ->setLicense(
+                License::create()
                 ->setName('MIT')
             )
     )
@@ -49,12 +87,27 @@ $schema = Swagger::create()
                 ->setResponses(Responses::create()
                     ->set('200', Response::create()
                         ->setDescription('A paged array of pets')
-                        ->setSchema($pet)
+                        ->setHeaders(Headers::create()
+                            ->set('x-next', Header::create()
+                                ->setType('string')
+                                ->setDescription('A link to the next page of responses')
+                            )
+                        )
+                        ->setSchema($pets)
+                    )
+                    ->set('default', Response::create()
+                        ->setDescription('Unexpected error')
+                        ->setSchema($error)
                     )
                 )
             )
         )
-    );
+    )
+    ->setDefinitions(Definitions::create()
+        ->set('Pet', $pet)
+        ->set('Pets', $pets)
+        ->set('Error', $error)
+    )
 
 
 echo json_encode($schema, JSON_PRETTY_PRINT);
@@ -116,7 +169,7 @@ This will output:
 This isn't the full example, but it gives an idea of the structure.
 
 ## Contributing
-I'd love feedback and/or contrubutions, but they will probably need to target the generation library.  Head to [Gendarme](https://github.com/calcinai/gendarme) if this sounds like you.  Basic command for generating this library is 
+I'd love feedback and/or contributions, but they will probably need to target the generation library.  Head to [Gendarme](https://github.com/calcinai/gendarme) if this sounds like you.  Basic command for generating this library is 
 
 ```
 ./bin/gendarme generate --namespace "Calcinai\Strut" --root-class Swagger  ../strut/lib/schema.json ../strut/src/

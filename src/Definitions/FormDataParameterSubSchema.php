@@ -3,10 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-use Calcinai\Strut\Definitions;
+
 class FormDataParameterSubSchema extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -32,7 +31,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setRequired($required)
     {
-        $this->data['required'] = $required;
+        $this->setInternalData('required', $required);
         return $this;
     }
     
@@ -52,7 +51,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setIn($in)
     {
-        $this->data['in'] = $in;
+        $this->setInternalData('in', $in);
         return $this;
     }
     
@@ -72,7 +71,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->setInternalData('description', $description);
         return $this;
     }
     
@@ -92,7 +91,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setName($name)
     {
-        $this->data['name'] = $name;
+        $this->setInternalData('name', $name);
         return $this;
     }
     
@@ -112,7 +111,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setAllowEmptyValue($allowEmptyValue)
     {
-        $this->data['allowEmptyValue'] = $allowEmptyValue;
+        $this->setInternalData('allowEmptyValue', $allowEmptyValue);
         return $this;
     }
     
@@ -131,7 +130,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setType($type)
     {
-        $this->data['type'] = $type;
+        $this->setInternalData('type', $type);
         return $this;
     }
     
@@ -149,7 +148,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setFormat($format)
     {
-        $this->data['format'] = $format;
+        $this->setInternalData('format', $format);
         return $this;
     }
     
@@ -165,9 +164,9 @@ class FormDataParameterSubSchema extends BaseSchema
      * @param Definitions\PrimitivesItems $items
      * @return $this
      */
-    public function setItems(Definitions\PrimitivesItems $items)
+    public function setItems(\Calcinai\Strut\Definitions\PrimitivesItems $items)
     {
-        $this->data['items'] = $items;
+        $this->setInternalData('items', $items);
         return $this;
     }
     
@@ -185,7 +184,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setCollectionFormat($collectionFormat)
     {
-        $this->data['collectionFormat'] = $collectionFormat;
+        $this->setInternalData('collectionFormat', $collectionFormat);
         return $this;
     }
     
@@ -203,7 +202,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setDefault($default)
     {
-        $this->data['default'] = $default;
+        $this->setInternalData('default', $default);
         return $this;
     }
     
@@ -221,7 +220,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setMaximum($maximum)
     {
-        $this->data['maximum'] = $maximum;
+        $this->setInternalData('maximum', $maximum);
         return $this;
     }
     
@@ -239,7 +238,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setExclusiveMaximum($exclusiveMaximum)
     {
-        $this->data['exclusiveMaximum'] = $exclusiveMaximum;
+        $this->setInternalData('exclusiveMaximum', $exclusiveMaximum);
         return $this;
     }
     
@@ -257,7 +256,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setMinimum($minimum)
     {
-        $this->data['minimum'] = $minimum;
+        $this->setInternalData('minimum', $minimum);
         return $this;
     }
     
@@ -275,7 +274,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setExclusiveMinimum($exclusiveMinimum)
     {
-        $this->data['exclusiveMinimum'] = $exclusiveMinimum;
+        $this->setInternalData('exclusiveMinimum', $exclusiveMinimum);
         return $this;
     }
     
@@ -293,7 +292,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setMaxLength($maxLength)
     {
-        $this->data['maxLength'] = $maxLength;
+        $this->setInternalData('maxLength', $maxLength);
         return $this;
     }
     
@@ -311,7 +310,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setMinLength($minLength)
     {
-        $this->data['minLength'] = $minLength;
+        $this->setInternalData('minLength', $minLength);
         return $this;
     }
     
@@ -329,7 +328,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setPattern($pattern)
     {
-        $this->data['pattern'] = $pattern;
+        $this->setInternalData('pattern', $pattern);
         return $this;
     }
     
@@ -347,7 +346,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setMaxItems($maxItems)
     {
-        $this->data['maxItems'] = $maxItems;
+        $this->setInternalData('maxItems', $maxItems);
         return $this;
     }
     
@@ -365,7 +364,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setMinItems($minItems)
     {
-        $this->data['minItems'] = $minItems;
+        $this->setInternalData('minItems', $minItems);
         return $this;
     }
     
@@ -383,7 +382,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setUniqueItems($uniqueItems)
     {
-        $this->data['uniqueItems'] = $uniqueItems;
+        $this->setInternalData('uniqueItems', $uniqueItems);
         return $this;
     }
     
@@ -401,7 +400,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function addEnum($enum)
     {
-        $this->data['enum'][] =& $enum;
+        $this->addInternalData('enum', $enum);
         return $this;
     }
     
@@ -419,7 +418,7 @@ class FormDataParameterSubSchema extends BaseSchema
      */
     public function setMultipleOf($multipleOf)
     {
-        $this->data['multipleOf'] = $multipleOf;
+        $this->setInternalData('multipleOf', $multipleOf);
         return $this;
     }
     
@@ -430,4 +429,5 @@ class FormDataParameterSubSchema extends BaseSchema
     {
         return $this->data['multipleOf'];
     }
+
 }

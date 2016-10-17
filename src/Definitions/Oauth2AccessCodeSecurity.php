@@ -3,10 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-use Calcinai\Strut\Definitions;
+
 class Oauth2AccessCodeSecurity extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -31,7 +30,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setType($type)
     {
-        $this->data['type'] = $type;
+        $this->setInternalData('type', $type);
         return $this;
     }
     
@@ -49,7 +48,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setFlow($flow)
     {
-        $this->data['flow'] = $flow;
+        $this->setInternalData('flow', $flow);
         return $this;
     }
     
@@ -65,9 +64,9 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      * @param Definitions\Oauth2Scopes $scopes
      * @return $this
      */
-    public function setScopes(Definitions\Oauth2Scopes $scopes)
+    public function setScopes(\Calcinai\Strut\Definitions\Oauth2Scopes $scopes)
     {
-        $this->data['scopes'] = $scopes;
+        $this->setInternalData('scopes', $scopes);
         return $this;
     }
     
@@ -85,7 +84,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setAuthorizationUrl($authorizationUrl)
     {
-        $this->data['authorizationUrl'] = $authorizationUrl;
+        $this->setInternalData('authorizationUrl', $authorizationUrl);
         return $this;
     }
     
@@ -103,7 +102,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setTokenUrl($tokenUrl)
     {
-        $this->data['tokenUrl'] = $tokenUrl;
+        $this->setInternalData('tokenUrl', $tokenUrl);
         return $this;
     }
     
@@ -121,7 +120,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->setInternalData('description', $description);
         return $this;
     }
     
@@ -132,4 +131,5 @@ class Oauth2AccessCodeSecurity extends BaseSchema
     {
         return $this->data['description'];
     }
+
 }

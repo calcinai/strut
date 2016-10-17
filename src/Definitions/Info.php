@@ -3,14 +3,12 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-use Calcinai\Strut\Definitions;
-
 /**
  * General information about the API.
  */
+
 class Info extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -36,7 +34,7 @@ class Info extends BaseSchema
      */
     public function setTitle($title)
     {
-        $this->data['title'] = $title;
+        $this->setInternalData('title', $title);
         return $this;
     }
     
@@ -56,7 +54,7 @@ class Info extends BaseSchema
      */
     public function setVersion($version)
     {
-        $this->data['version'] = $version;
+        $this->setInternalData('version', $version);
         return $this;
     }
     
@@ -76,7 +74,7 @@ class Info extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->setInternalData('description', $description);
         return $this;
     }
     
@@ -96,7 +94,7 @@ class Info extends BaseSchema
      */
     public function setTermsOfService($termsOfService)
     {
-        $this->data['termsOfService'] = $termsOfService;
+        $this->setInternalData('termsOfService', $termsOfService);
         return $this;
     }
     
@@ -114,9 +112,9 @@ class Info extends BaseSchema
      * @param Definitions\Contact $contact
      * @return $this
      */
-    public function setContact(Definitions\Contact $contact)
+    public function setContact(\Calcinai\Strut\Definitions\Contact $contact)
     {
-        $this->data['contact'] = $contact;
+        $this->setInternalData('contact', $contact);
         return $this;
     }
     
@@ -133,9 +131,9 @@ class Info extends BaseSchema
      * @param Definitions\License $license
      * @return $this
      */
-    public function setLicense(Definitions\License $license)
+    public function setLicense(\Calcinai\Strut\Definitions\License $license)
     {
-        $this->data['license'] = $license;
+        $this->setInternalData('license', $license);
         return $this;
     }
     
@@ -146,4 +144,5 @@ class Info extends BaseSchema
     {
         return $this->data['license'];
     }
+
 }

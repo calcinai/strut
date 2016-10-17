@@ -3,9 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+
 class SecurityRequirement extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -23,4 +23,5 @@ class SecurityRequirement extends BaseSchema
      * @var array
      */
     protected static $pattern_properties = [];
+
 }

@@ -3,9 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+
 class ApiKeySecurity extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -30,7 +30,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function setType($type)
     {
-        $this->data['type'] = $type;
+        $this->setInternalData('type', $type);
         return $this;
     }
     
@@ -48,7 +48,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function setName($name)
     {
-        $this->data['name'] = $name;
+        $this->setInternalData('name', $name);
         return $this;
     }
     
@@ -66,7 +66,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function setIn($in)
     {
-        $this->data['in'] = $in;
+        $this->setInternalData('in', $in);
         return $this;
     }
     
@@ -84,7 +84,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->setInternalData('description', $description);
         return $this;
     }
     
@@ -95,4 +95,5 @@ class ApiKeySecurity extends BaseSchema
     {
         return $this->data['description'];
     }
+
 }

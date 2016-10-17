@@ -3,9 +3,9 @@
 namespace Calcinai\Strut\Definitions\Schema\Properties;
 
 use Calcinai\Strut\BaseSchema;
+
 class Properties extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -23,4 +23,5 @@ class Properties extends BaseSchema
      * @var array
      */
     protected static $pattern_properties = [];
+
 }

@@ -2,10 +2,9 @@
 
 namespace Calcinai\Strut;
 
-use Calcinai\Strut\Definitions;
+
 class Swagger extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -31,7 +30,7 @@ class Swagger extends BaseSchema
      */
     public function setSwagger($swagger)
     {
-        $this->data['swagger'] = $swagger;
+        $this->setInternalData('swagger', $swagger);
         return $this;
     }
     
@@ -49,9 +48,9 @@ class Swagger extends BaseSchema
      * @param Definitions\Info $info
      * @return $this
      */
-    public function setInfo(Definitions\Info $info)
+    public function setInfo(\Calcinai\Strut\Definitions\Info $info)
     {
-        $this->data['info'] = $info;
+        $this->setInternalData('info', $info);
         return $this;
     }
     
@@ -71,7 +70,7 @@ class Swagger extends BaseSchema
      */
     public function setHost($host)
     {
-        $this->data['host'] = $host;
+        $this->setInternalData('host', $host);
         return $this;
     }
     
@@ -91,7 +90,7 @@ class Swagger extends BaseSchema
      */
     public function setBasePath($basePath)
     {
-        $this->data['basePath'] = $basePath;
+        $this->setInternalData('basePath', $basePath);
         return $this;
     }
     
@@ -111,7 +110,7 @@ class Swagger extends BaseSchema
      */
     public function addScheme($schemes)
     {
-        $this->data['schemes'][] =& $schemes;
+        $this->addInternalData('schemes', $schemes);
         return $this;
     }
     
@@ -131,7 +130,7 @@ class Swagger extends BaseSchema
      */
     public function setConsumes($consumes)
     {
-        $this->data['consumes'] = $consumes;
+        $this->setInternalData('consumes', $consumes);
         return $this;
     }
     
@@ -151,7 +150,7 @@ class Swagger extends BaseSchema
      */
     public function setProduces($produces)
     {
-        $this->data['produces'] = $produces;
+        $this->setInternalData('produces', $produces);
         return $this;
     }
     
@@ -169,9 +168,9 @@ class Swagger extends BaseSchema
      * @param Definitions\Paths $paths
      * @return $this
      */
-    public function setPaths(Definitions\Paths $paths)
+    public function setPaths(\Calcinai\Strut\Definitions\Paths $paths)
     {
-        $this->data['paths'] = $paths;
+        $this->setInternalData('paths', $paths);
         return $this;
     }
     
@@ -189,9 +188,9 @@ class Swagger extends BaseSchema
      * @param Definitions\Definitions $definitions
      * @return $this
      */
-    public function setDefinitions(Definitions\Definitions $definitions)
+    public function setDefinitions(\Calcinai\Strut\Definitions\Definitions $definitions)
     {
-        $this->data['definitions'] = $definitions;
+        $this->setInternalData('definitions', $definitions);
         return $this;
     }
     
@@ -209,9 +208,9 @@ class Swagger extends BaseSchema
      * @param Definitions\ParameterDefinitions $parameters
      * @return $this
      */
-    public function setParameters(Definitions\ParameterDefinitions $parameters)
+    public function setParameters(\Calcinai\Strut\Definitions\ParameterDefinitions $parameters)
     {
-        $this->data['parameters'] = $parameters;
+        $this->setInternalData('parameters', $parameters);
         return $this;
     }
     
@@ -229,9 +228,9 @@ class Swagger extends BaseSchema
      * @param Definitions\ResponseDefinitions $responses
      * @return $this
      */
-    public function setResponses(Definitions\ResponseDefinitions $responses)
+    public function setResponses(\Calcinai\Strut\Definitions\ResponseDefinitions $responses)
     {
-        $this->data['responses'] = $responses;
+        $this->setInternalData('responses', $responses);
         return $this;
     }
     
@@ -248,9 +247,9 @@ class Swagger extends BaseSchema
      * @param Definitions\SecurityRequirement $security
      * @return $this
      */
-    public function addSecurity(Definitions\SecurityRequirement $security)
+    public function addSecurity(\Calcinai\Strut\Definitions\SecurityRequirement $security)
     {
-        $this->data['security'][] =& $security;
+        $this->addInternalData('security', $security);
         return $this;
     }
     
@@ -266,9 +265,9 @@ class Swagger extends BaseSchema
      * @param Definitions\SecurityDefinitions $securityDefinitions
      * @return $this
      */
-    public function setSecurityDefinitions(Definitions\SecurityDefinitions $securityDefinitions)
+    public function setSecurityDefinitions(\Calcinai\Strut\Definitions\SecurityDefinitions $securityDefinitions)
     {
-        $this->data['securityDefinitions'] = $securityDefinitions;
+        $this->setInternalData('securityDefinitions', $securityDefinitions);
         return $this;
     }
     
@@ -284,9 +283,9 @@ class Swagger extends BaseSchema
      * @param Definitions\Tag $tags
      * @return $this
      */
-    public function addTag(Definitions\Tag $tags)
+    public function addTag(\Calcinai\Strut\Definitions\Tag $tags)
     {
-        $this->data['tags'][] =& $tags;
+        $this->addInternalData('tags', $tags);
         return $this;
     }
     
@@ -303,9 +302,9 @@ class Swagger extends BaseSchema
      * @param Definitions\ExternalDocs $externalDocs
      * @return $this
      */
-    public function setExternalDocs(Definitions\ExternalDocs $externalDocs)
+    public function setExternalDocs(\Calcinai\Strut\Definitions\ExternalDocs $externalDocs)
     {
-        $this->data['externalDocs'] = $externalDocs;
+        $this->setInternalData('externalDocs', $externalDocs);
         return $this;
     }
     
@@ -317,4 +316,5 @@ class Swagger extends BaseSchema
     {
         return $this->data['externalDocs'];
     }
+
 }

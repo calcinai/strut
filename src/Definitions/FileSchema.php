@@ -3,14 +3,12 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-use Calcinai\Strut\Definitions;
-
 /**
  * A deterministic version of a JSON Schema object.
  */
+
 class FileSchema extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -35,7 +33,7 @@ class FileSchema extends BaseSchema
      */
     public function setFormat($format)
     {
-        $this->data['format'] = $format;
+        $this->setInternalData('format', $format);
         return $this;
     }
     
@@ -53,7 +51,7 @@ class FileSchema extends BaseSchema
      */
     public function setTitle($title)
     {
-        $this->data['title'] = $title;
+        $this->setInternalData('title', $title);
         return $this;
     }
     
@@ -71,7 +69,7 @@ class FileSchema extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->setInternalData('description', $description);
         return $this;
     }
     
@@ -89,7 +87,7 @@ class FileSchema extends BaseSchema
      */
     public function setDefault($default)
     {
-        $this->data['default'] = $default;
+        $this->setInternalData('default', $default);
         return $this;
     }
     
@@ -107,7 +105,7 @@ class FileSchema extends BaseSchema
      */
     public function addRequired($required)
     {
-        $this->data['required'][] =& $required;
+        $this->addInternalData('required', $required);
         return $this;
     }
     
@@ -125,7 +123,7 @@ class FileSchema extends BaseSchema
      */
     public function setType($type)
     {
-        $this->data['type'] = $type;
+        $this->setInternalData('type', $type);
         return $this;
     }
     
@@ -143,7 +141,7 @@ class FileSchema extends BaseSchema
      */
     public function setReadOnly($readOnly)
     {
-        $this->data['readOnly'] = $readOnly;
+        $this->setInternalData('readOnly', $readOnly);
         return $this;
     }
     
@@ -160,9 +158,9 @@ class FileSchema extends BaseSchema
      * @param Definitions\ExternalDocs $externalDocs
      * @return $this
      */
-    public function setExternalDocs(Definitions\ExternalDocs $externalDocs)
+    public function setExternalDocs(\Calcinai\Strut\Definitions\ExternalDocs $externalDocs)
     {
-        $this->data['externalDocs'] = $externalDocs;
+        $this->setInternalData('externalDocs', $externalDocs);
         return $this;
     }
     
@@ -181,7 +179,7 @@ class FileSchema extends BaseSchema
      */
     public function setExample($example)
     {
-        $this->data['example'] = $example;
+        $this->setInternalData('example', $example);
         return $this;
     }
     
@@ -192,4 +190,5 @@ class FileSchema extends BaseSchema
     {
         return $this->data['example'];
     }
+
 }

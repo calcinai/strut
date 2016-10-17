@@ -3,9 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+
 class License extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -31,7 +31,7 @@ class License extends BaseSchema
      */
     public function setName($name)
     {
-        $this->data['name'] = $name;
+        $this->setInternalData('name', $name);
         return $this;
     }
     
@@ -51,7 +51,7 @@ class License extends BaseSchema
      */
     public function setUrl($url)
     {
-        $this->data['url'] = $url;
+        $this->setInternalData('url', $url);
         return $this;
     }
     
@@ -63,4 +63,5 @@ class License extends BaseSchema
     {
         return $this->data['url'];
     }
+
 }

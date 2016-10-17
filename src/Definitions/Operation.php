@@ -3,10 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-use Calcinai\Strut\Definitions;
+
 class Operation extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -31,7 +30,7 @@ class Operation extends BaseSchema
      */
     public function addTag($tags)
     {
-        $this->data['tags'][] =& $tags;
+        $this->addInternalData('tags', $tags);
         return $this;
     }
     
@@ -50,7 +49,7 @@ class Operation extends BaseSchema
      */
     public function setSummary($summary)
     {
-        $this->data['summary'] = $summary;
+        $this->setInternalData('summary', $summary);
         return $this;
     }
     
@@ -70,7 +69,7 @@ class Operation extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->setInternalData('description', $description);
         return $this;
     }
     
@@ -88,9 +87,9 @@ class Operation extends BaseSchema
      * @param Definitions\ExternalDocs $externalDocs
      * @return $this
      */
-    public function setExternalDocs(Definitions\ExternalDocs $externalDocs)
+    public function setExternalDocs(\Calcinai\Strut\Definitions\ExternalDocs $externalDocs)
     {
-        $this->data['externalDocs'] = $externalDocs;
+        $this->setInternalData('externalDocs', $externalDocs);
         return $this;
     }
     
@@ -110,7 +109,7 @@ class Operation extends BaseSchema
      */
     public function setOperationId($operationId)
     {
-        $this->data['operationId'] = $operationId;
+        $this->setInternalData('operationId', $operationId);
         return $this;
     }
     
@@ -130,7 +129,7 @@ class Operation extends BaseSchema
      */
     public function setProduces($produces)
     {
-        $this->data['produces'] = $produces;
+        $this->setInternalData('produces', $produces);
         return $this;
     }
     
@@ -150,7 +149,7 @@ class Operation extends BaseSchema
      */
     public function setConsumes($consumes)
     {
-        $this->data['consumes'] = $consumes;
+        $this->setInternalData('consumes', $consumes);
         return $this;
     }
     
@@ -180,7 +179,7 @@ class Operation extends BaseSchema
      */
     public function addParameter($parameters)
     {
-        $this->data['parameters'][] =& $parameters;
+        $this->addInternalData('parameters', $parameters);
         return $this;
     }
     
@@ -208,9 +207,9 @@ class Operation extends BaseSchema
      * @param Definitions\Responses $responses
      * @return $this
      */
-    public function setResponses(Definitions\Responses $responses)
+    public function setResponses(\Calcinai\Strut\Definitions\Responses $responses)
     {
-        $this->data['responses'] = $responses;
+        $this->setInternalData('responses', $responses);
         return $this;
     }
     
@@ -230,7 +229,7 @@ class Operation extends BaseSchema
      */
     public function addScheme($schemes)
     {
-        $this->data['schemes'][] =& $schemes;
+        $this->addInternalData('schemes', $schemes);
         return $this;
     }
     
@@ -249,7 +248,7 @@ class Operation extends BaseSchema
      */
     public function setDeprecated($deprecated)
     {
-        $this->data['deprecated'] = $deprecated;
+        $this->setInternalData('deprecated', $deprecated);
         return $this;
     }
     
@@ -265,9 +264,9 @@ class Operation extends BaseSchema
      * @param Definitions\SecurityRequirement $security
      * @return $this
      */
-    public function addSecurity(Definitions\SecurityRequirement $security)
+    public function addSecurity(\Calcinai\Strut\Definitions\SecurityRequirement $security)
     {
-        $this->data['security'][] =& $security;
+        $this->addInternalData('security', $security);
         return $this;
     }
     
@@ -278,4 +277,5 @@ class Operation extends BaseSchema
     {
         return $this->data['security'];
     }
+
 }

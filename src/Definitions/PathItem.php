@@ -3,10 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-use Calcinai\Strut\Definitions;
+
 class PathItem extends BaseSchema
 {
-    
     /**
      * Array to store schema data and default values
      * @var array
@@ -31,7 +30,7 @@ class PathItem extends BaseSchema
      */
     public function setRef($ref)
     {
-        $this->data['$ref'] = $ref;
+        $this->setInternalData('$ref', $ref);
         return $this;
     }
     
@@ -47,9 +46,9 @@ class PathItem extends BaseSchema
      * @param Definitions\Operation $get
      * @return $this
      */
-    public function setGet(Definitions\Operation $get)
+    public function setGet(\Calcinai\Strut\Definitions\Operation $get)
     {
-        $this->data['get'] = $get;
+        $this->setInternalData('get', $get);
         return $this;
     }
     
@@ -65,9 +64,9 @@ class PathItem extends BaseSchema
      * @param Definitions\Operation $put
      * @return $this
      */
-    public function setPut(Definitions\Operation $put)
+    public function setPut(\Calcinai\Strut\Definitions\Operation $put)
     {
-        $this->data['put'] = $put;
+        $this->setInternalData('put', $put);
         return $this;
     }
     
@@ -83,9 +82,9 @@ class PathItem extends BaseSchema
      * @param Definitions\Operation $post
      * @return $this
      */
-    public function setPost(Definitions\Operation $post)
+    public function setPost(\Calcinai\Strut\Definitions\Operation $post)
     {
-        $this->data['post'] = $post;
+        $this->setInternalData('post', $post);
         return $this;
     }
     
@@ -101,9 +100,9 @@ class PathItem extends BaseSchema
      * @param Definitions\Operation $delete
      * @return $this
      */
-    public function setDelete(Definitions\Operation $delete)
+    public function setDelete(\Calcinai\Strut\Definitions\Operation $delete)
     {
-        $this->data['delete'] = $delete;
+        $this->setInternalData('delete', $delete);
         return $this;
     }
     
@@ -119,9 +118,9 @@ class PathItem extends BaseSchema
      * @param Definitions\Operation $options
      * @return $this
      */
-    public function setOptions(Definitions\Operation $options)
+    public function setOptions(\Calcinai\Strut\Definitions\Operation $options)
     {
-        $this->data['options'] = $options;
+        $this->setInternalData('options', $options);
         return $this;
     }
     
@@ -137,9 +136,9 @@ class PathItem extends BaseSchema
      * @param Definitions\Operation $head
      * @return $this
      */
-    public function setHead(Definitions\Operation $head)
+    public function setHead(\Calcinai\Strut\Definitions\Operation $head)
     {
-        $this->data['head'] = $head;
+        $this->setInternalData('head', $head);
         return $this;
     }
     
@@ -155,9 +154,9 @@ class PathItem extends BaseSchema
      * @param Definitions\Operation $patch
      * @return $this
      */
-    public function setPatch(Definitions\Operation $patch)
+    public function setPatch(\Calcinai\Strut\Definitions\Operation $patch)
     {
-        $this->data['patch'] = $patch;
+        $this->setInternalData('patch', $patch);
         return $this;
     }
     
@@ -186,7 +185,7 @@ class PathItem extends BaseSchema
      */
     public function addParameter($parameters)
     {
-        $this->data['parameters'][] =& $parameters;
+        $this->addInternalData('parameters', $parameters);
         return $this;
     }
     
@@ -208,4 +207,5 @@ class PathItem extends BaseSchema
     {
         return $this->data['parameters'];
     }
+
 }
