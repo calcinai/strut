@@ -106,10 +106,10 @@ class BodyParameter extends BaseSchema
     
     /**
      * A deterministic version of a JSON Schema object.
-     * @param Definitions\Schema $schema
+     * @param Schema $schema
      * @return $this
      */
-    public function setSchema(\Calcinai\Strut\Definitions\Schema $schema)
+    public function setSchema(Schema $schema)
     {
         $this->setInternalData('schema', $schema);
         return $this;
@@ -117,7 +117,7 @@ class BodyParameter extends BaseSchema
     
     /**
      * A deterministic version of a JSON Schema object.
-     * @return Definitions\Schema
+     * @return Schema
      */
     public function getSchema()
     {

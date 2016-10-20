@@ -62,10 +62,10 @@ class Tag extends BaseSchema
     
     /**
      * information about external documentation
-     * @param Definitions\ExternalDocs $externalDocs
+     * @param ExternalDocs $externalDocs
      * @return $this
      */
-    public function setExternalDocs(\Calcinai\Strut\Definitions\ExternalDocs $externalDocs)
+    public function setExternalDocs(ExternalDocs $externalDocs)
     {
         $this->setInternalData('externalDocs', $externalDocs);
         return $this;
@@ -73,7 +73,7 @@ class Tag extends BaseSchema
     
     /**
      * information about external documentation
-     * @return Definitions\ExternalDocs
+     * @return ExternalDocs
      */
     public function getExternalDocs()
     {

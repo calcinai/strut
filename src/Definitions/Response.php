@@ -43,8 +43,7 @@ class Response extends BaseSchema
     }
     
     /**
-     * @param Definitions\Schema|
-     *        Definitions\FileSchema $schema
+     * @param Schema|FileSchema $schema
      * @return $this
      */
     public function setSchema($schema)
@@ -54,8 +53,7 @@ class Response extends BaseSchema
     }
     
     /**
-     * @return Definitions\Schema|
-     *         Definitions\FileSchema
+     * @return Schema|FileSchema
      */
     public function getSchema()
     {
@@ -63,17 +61,17 @@ class Response extends BaseSchema
     }
     
     /**
-     * @param Definitions\Headers $headers
+     * @param Headers $headers
      * @return $this
      */
-    public function setHeaders(\Calcinai\Strut\Definitions\Headers $headers)
+    public function setHeaders(Headers $headers)
     {
         $this->setInternalData('headers', $headers);
         return $this;
     }
     
     /**
-     * @return Definitions\Headers
+     * @return Headers
      */
     public function getHeaders()
     {
@@ -81,17 +79,17 @@ class Response extends BaseSchema
     }
     
     /**
-     * @param Definitions\Examples $examples
+     * @param Examples $examples
      * @return $this
      */
-    public function setExamples(\Calcinai\Strut\Definitions\Examples $examples)
+    public function setExamples(Examples $examples)
     {
         $this->setInternalData('examples', $examples);
         return $this;
     }
     
     /**
-     * @return Definitions\Examples
+     * @return Examples
      */
     public function getExamples()
     {

@@ -43,17 +43,17 @@ class PathItem extends BaseSchema
     }
     
     /**
-     * @param Definitions\Operation $get
+     * @param Operation $get
      * @return $this
      */
-    public function setGet(\Calcinai\Strut\Definitions\Operation $get)
+    public function setGet(Operation $get)
     {
         $this->setInternalData('get', $get);
         return $this;
     }
     
     /**
-     * @return Definitions\Operation
+     * @return Operation
      */
     public function getGet()
     {
@@ -61,17 +61,17 @@ class PathItem extends BaseSchema
     }
     
     /**
-     * @param Definitions\Operation $put
+     * @param Operation $put
      * @return $this
      */
-    public function setPut(\Calcinai\Strut\Definitions\Operation $put)
+    public function setPut(Operation $put)
     {
         $this->setInternalData('put', $put);
         return $this;
     }
     
     /**
-     * @return Definitions\Operation
+     * @return Operation
      */
     public function getPut()
     {
@@ -79,17 +79,17 @@ class PathItem extends BaseSchema
     }
     
     /**
-     * @param Definitions\Operation $post
+     * @param Operation $post
      * @return $this
      */
-    public function setPost(\Calcinai\Strut\Definitions\Operation $post)
+    public function setPost(Operation $post)
     {
         $this->setInternalData('post', $post);
         return $this;
     }
     
     /**
-     * @return Definitions\Operation
+     * @return Operation
      */
     public function getPost()
     {
@@ -97,17 +97,17 @@ class PathItem extends BaseSchema
     }
     
     /**
-     * @param Definitions\Operation $delete
+     * @param Operation $delete
      * @return $this
      */
-    public function setDelete(\Calcinai\Strut\Definitions\Operation $delete)
+    public function setDelete(Operation $delete)
     {
         $this->setInternalData('delete', $delete);
         return $this;
     }
     
     /**
-     * @return Definitions\Operation
+     * @return Operation
      */
     public function getDelete()
     {
@@ -115,17 +115,17 @@ class PathItem extends BaseSchema
     }
     
     /**
-     * @param Definitions\Operation $options
+     * @param Operation $options
      * @return $this
      */
-    public function setOptions(\Calcinai\Strut\Definitions\Operation $options)
+    public function setOptions(Operation $options)
     {
         $this->setInternalData('options', $options);
         return $this;
     }
     
     /**
-     * @return Definitions\Operation
+     * @return Operation
      */
     public function getOptions()
     {
@@ -133,17 +133,17 @@ class PathItem extends BaseSchema
     }
     
     /**
-     * @param Definitions\Operation $head
+     * @param Operation $head
      * @return $this
      */
-    public function setHead(\Calcinai\Strut\Definitions\Operation $head)
+    public function setHead(Operation $head)
     {
         $this->setInternalData('head', $head);
         return $this;
     }
     
     /**
-     * @return Definitions\Operation
+     * @return Operation
      */
     public function getHead()
     {
@@ -151,17 +151,17 @@ class PathItem extends BaseSchema
     }
     
     /**
-     * @param Definitions\Operation $patch
+     * @param Operation $patch
      * @return $this
      */
-    public function setPatch(\Calcinai\Strut\Definitions\Operation $patch)
+    public function setPatch(Operation $patch)
     {
         $this->setInternalData('patch', $patch);
         return $this;
     }
     
     /**
-     * @return Definitions\Operation
+     * @return Operation
      */
     public function getPatch()
     {
@@ -170,17 +170,7 @@ class PathItem extends BaseSchema
     
     /**
      * The parameters needed to send a valid API call.
-     * @param Definitions\BodyParameter|
-     *        Definitions\HeaderParameterSubSchema|
-     *        Definitions\FormDataParameterSubSchema|
-     *        Definitions\QueryParameterSubSchema|
-     *        Definitions\PathParameterSubSchema|
-     *        Definitions\BodyParameter|
-     *        Definitions\HeaderParameterSubSchema|
-     *        Definitions\FormDataParameterSubSchema|
-     *        Definitions\QueryParameterSubSchema|
-     *        Definitions\PathParameterSubSchema|
-     *        Definitions\JsonReference $parameters
+     * @param BodyParameter|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema|PathParameterSubSchema|JsonReference $parameters
      * @return $this
      */
     public function addParameter($parameters)
@@ -191,17 +181,7 @@ class PathItem extends BaseSchema
     
     /**
      * The parameters needed to send a valid API call.
-     * @return Definitions\BodyParameter|
-     *         Definitions\HeaderParameterSubSchema|
-     *         Definitions\FormDataParameterSubSchema|
-     *         Definitions\QueryParameterSubSchema|
-     *         Definitions\PathParameterSubSchema|
-     *         Definitions\BodyParameter|
-     *         Definitions\HeaderParameterSubSchema|
-     *         Definitions\FormDataParameterSubSchema|
-     *         Definitions\QueryParameterSubSchema|
-     *         Definitions\PathParameterSubSchema|
-     *         Definitions\JsonReference[]
+     * @return BodyParameter|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema|PathParameterSubSchema|JsonReference[]
      */
     public function getParameters()
     {

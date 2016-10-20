@@ -124,7 +124,7 @@ abstract class BaseSchema implements \JsonSerializable
     public function getId()
     {
         if ($this->parent_schema instanceof BaseSchema) {
-            return sprintf('/%s', array_search($this, $this->parent_schema->data));
+            return sprintf('%s/%s', $this->parent_schema->getId(), array_search($this, $this->parent_schema->data));
         } else {
             return '#';
         }

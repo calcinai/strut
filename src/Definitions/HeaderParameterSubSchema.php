@@ -141,17 +141,17 @@ class HeaderParameterSubSchema extends BaseSchema
     }
     
     /**
-     * @param Definitions\PrimitivesItems $items
+     * @param PrimitivesItems $items
      * @return $this
      */
-    public function setItems(\Calcinai\Strut\Definitions\PrimitivesItems $items)
+    public function setItems(PrimitivesItems $items)
     {
         $this->setInternalData('items', $items);
         return $this;
     }
     
     /**
-     * @return Definitions\PrimitivesItems
+     * @return PrimitivesItems
      */
     public function getItems()
     {

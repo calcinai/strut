@@ -84,10 +84,10 @@ class Operation extends BaseSchema
     
     /**
      * information about external documentation
-     * @param Definitions\ExternalDocs $externalDocs
+     * @param ExternalDocs $externalDocs
      * @return $this
      */
-    public function setExternalDocs(\Calcinai\Strut\Definitions\ExternalDocs $externalDocs)
+    public function setExternalDocs(ExternalDocs $externalDocs)
     {
         $this->setInternalData('externalDocs', $externalDocs);
         return $this;
@@ -95,7 +95,7 @@ class Operation extends BaseSchema
     
     /**
      * information about external documentation
-     * @return Definitions\ExternalDocs
+     * @return ExternalDocs
      */
     public function getExternalDocs()
     {
@@ -164,17 +164,7 @@ class Operation extends BaseSchema
     
     /**
      * The parameters needed to send a valid API call.
-     * @param Definitions\BodyParameter|
-     *        Definitions\HeaderParameterSubSchema|
-     *        Definitions\FormDataParameterSubSchema|
-     *        Definitions\QueryParameterSubSchema|
-     *        Definitions\PathParameterSubSchema|
-     *        Definitions\BodyParameter|
-     *        Definitions\HeaderParameterSubSchema|
-     *        Definitions\FormDataParameterSubSchema|
-     *        Definitions\QueryParameterSubSchema|
-     *        Definitions\PathParameterSubSchema|
-     *        Definitions\JsonReference $parameters
+     * @param BodyParameter|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema|PathParameterSubSchema|JsonReference $parameters
      * @return $this
      */
     public function addParameter($parameters)
@@ -185,17 +175,7 @@ class Operation extends BaseSchema
     
     /**
      * The parameters needed to send a valid API call.
-     * @return Definitions\BodyParameter|
-     *         Definitions\HeaderParameterSubSchema|
-     *         Definitions\FormDataParameterSubSchema|
-     *         Definitions\QueryParameterSubSchema|
-     *         Definitions\PathParameterSubSchema|
-     *         Definitions\BodyParameter|
-     *         Definitions\HeaderParameterSubSchema|
-     *         Definitions\FormDataParameterSubSchema|
-     *         Definitions\QueryParameterSubSchema|
-     *         Definitions\PathParameterSubSchema|
-     *         Definitions\JsonReference[]
+     * @return BodyParameter|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema|PathParameterSubSchema|JsonReference[]
      */
     public function getParameters()
     {
@@ -204,10 +184,10 @@ class Operation extends BaseSchema
     
     /**
      * Response objects names can either be any valid HTTP status code or 'default'.
-     * @param Definitions\Responses $responses
+     * @param Responses $responses
      * @return $this
      */
-    public function setResponses(\Calcinai\Strut\Definitions\Responses $responses)
+    public function setResponses(Responses $responses)
     {
         $this->setInternalData('responses', $responses);
         return $this;
@@ -215,7 +195,7 @@ class Operation extends BaseSchema
     
     /**
      * Response objects names can either be any valid HTTP status code or 'default'.
-     * @return Definitions\Responses
+     * @return Responses
      */
     public function getResponses()
     {
@@ -261,17 +241,17 @@ class Operation extends BaseSchema
     }
     
     /**
-     * @param Definitions\SecurityRequirement $security
+     * @param SecurityRequirement $security
      * @return $this
      */
-    public function addSecurity(\Calcinai\Strut\Definitions\SecurityRequirement $security)
+    public function addSecurity(SecurityRequirement $security)
     {
         $this->addInternalData('security', $security);
         return $this;
     }
     
     /**
-     * @return Definitions\SecurityRequirement[]
+     * @return SecurityRequirement[]
      */
     public function getSecurity()
     {

@@ -109,10 +109,10 @@ class Info extends BaseSchema
     
     /**
      * Contact information for the owners of the API.
-     * @param Definitions\Contact $contact
+     * @param Contact $contact
      * @return $this
      */
-    public function setContact(\Calcinai\Strut\Definitions\Contact $contact)
+    public function setContact(Contact $contact)
     {
         $this->setInternalData('contact', $contact);
         return $this;
@@ -120,7 +120,7 @@ class Info extends BaseSchema
     
     /**
      * Contact information for the owners of the API.
-     * @return Definitions\Contact
+     * @return Contact
      */
     public function getContact()
     {
@@ -128,17 +128,17 @@ class Info extends BaseSchema
     }
     
     /**
-     * @param Definitions\License $license
+     * @param License $license
      * @return $this
      */
-    public function setLicense(\Calcinai\Strut\Definitions\License $license)
+    public function setLicense(License $license)
     {
         $this->setInternalData('license', $license);
         return $this;
     }
     
     /**
-     * @return Definitions\License
+     * @return License
      */
     public function getLicense()
     {

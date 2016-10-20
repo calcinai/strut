@@ -2,6 +2,15 @@
 
 namespace Calcinai\Strut;
 
+use Calcinai\Strut\Definitions\Info;
+use Calcinai\Strut\Definitions\Paths;
+use Calcinai\Strut\Definitions\Definitions;
+use Calcinai\Strut\Definitions\ParameterDefinitions;
+use Calcinai\Strut\Definitions\ResponseDefinitions;
+use Calcinai\Strut\Definitions\SecurityRequirement;
+use Calcinai\Strut\Definitions\SecurityDefinitions;
+use Calcinai\Strut\Definitions\Tag;
+use Calcinai\Strut\Definitions\ExternalDocs;
 
 class Swagger extends BaseSchema
 {
@@ -45,10 +54,10 @@ class Swagger extends BaseSchema
     
     /**
      * General information about the API.
-     * @param Definitions\Info $info
+     * @param Info $info
      * @return $this
      */
-    public function setInfo(\Calcinai\Strut\Definitions\Info $info)
+    public function setInfo(Info $info)
     {
         $this->setInternalData('info', $info);
         return $this;
@@ -56,7 +65,7 @@ class Swagger extends BaseSchema
     
     /**
      * General information about the API.
-     * @return Definitions\Info
+     * @return Info
      */
     public function getInfo()
     {
@@ -165,10 +174,10 @@ class Swagger extends BaseSchema
     
     /**
      * Relative paths to the individual endpoints. They must be relative to the 'basePath'.
-     * @param Definitions\Paths $paths
+     * @param Paths $paths
      * @return $this
      */
-    public function setPaths(\Calcinai\Strut\Definitions\Paths $paths)
+    public function setPaths(Paths $paths)
     {
         $this->setInternalData('paths', $paths);
         return $this;
@@ -176,7 +185,7 @@ class Swagger extends BaseSchema
     
     /**
      * Relative paths to the individual endpoints. They must be relative to the 'basePath'.
-     * @return Definitions\Paths
+     * @return Paths
      */
     public function getPaths()
     {
@@ -185,10 +194,10 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON objects describing the schemas being consumed and produced by the API.
-     * @param Definitions\Definitions $definitions
+     * @param Definitions $definitions
      * @return $this
      */
-    public function setDefinitions(\Calcinai\Strut\Definitions\Definitions $definitions)
+    public function setDefinitions(Definitions $definitions)
     {
         $this->setInternalData('definitions', $definitions);
         return $this;
@@ -196,7 +205,7 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON objects describing the schemas being consumed and produced by the API.
-     * @return Definitions\Definitions
+     * @return Definitions
      */
     public function getDefinitions()
     {
@@ -205,10 +214,10 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON representations for parameters
-     * @param Definitions\ParameterDefinitions $parameters
+     * @param ParameterDefinitions $parameters
      * @return $this
      */
-    public function setParameters(\Calcinai\Strut\Definitions\ParameterDefinitions $parameters)
+    public function setParameters(ParameterDefinitions $parameters)
     {
         $this->setInternalData('parameters', $parameters);
         return $this;
@@ -216,7 +225,7 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON representations for parameters
-     * @return Definitions\ParameterDefinitions
+     * @return ParameterDefinitions
      */
     public function getParameters()
     {
@@ -225,10 +234,10 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON representations for parameters
-     * @param Definitions\ResponseDefinitions $responses
+     * @param ResponseDefinitions $responses
      * @return $this
      */
-    public function setResponses(\Calcinai\Strut\Definitions\ResponseDefinitions $responses)
+    public function setResponses(ResponseDefinitions $responses)
     {
         $this->setInternalData('responses', $responses);
         return $this;
@@ -236,7 +245,7 @@ class Swagger extends BaseSchema
     
     /**
      * One or more JSON representations for parameters
-     * @return Definitions\ResponseDefinitions
+     * @return ResponseDefinitions
      */
     public function getResponses()
     {
@@ -244,17 +253,17 @@ class Swagger extends BaseSchema
     }
     
     /**
-     * @param Definitions\SecurityRequirement $security
+     * @param SecurityRequirement $security
      * @return $this
      */
-    public function addSecurity(\Calcinai\Strut\Definitions\SecurityRequirement $security)
+    public function addSecurity(SecurityRequirement $security)
     {
         $this->addInternalData('security', $security);
         return $this;
     }
     
     /**
-     * @return Definitions\SecurityRequirement[]
+     * @return SecurityRequirement[]
      */
     public function getSecurity()
     {
@@ -262,17 +271,17 @@ class Swagger extends BaseSchema
     }
     
     /**
-     * @param Definitions\SecurityDefinitions $securityDefinitions
+     * @param SecurityDefinitions $securityDefinitions
      * @return $this
      */
-    public function setSecurityDefinitions(\Calcinai\Strut\Definitions\SecurityDefinitions $securityDefinitions)
+    public function setSecurityDefinitions(SecurityDefinitions $securityDefinitions)
     {
         $this->setInternalData('securityDefinitions', $securityDefinitions);
         return $this;
     }
     
     /**
-     * @return Definitions\SecurityDefinitions
+     * @return SecurityDefinitions
      */
     public function getSecurityDefinitions()
     {
@@ -280,17 +289,17 @@ class Swagger extends BaseSchema
     }
     
     /**
-     * @param Definitions\Tag $tags
+     * @param Tag $tags
      * @return $this
      */
-    public function addTag(\Calcinai\Strut\Definitions\Tag $tags)
+    public function addTag(Tag $tags)
     {
         $this->addInternalData('tags', $tags);
         return $this;
     }
     
     /**
-     * @return Definitions\Tag[]
+     * @return Tag[]
      */
     public function getTags()
     {
@@ -299,10 +308,10 @@ class Swagger extends BaseSchema
     
     /**
      * information about external documentation
-     * @param Definitions\ExternalDocs $externalDocs
+     * @param ExternalDocs $externalDocs
      * @return $this
      */
-    public function setExternalDocs(\Calcinai\Strut\Definitions\ExternalDocs $externalDocs)
+    public function setExternalDocs(ExternalDocs $externalDocs)
     {
         $this->setInternalData('externalDocs', $externalDocs);
         return $this;
@@ -310,7 +319,7 @@ class Swagger extends BaseSchema
     
     /**
      * information about external documentation
-     * @return Definitions\ExternalDocs
+     * @return ExternalDocs
      */
     public function getExternalDocs()
     {

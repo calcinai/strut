@@ -61,17 +61,17 @@ class Oauth2PasswordSecurity extends BaseSchema
     }
     
     /**
-     * @param Definitions\Oauth2Scopes $scopes
+     * @param Oauth2Scopes $scopes
      * @return $this
      */
-    public function setScopes(\Calcinai\Strut\Definitions\Oauth2Scopes $scopes)
+    public function setScopes(Oauth2Scopes $scopes)
     {
         $this->setInternalData('scopes', $scopes);
         return $this;
     }
     
     /**
-     * @return Definitions\Oauth2Scopes
+     * @return Oauth2Scopes
      */
     public function getScopes()
     {

@@ -3,6 +3,7 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+use Calcinai\Strut\Definitions\Schema\Properties\Properties;
 /**
  * A deterministic version of a JSON Schema object.
  */
@@ -388,19 +389,17 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param Definitions\Schema|
-     *        bool $additionalProperties
+     * @param Schema|bool $additionalProperties
      * @return $this
      */
-    public function setAdditionalProperties(\Calcinai\Strut\Definitions\Schema $additionalProperties)
+    public function setAdditionalProperties($additionalProperties)
     {
         $this->setInternalData('additionalProperties', $additionalProperties);
         return $this;
     }
     
     /**
-     * @return Definitions\Schema|
-     *         bool
+     * @return Schema|bool
      */
     public function getAdditionalProperties()
     {
@@ -408,8 +407,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param mixed|
-     *        mixed $type
+     * @param mixed $type
      * @return $this
      */
     public function setType($type)
@@ -419,8 +417,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @return mixed|
-     *         mixed
+     * @return mixed
      */
     public function getType()
     {
@@ -428,19 +425,17 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param Definitions\Schema|
-     *        Definitions\Schema $items
+     * @param Schema $items
      * @return $this
      */
-    public function setItems($items)
+    public function setItems(Schema $items)
     {
         $this->setInternalData('items', $items);
         return $this;
     }
     
     /**
-     * @return Definitions\Schema|
-     *         Definitions\Schema
+     * @return Schema
      */
     public function getItems()
     {
@@ -448,17 +443,17 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param Definitions\Schema $allOf
+     * @param Schema $allOf
      * @return $this
      */
-    public function addAllOf(\Calcinai\Strut\Definitions\Schema $allOf)
+    public function addAllOf(Schema $allOf)
     {
         $this->addInternalData('allOf', $allOf);
         return $this;
     }
     
     /**
-     * @return Definitions\Schema[]
+     * @return Schema[]
      */
     public function getAllOf()
     {
@@ -466,17 +461,17 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param Definitions\Schema\Properties\Properties $properties
+     * @param Properties $properties
      * @return $this
      */
-    public function setProperties(\Calcinai\Strut\Definitions\Schema\Properties\Properties $properties)
+    public function setProperties(Properties $properties)
     {
         $this->setInternalData('properties', $properties);
         return $this;
     }
     
     /**
-     * @return Definitions\Schema\Properties\Properties
+     * @return Properties
      */
     public function getProperties()
     {
@@ -520,17 +515,17 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param Definitions\Xml $xml
+     * @param Xml $xml
      * @return $this
      */
-    public function setXml(\Calcinai\Strut\Definitions\Xml $xml)
+    public function setXml(Xml $xml)
     {
         $this->setInternalData('xml', $xml);
         return $this;
     }
     
     /**
-     * @return Definitions\Xml
+     * @return Xml
      */
     public function getXml()
     {
@@ -539,10 +534,10 @@ class Schema extends BaseSchema
     
     /**
      * information about external documentation
-     * @param \Definitions\ExternalDocs $externalDocs
+     * @param ExternalDocs $externalDocs
      * @return $this
      */
-    public function setExternalDocs(\Calcinai\Strut\Definitions\ExternalDocs $externalDocs)
+    public function setExternalDocs(ExternalDocs $externalDocs)
     {
         $this->setInternalData('externalDocs', $externalDocs);
         return $this;
@@ -550,7 +545,7 @@ class Schema extends BaseSchema
     
     /**
      * information about external documentation
-     * @return Definitions\ExternalDocs
+     * @return ExternalDocs
      */
     public function getExternalDocs()
     {
