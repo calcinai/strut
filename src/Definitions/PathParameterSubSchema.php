@@ -10,7 +10,7 @@ class PathParameterSubSchema extends BaseSchema
      * Array to store schema data and default values
      * @var array
      */
-    protected $data = ['required' => true, 'in' => 'path', 'collectionFormat' => 'csv'];
+    protected $data = ['required' => true, 'in' => 'path'];
     
     /**
      * Allowed additional properties

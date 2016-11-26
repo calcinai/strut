@@ -10,7 +10,7 @@ class Header extends BaseSchema
      * Array to store schema data and default values
      * @var array
      */
-    protected $data = ['collectionFormat' => 'csv'];
+    protected $data = [];
     
     /**
      * Allowed additional properties

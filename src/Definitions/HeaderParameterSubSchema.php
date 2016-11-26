@@ -10,7 +10,7 @@ class HeaderParameterSubSchema extends BaseSchema
      * Array to store schema data and default values
      * @var array
      */
-    protected $data = ['in' => 'header', 'collectionFormat' => 'csv'];
+    protected $data = ['in' => 'header'];
     
     /**
      * Allowed additional properties

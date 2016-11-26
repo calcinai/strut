@@ -10,7 +10,7 @@ class QueryParameterSubSchema extends BaseSchema
      * Array to store schema data and default values
      * @var array
      */
-    protected $data = ['in' => 'query', 'collectionFormat' => 'csv'];
+    protected $data = ['in' => 'query'];
     
     /**
      * Allowed additional properties

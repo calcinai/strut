@@ -10,7 +10,7 @@ class FormDataParameterSubSchema extends BaseSchema
      * Array to store schema data and default values
      * @var array
      */
-    protected $data = ['in' => 'formData', 'collectionFormat' => 'csv'];
+    protected $data = ['in' => 'formData'];
     
     /**
      * Allowed additional properties
