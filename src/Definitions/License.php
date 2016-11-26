@@ -31,7 +31,7 @@ class License extends BaseSchema
      */
     public function setName($name)
     {
-        $this->setInternalData('name', $name);
+        $this->data['name'] = $name;
         return $this;
     }
     
@@ -51,7 +51,7 @@ class License extends BaseSchema
      */
     public function setUrl($url)
     {
-        $this->setInternalData('url', $url);
+        $this->data['url'] = $url;
         return $this;
     }
     

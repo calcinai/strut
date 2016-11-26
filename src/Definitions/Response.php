@@ -30,7 +30,7 @@ class Response extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->setInternalData('description', $description);
+        $this->data['description'] = $description;
         return $this;
     }
     
@@ -48,7 +48,7 @@ class Response extends BaseSchema
      */
     public function setSchema($schema)
     {
-        $this->setInternalData('schema', $schema);
+        $this->data['schema'] = $schema;
         return $this;
     }
     
@@ -66,7 +66,7 @@ class Response extends BaseSchema
      */
     public function setHeaders(Headers $headers)
     {
-        $this->setInternalData('headers', $headers);
+        $this->data['headers'] = $headers;
         return $this;
     }
     
@@ -84,7 +84,7 @@ class Response extends BaseSchema
      */
     public function setExamples(Examples $examples)
     {
-        $this->setInternalData('examples', $examples);
+        $this->data['examples'] = $examples;
         return $this;
     }
     

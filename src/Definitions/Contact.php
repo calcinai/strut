@@ -34,7 +34,7 @@ class Contact extends BaseSchema
      */
     public function setName($name)
     {
-        $this->setInternalData('name', $name);
+        $this->data['name'] = $name;
         return $this;
     }
     
@@ -54,7 +54,7 @@ class Contact extends BaseSchema
      */
     public function setUrl($url)
     {
-        $this->setInternalData('url', $url);
+        $this->data['url'] = $url;
         return $this;
     }
     
@@ -74,7 +74,7 @@ class Contact extends BaseSchema
      */
     public function setEmail($email)
     {
-        $this->setInternalData('email', $email);
+        $this->data['email'] = $email;
         return $this;
     }
     

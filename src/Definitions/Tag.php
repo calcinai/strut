@@ -30,7 +30,7 @@ class Tag extends BaseSchema
      */
     public function setName($name)
     {
-        $this->setInternalData('name', $name);
+        $this->data['name'] = $name;
         return $this;
     }
     
@@ -48,7 +48,7 @@ class Tag extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->setInternalData('description', $description);
+        $this->data['description'] = $description;
         return $this;
     }
     
@@ -67,7 +67,7 @@ class Tag extends BaseSchema
      */
     public function setExternalDocs(ExternalDocs $externalDocs)
     {
-        $this->setInternalData('externalDocs', $externalDocs);
+        $this->data['externalDocs'] = $externalDocs;
         return $this;
     }
     

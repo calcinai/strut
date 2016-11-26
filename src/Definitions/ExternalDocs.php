@@ -33,7 +33,7 @@ class ExternalDocs extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->setInternalData('description', $description);
+        $this->data['description'] = $description;
         return $this;
     }
     
@@ -51,7 +51,7 @@ class ExternalDocs extends BaseSchema
      */
     public function setUrl($url)
     {
-        $this->setInternalData('url', $url);
+        $this->data['url'] = $url;
         return $this;
     }
     

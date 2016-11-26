@@ -31,7 +31,7 @@ class BodyParameter extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->setInternalData('description', $description);
+        $this->data['description'] = $description;
         return $this;
     }
     
@@ -51,7 +51,7 @@ class BodyParameter extends BaseSchema
      */
     public function setName($name)
     {
-        $this->setInternalData('name', $name);
+        $this->data['name'] = $name;
         return $this;
     }
     
@@ -71,7 +71,7 @@ class BodyParameter extends BaseSchema
      */
     public function setIn($in)
     {
-        $this->setInternalData('in', $in);
+        $this->data['in'] = $in;
         return $this;
     }
     
@@ -91,7 +91,7 @@ class BodyParameter extends BaseSchema
      */
     public function setRequired($required)
     {
-        $this->setInternalData('required', $required);
+        $this->data['required'] = $required;
         return $this;
     }
     
@@ -111,7 +111,7 @@ class BodyParameter extends BaseSchema
      */
     public function setSchema(Schema $schema)
     {
-        $this->setInternalData('schema', $schema);
+        $this->data['schema'] = $schema;
         return $this;
     }
     

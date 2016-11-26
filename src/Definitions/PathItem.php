@@ -30,7 +30,7 @@ class PathItem extends BaseSchema
      */
     public function setRef($ref)
     {
-        $this->setInternalData('$ref', $ref);
+        $this->data['$ref'] = $ref;
         return $this;
     }
     
@@ -48,7 +48,7 @@ class PathItem extends BaseSchema
      */
     public function setGet(Operation $get)
     {
-        $this->setInternalData('get', $get);
+        $this->data['get'] = $get;
         return $this;
     }
     
@@ -66,7 +66,7 @@ class PathItem extends BaseSchema
      */
     public function setPut(Operation $put)
     {
-        $this->setInternalData('put', $put);
+        $this->data['put'] = $put;
         return $this;
     }
     
@@ -84,7 +84,7 @@ class PathItem extends BaseSchema
      */
     public function setPost(Operation $post)
     {
-        $this->setInternalData('post', $post);
+        $this->data['post'] = $post;
         return $this;
     }
     
@@ -102,7 +102,7 @@ class PathItem extends BaseSchema
      */
     public function setDelete(Operation $delete)
     {
-        $this->setInternalData('delete', $delete);
+        $this->data['delete'] = $delete;
         return $this;
     }
     
@@ -120,7 +120,7 @@ class PathItem extends BaseSchema
      */
     public function setOptions(Operation $options)
     {
-        $this->setInternalData('options', $options);
+        $this->data['options'] = $options;
         return $this;
     }
     
@@ -138,7 +138,7 @@ class PathItem extends BaseSchema
      */
     public function setHead(Operation $head)
     {
-        $this->setInternalData('head', $head);
+        $this->data['head'] = $head;
         return $this;
     }
     
@@ -156,7 +156,7 @@ class PathItem extends BaseSchema
      */
     public function setPatch(Operation $patch)
     {
-        $this->setInternalData('patch', $patch);
+        $this->data['patch'] = $patch;
         return $this;
     }
     
@@ -175,7 +175,7 @@ class PathItem extends BaseSchema
      */
     public function addParameter($parameters)
     {
-        $this->addInternalData('parameters', $parameters);
+        $this->data['parameters'][] =& $parameters;
         return $this;
     }
     

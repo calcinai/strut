@@ -31,7 +31,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setRequired($required)
     {
-        $this->setInternalData('required', $required);
+        $this->data['required'] = $required;
         return $this;
     }
     
@@ -51,7 +51,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setIn($in)
     {
-        $this->setInternalData('in', $in);
+        $this->data['in'] = $in;
         return $this;
     }
     
@@ -71,7 +71,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->setInternalData('description', $description);
+        $this->data['description'] = $description;
         return $this;
     }
     
@@ -91,7 +91,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setName($name)
     {
-        $this->setInternalData('name', $name);
+        $this->data['name'] = $name;
         return $this;
     }
     
@@ -111,7 +111,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setAllowEmptyValue($allowEmptyValue)
     {
-        $this->setInternalData('allowEmptyValue', $allowEmptyValue);
+        $this->data['allowEmptyValue'] = $allowEmptyValue;
         return $this;
     }
     
@@ -130,7 +130,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setType($type)
     {
-        $this->setInternalData('type', $type);
+        $this->data['type'] = $type;
         return $this;
     }
     
@@ -148,7 +148,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setFormat($format)
     {
-        $this->setInternalData('format', $format);
+        $this->data['format'] = $format;
         return $this;
     }
     
@@ -166,7 +166,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setItems(PrimitivesItems $items)
     {
-        $this->setInternalData('items', $items);
+        $this->data['items'] = $items;
         return $this;
     }
     
@@ -184,7 +184,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setCollectionFormat($collectionFormat)
     {
-        $this->setInternalData('collectionFormat', $collectionFormat);
+        $this->data['collectionFormat'] = $collectionFormat;
         return $this;
     }
     
@@ -202,7 +202,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setDefault($default)
     {
-        $this->setInternalData('default', $default);
+        $this->data['default'] = $default;
         return $this;
     }
     
@@ -220,7 +220,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setMaximum($maximum)
     {
-        $this->setInternalData('maximum', $maximum);
+        $this->data['maximum'] = $maximum;
         return $this;
     }
     
@@ -238,7 +238,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setExclusiveMaximum($exclusiveMaximum)
     {
-        $this->setInternalData('exclusiveMaximum', $exclusiveMaximum);
+        $this->data['exclusiveMaximum'] = $exclusiveMaximum;
         return $this;
     }
     
@@ -256,7 +256,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setMinimum($minimum)
     {
-        $this->setInternalData('minimum', $minimum);
+        $this->data['minimum'] = $minimum;
         return $this;
     }
     
@@ -274,7 +274,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setExclusiveMinimum($exclusiveMinimum)
     {
-        $this->setInternalData('exclusiveMinimum', $exclusiveMinimum);
+        $this->data['exclusiveMinimum'] = $exclusiveMinimum;
         return $this;
     }
     
@@ -292,7 +292,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setMaxLength($maxLength)
     {
-        $this->setInternalData('maxLength', $maxLength);
+        $this->data['maxLength'] = $maxLength;
         return $this;
     }
     
@@ -310,7 +310,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setMinLength($minLength)
     {
-        $this->setInternalData('minLength', $minLength);
+        $this->data['minLength'] = $minLength;
         return $this;
     }
     
@@ -328,7 +328,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setPattern($pattern)
     {
-        $this->setInternalData('pattern', $pattern);
+        $this->data['pattern'] = $pattern;
         return $this;
     }
     
@@ -346,7 +346,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setMaxItems($maxItems)
     {
-        $this->setInternalData('maxItems', $maxItems);
+        $this->data['maxItems'] = $maxItems;
         return $this;
     }
     
@@ -364,7 +364,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setMinItems($minItems)
     {
-        $this->setInternalData('minItems', $minItems);
+        $this->data['minItems'] = $minItems;
         return $this;
     }
     
@@ -382,7 +382,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setUniqueItems($uniqueItems)
     {
-        $this->setInternalData('uniqueItems', $uniqueItems);
+        $this->data['uniqueItems'] = $uniqueItems;
         return $this;
     }
     
@@ -400,7 +400,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function addEnum($enum)
     {
-        $this->addInternalData('enum', $enum);
+        $this->data['enum'][] =& $enum;
         return $this;
     }
     
@@ -418,7 +418,7 @@ class QueryParameterSubSchema extends BaseSchema
      */
     public function setMultipleOf($multipleOf)
     {
-        $this->setInternalData('multipleOf', $multipleOf);
+        $this->data['multipleOf'] = $multipleOf;
         return $this;
     }
     

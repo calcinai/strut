@@ -34,7 +34,7 @@ class Schema extends BaseSchema
      */
     public function setRef($ref)
     {
-        $this->setInternalData('$ref', $ref);
+        $this->data['$ref'] = $ref;
         return $this;
     }
     
@@ -52,7 +52,7 @@ class Schema extends BaseSchema
      */
     public function setFormat($format)
     {
-        $this->setInternalData('format', $format);
+        $this->data['format'] = $format;
         return $this;
     }
     
@@ -70,7 +70,7 @@ class Schema extends BaseSchema
      */
     public function setTitle($title)
     {
-        $this->setInternalData('title', $title);
+        $this->data['title'] = $title;
         return $this;
     }
     
@@ -88,7 +88,7 @@ class Schema extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->setInternalData('description', $description);
+        $this->data['description'] = $description;
         return $this;
     }
     
@@ -106,7 +106,7 @@ class Schema extends BaseSchema
      */
     public function setDefault($default)
     {
-        $this->setInternalData('default', $default);
+        $this->data['default'] = $default;
         return $this;
     }
     
@@ -124,7 +124,7 @@ class Schema extends BaseSchema
      */
     public function setMultipleOf($multipleOf)
     {
-        $this->setInternalData('multipleOf', $multipleOf);
+        $this->data['multipleOf'] = $multipleOf;
         return $this;
     }
     
@@ -142,7 +142,7 @@ class Schema extends BaseSchema
      */
     public function setMaximum($maximum)
     {
-        $this->setInternalData('maximum', $maximum);
+        $this->data['maximum'] = $maximum;
         return $this;
     }
     
@@ -160,7 +160,7 @@ class Schema extends BaseSchema
      */
     public function setExclusiveMaximum($exclusiveMaximum)
     {
-        $this->setInternalData('exclusiveMaximum', $exclusiveMaximum);
+        $this->data['exclusiveMaximum'] = $exclusiveMaximum;
         return $this;
     }
     
@@ -178,7 +178,7 @@ class Schema extends BaseSchema
      */
     public function setMinimum($minimum)
     {
-        $this->setInternalData('minimum', $minimum);
+        $this->data['minimum'] = $minimum;
         return $this;
     }
     
@@ -196,7 +196,7 @@ class Schema extends BaseSchema
      */
     public function setExclusiveMinimum($exclusiveMinimum)
     {
-        $this->setInternalData('exclusiveMinimum', $exclusiveMinimum);
+        $this->data['exclusiveMinimum'] = $exclusiveMinimum;
         return $this;
     }
     
@@ -214,7 +214,7 @@ class Schema extends BaseSchema
      */
     public function setMaxLength($maxLength)
     {
-        $this->setInternalData('maxLength', $maxLength);
+        $this->data['maxLength'] = $maxLength;
         return $this;
     }
     
@@ -232,7 +232,7 @@ class Schema extends BaseSchema
      */
     public function setMinLength($minLength)
     {
-        $this->setInternalData('minLength', $minLength);
+        $this->data['minLength'] = $minLength;
         return $this;
     }
     
@@ -250,7 +250,7 @@ class Schema extends BaseSchema
      */
     public function setPattern($pattern)
     {
-        $this->setInternalData('pattern', $pattern);
+        $this->data['pattern'] = $pattern;
         return $this;
     }
     
@@ -268,7 +268,7 @@ class Schema extends BaseSchema
      */
     public function setMaxItems($maxItems)
     {
-        $this->setInternalData('maxItems', $maxItems);
+        $this->data['maxItems'] = $maxItems;
         return $this;
     }
     
@@ -286,7 +286,7 @@ class Schema extends BaseSchema
      */
     public function setMinItems($minItems)
     {
-        $this->setInternalData('minItems', $minItems);
+        $this->data['minItems'] = $minItems;
         return $this;
     }
     
@@ -304,7 +304,7 @@ class Schema extends BaseSchema
      */
     public function setUniqueItems($uniqueItems)
     {
-        $this->setInternalData('uniqueItems', $uniqueItems);
+        $this->data['uniqueItems'] = $uniqueItems;
         return $this;
     }
     
@@ -322,7 +322,7 @@ class Schema extends BaseSchema
      */
     public function setMaxProperties($maxProperties)
     {
-        $this->setInternalData('maxProperties', $maxProperties);
+        $this->data['maxProperties'] = $maxProperties;
         return $this;
     }
     
@@ -340,7 +340,7 @@ class Schema extends BaseSchema
      */
     public function setMinProperties($minProperties)
     {
-        $this->setInternalData('minProperties', $minProperties);
+        $this->data['minProperties'] = $minProperties;
         return $this;
     }
     
@@ -358,7 +358,7 @@ class Schema extends BaseSchema
      */
     public function addRequired($required)
     {
-        $this->addInternalData('required', $required);
+        $this->data['required'][] =& $required;
         return $this;
     }
     
@@ -376,7 +376,7 @@ class Schema extends BaseSchema
      */
     public function addEnum($enum)
     {
-        $this->addInternalData('enum', $enum);
+        $this->data['enum'][] =& $enum;
         return $this;
     }
     
@@ -394,7 +394,7 @@ class Schema extends BaseSchema
      */
     public function setAdditionalProperties($additionalProperties)
     {
-        $this->setInternalData('additionalProperties', $additionalProperties);
+        $this->data['additionalProperties'] = $additionalProperties;
         return $this;
     }
     
@@ -412,7 +412,7 @@ class Schema extends BaseSchema
      */
     public function setType($type)
     {
-        $this->setInternalData('type', $type);
+        $this->data['type'] = $type;
         return $this;
     }
     
@@ -430,7 +430,7 @@ class Schema extends BaseSchema
      */
     public function setItems(Schema $items)
     {
-        $this->setInternalData('items', $items);
+        $this->data['items'] = $items;
         return $this;
     }
     
@@ -448,7 +448,7 @@ class Schema extends BaseSchema
      */
     public function addAllOf(Schema $allOf)
     {
-        $this->addInternalData('allOf', $allOf);
+        $this->data['allOf'][] =& $allOf;
         return $this;
     }
     
@@ -466,7 +466,7 @@ class Schema extends BaseSchema
      */
     public function setProperties(Properties $properties)
     {
-        $this->setInternalData('properties', $properties);
+        $this->data['properties'] = $properties;
         return $this;
     }
     
@@ -484,7 +484,7 @@ class Schema extends BaseSchema
      */
     public function setDiscriminator($discriminator)
     {
-        $this->setInternalData('discriminator', $discriminator);
+        $this->data['discriminator'] = $discriminator;
         return $this;
     }
     
@@ -502,7 +502,7 @@ class Schema extends BaseSchema
      */
     public function setReadOnly($readOnly)
     {
-        $this->setInternalData('readOnly', $readOnly);
+        $this->data['readOnly'] = $readOnly;
         return $this;
     }
     
@@ -520,7 +520,7 @@ class Schema extends BaseSchema
      */
     public function setXml(Xml $xml)
     {
-        $this->setInternalData('xml', $xml);
+        $this->data['xml'] = $xml;
         return $this;
     }
     
@@ -539,7 +539,7 @@ class Schema extends BaseSchema
      */
     public function setExternalDocs(ExternalDocs $externalDocs)
     {
-        $this->setInternalData('externalDocs', $externalDocs);
+        $this->data['externalDocs'] = $externalDocs;
         return $this;
     }
     
@@ -558,7 +558,7 @@ class Schema extends BaseSchema
      */
     public function setExample($example)
     {
-        $this->setInternalData('example', $example);
+        $this->data['example'] = $example;
         return $this;
     }
     

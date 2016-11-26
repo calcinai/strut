@@ -30,7 +30,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function setType($type)
     {
-        $this->setInternalData('type', $type);
+        $this->data['type'] = $type;
         return $this;
     }
     
@@ -48,7 +48,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function setName($name)
     {
-        $this->setInternalData('name', $name);
+        $this->data['name'] = $name;
         return $this;
     }
     
@@ -66,7 +66,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function setIn($in)
     {
-        $this->setInternalData('in', $in);
+        $this->data['in'] = $in;
         return $this;
     }
     
@@ -84,7 +84,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->setInternalData('description', $description);
+        $this->data['description'] = $description;
         return $this;
     }
     

@@ -33,7 +33,7 @@ abstract class BaseSchema implements \JsonSerializable
     public function set($property_name, $value)
     {
         $this->validateProperty($property_name, $value);
-        $this->setInternalData($property_name, $value);
+        $this->data[$property_name] = $value;
         return $this;
     }
     
@@ -76,42 +76,6 @@ abstract class BaseSchema implements \JsonSerializable
             }
         }
         throw new \InvalidArgumentException(sprintf('[%s] does not accept property [%s]', get_class($this), $property_name));
-    }
-    
-    /**
-     * @param $property_name
-     * @param $value
-     */
-    protected function setInternalData($property_name, $value)
-    {
-        $this->data[$property_name] = $value;
-        //This is so the generated code is a bit cleaner.
-        if ($value instanceof BaseSchema) {
-            $value->setParentSchema($this);
-        }
-    }
-    
-    /**
-     * @param $property_name
-     * @param $value
-     */
-    protected function addInternalData($property_name, $value)
-    {
-        $this->data[$property_name][] =& $value;
-        //This is so the generated code is a bit cleaner.
-        if ($value instanceof BaseSchema) {
-            $value->setParentSchema($this);
-        }
-    }
-    
-    /**
-     * @param mixed $parent_schema
-     * @return BaseSchema
-     */
-    protected function setParentSchema($parent_schema)
-    {
-        $this->parent_schema = $parent_schema;
-        return $this;
     }
     
     /**

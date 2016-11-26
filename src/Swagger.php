@@ -39,7 +39,7 @@ class Swagger extends BaseSchema
      */
     public function setSwagger($swagger)
     {
-        $this->setInternalData('swagger', $swagger);
+        $this->data['swagger'] = $swagger;
         return $this;
     }
     
@@ -59,7 +59,7 @@ class Swagger extends BaseSchema
      */
     public function setInfo(Info $info)
     {
-        $this->setInternalData('info', $info);
+        $this->data['info'] = $info;
         return $this;
     }
     
@@ -79,7 +79,7 @@ class Swagger extends BaseSchema
      */
     public function setHost($host)
     {
-        $this->setInternalData('host', $host);
+        $this->data['host'] = $host;
         return $this;
     }
     
@@ -99,7 +99,7 @@ class Swagger extends BaseSchema
      */
     public function setBasePath($basePath)
     {
-        $this->setInternalData('basePath', $basePath);
+        $this->data['basePath'] = $basePath;
         return $this;
     }
     
@@ -119,7 +119,7 @@ class Swagger extends BaseSchema
      */
     public function addScheme($schemes)
     {
-        $this->addInternalData('schemes', $schemes);
+        $this->data['schemes'][] =& $schemes;
         return $this;
     }
     
@@ -139,7 +139,7 @@ class Swagger extends BaseSchema
      */
     public function setConsumes($consumes)
     {
-        $this->setInternalData('consumes', $consumes);
+        $this->data['consumes'] = $consumes;
         return $this;
     }
     
@@ -159,7 +159,7 @@ class Swagger extends BaseSchema
      */
     public function setProduces($produces)
     {
-        $this->setInternalData('produces', $produces);
+        $this->data['produces'] = $produces;
         return $this;
     }
     
@@ -179,7 +179,7 @@ class Swagger extends BaseSchema
      */
     public function setPaths(Paths $paths)
     {
-        $this->setInternalData('paths', $paths);
+        $this->data['paths'] = $paths;
         return $this;
     }
     
@@ -199,7 +199,7 @@ class Swagger extends BaseSchema
      */
     public function setDefinitions(Definitions $definitions)
     {
-        $this->setInternalData('definitions', $definitions);
+        $this->data['definitions'] = $definitions;
         return $this;
     }
     
@@ -219,7 +219,7 @@ class Swagger extends BaseSchema
      */
     public function setParameters(ParameterDefinitions $parameters)
     {
-        $this->setInternalData('parameters', $parameters);
+        $this->data['parameters'] = $parameters;
         return $this;
     }
     
@@ -239,7 +239,7 @@ class Swagger extends BaseSchema
      */
     public function setResponses(ResponseDefinitions $responses)
     {
-        $this->setInternalData('responses', $responses);
+        $this->data['responses'] = $responses;
         return $this;
     }
     
@@ -258,7 +258,7 @@ class Swagger extends BaseSchema
      */
     public function addSecurity(SecurityRequirement $security)
     {
-        $this->addInternalData('security', $security);
+        $this->data['security'][] =& $security;
         return $this;
     }
     
@@ -276,7 +276,7 @@ class Swagger extends BaseSchema
      */
     public function setSecurityDefinitions(SecurityDefinitions $securityDefinitions)
     {
-        $this->setInternalData('securityDefinitions', $securityDefinitions);
+        $this->data['securityDefinitions'] = $securityDefinitions;
         return $this;
     }
     
@@ -294,7 +294,7 @@ class Swagger extends BaseSchema
      */
     public function addTag(Tag $tags)
     {
-        $this->addInternalData('tags', $tags);
+        $this->data['tags'][] =& $tags;
         return $this;
     }
     
@@ -313,7 +313,7 @@ class Swagger extends BaseSchema
      */
     public function setExternalDocs(ExternalDocs $externalDocs)
     {
-        $this->setInternalData('externalDocs', $externalDocs);
+        $this->data['externalDocs'] = $externalDocs;
         return $this;
     }
     

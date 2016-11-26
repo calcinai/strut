@@ -34,7 +34,7 @@ class Info extends BaseSchema
      */
     public function setTitle($title)
     {
-        $this->setInternalData('title', $title);
+        $this->data['title'] = $title;
         return $this;
     }
     
@@ -54,7 +54,7 @@ class Info extends BaseSchema
      */
     public function setVersion($version)
     {
-        $this->setInternalData('version', $version);
+        $this->data['version'] = $version;
         return $this;
     }
     
@@ -74,7 +74,7 @@ class Info extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->setInternalData('description', $description);
+        $this->data['description'] = $description;
         return $this;
     }
     
@@ -94,7 +94,7 @@ class Info extends BaseSchema
      */
     public function setTermsOfService($termsOfService)
     {
-        $this->setInternalData('termsOfService', $termsOfService);
+        $this->data['termsOfService'] = $termsOfService;
         return $this;
     }
     
@@ -114,7 +114,7 @@ class Info extends BaseSchema
      */
     public function setContact(Contact $contact)
     {
-        $this->setInternalData('contact', $contact);
+        $this->data['contact'] = $contact;
         return $this;
     }
     
@@ -133,7 +133,7 @@ class Info extends BaseSchema
      */
     public function setLicense(License $license)
     {
-        $this->setInternalData('license', $license);
+        $this->data['license'] = $license;
         return $this;
     }
     

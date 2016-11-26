@@ -30,7 +30,7 @@ class JsonReference extends BaseSchema
      */
     public function setRef($ref)
     {
-        $this->setInternalData('$ref', $ref);
+        $this->data['$ref'] = $ref;
         return $this;
     }
     

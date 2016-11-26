@@ -30,7 +30,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setType($type)
     {
-        $this->setInternalData('type', $type);
+        $this->data['type'] = $type;
         return $this;
     }
     
@@ -48,7 +48,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setFlow($flow)
     {
-        $this->setInternalData('flow', $flow);
+        $this->data['flow'] = $flow;
         return $this;
     }
     
@@ -66,7 +66,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setScopes(Oauth2Scopes $scopes)
     {
-        $this->setInternalData('scopes', $scopes);
+        $this->data['scopes'] = $scopes;
         return $this;
     }
     
@@ -84,7 +84,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setAuthorizationUrl($authorizationUrl)
     {
-        $this->setInternalData('authorizationUrl', $authorizationUrl);
+        $this->data['authorizationUrl'] = $authorizationUrl;
         return $this;
     }
     
@@ -102,7 +102,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setTokenUrl($tokenUrl)
     {
-        $this->setInternalData('tokenUrl', $tokenUrl);
+        $this->data['tokenUrl'] = $tokenUrl;
         return $this;
     }
     
@@ -120,7 +120,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->setInternalData('description', $description);
+        $this->data['description'] = $description;
         return $this;
     }
     

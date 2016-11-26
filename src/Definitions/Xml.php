@@ -30,7 +30,7 @@ class Xml extends BaseSchema
      */
     public function setName($name)
     {
-        $this->setInternalData('name', $name);
+        $this->data['name'] = $name;
         return $this;
     }
     
@@ -48,7 +48,7 @@ class Xml extends BaseSchema
      */
     public function setNamespace($namespace)
     {
-        $this->setInternalData('namespace', $namespace);
+        $this->data['namespace'] = $namespace;
         return $this;
     }
     
@@ -66,7 +66,7 @@ class Xml extends BaseSchema
      */
     public function setPrefix($prefix)
     {
-        $this->setInternalData('prefix', $prefix);
+        $this->data['prefix'] = $prefix;
         return $this;
     }
     
@@ -84,7 +84,7 @@ class Xml extends BaseSchema
      */
     public function setAttribute($attribute)
     {
-        $this->setInternalData('attribute', $attribute);
+        $this->data['attribute'] = $attribute;
         return $this;
     }
     
@@ -102,7 +102,7 @@ class Xml extends BaseSchema
      */
     public function setWrapped($wrapped)
     {
-        $this->setInternalData('wrapped', $wrapped);
+        $this->data['wrapped'] = $wrapped;
         return $this;
     }
     

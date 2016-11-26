@@ -33,7 +33,7 @@ class FileSchema extends BaseSchema
      */
     public function setFormat($format)
     {
-        $this->setInternalData('format', $format);
+        $this->data['format'] = $format;
         return $this;
     }
     
@@ -51,7 +51,7 @@ class FileSchema extends BaseSchema
      */
     public function setTitle($title)
     {
-        $this->setInternalData('title', $title);
+        $this->data['title'] = $title;
         return $this;
     }
     
@@ -69,7 +69,7 @@ class FileSchema extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->setInternalData('description', $description);
+        $this->data['description'] = $description;
         return $this;
     }
     
@@ -87,7 +87,7 @@ class FileSchema extends BaseSchema
      */
     public function setDefault($default)
     {
-        $this->setInternalData('default', $default);
+        $this->data['default'] = $default;
         return $this;
     }
     
@@ -105,7 +105,7 @@ class FileSchema extends BaseSchema
      */
     public function addRequired($required)
     {
-        $this->addInternalData('required', $required);
+        $this->data['required'][] =& $required;
         return $this;
     }
     
@@ -123,7 +123,7 @@ class FileSchema extends BaseSchema
      */
     public function setType($type)
     {
-        $this->setInternalData('type', $type);
+        $this->data['type'] = $type;
         return $this;
     }
     
@@ -141,7 +141,7 @@ class FileSchema extends BaseSchema
      */
     public function setReadOnly($readOnly)
     {
-        $this->setInternalData('readOnly', $readOnly);
+        $this->data['readOnly'] = $readOnly;
         return $this;
     }
     
@@ -160,7 +160,7 @@ class FileSchema extends BaseSchema
      */
     public function setExternalDocs(ExternalDocs $externalDocs)
     {
-        $this->setInternalData('externalDocs', $externalDocs);
+        $this->data['externalDocs'] = $externalDocs;
         return $this;
     }
     
@@ -179,7 +179,7 @@ class FileSchema extends BaseSchema
      */
     public function setExample($example)
     {
-        $this->setInternalData('example', $example);
+        $this->data['example'] = $example;
         return $this;
     }
     

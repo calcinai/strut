@@ -30,7 +30,7 @@ class Operation extends BaseSchema
      */
     public function addTag($tags)
     {
-        $this->addInternalData('tags', $tags);
+        $this->data['tags'][] =& $tags;
         return $this;
     }
     
@@ -49,7 +49,7 @@ class Operation extends BaseSchema
      */
     public function setSummary($summary)
     {
-        $this->setInternalData('summary', $summary);
+        $this->data['summary'] = $summary;
         return $this;
     }
     
@@ -69,7 +69,7 @@ class Operation extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->setInternalData('description', $description);
+        $this->data['description'] = $description;
         return $this;
     }
     
@@ -89,7 +89,7 @@ class Operation extends BaseSchema
      */
     public function setExternalDocs(ExternalDocs $externalDocs)
     {
-        $this->setInternalData('externalDocs', $externalDocs);
+        $this->data['externalDocs'] = $externalDocs;
         return $this;
     }
     
@@ -109,7 +109,7 @@ class Operation extends BaseSchema
      */
     public function setOperationId($operationId)
     {
-        $this->setInternalData('operationId', $operationId);
+        $this->data['operationId'] = $operationId;
         return $this;
     }
     
@@ -129,7 +129,7 @@ class Operation extends BaseSchema
      */
     public function setProduces($produces)
     {
-        $this->setInternalData('produces', $produces);
+        $this->data['produces'] = $produces;
         return $this;
     }
     
@@ -149,7 +149,7 @@ class Operation extends BaseSchema
      */
     public function setConsumes($consumes)
     {
-        $this->setInternalData('consumes', $consumes);
+        $this->data['consumes'] = $consumes;
         return $this;
     }
     
@@ -169,7 +169,7 @@ class Operation extends BaseSchema
      */
     public function addParameter($parameters)
     {
-        $this->addInternalData('parameters', $parameters);
+        $this->data['parameters'][] =& $parameters;
         return $this;
     }
     
@@ -189,7 +189,7 @@ class Operation extends BaseSchema
      */
     public function setResponses(Responses $responses)
     {
-        $this->setInternalData('responses', $responses);
+        $this->data['responses'] = $responses;
         return $this;
     }
     
@@ -209,7 +209,7 @@ class Operation extends BaseSchema
      */
     public function addScheme($schemes)
     {
-        $this->addInternalData('schemes', $schemes);
+        $this->data['schemes'][] =& $schemes;
         return $this;
     }
     
@@ -228,7 +228,7 @@ class Operation extends BaseSchema
      */
     public function setDeprecated($deprecated)
     {
-        $this->setInternalData('deprecated', $deprecated);
+        $this->data['deprecated'] = $deprecated;
         return $this;
     }
     
@@ -246,7 +246,7 @@ class Operation extends BaseSchema
      */
     public function addSecurity(SecurityRequirement $security)
     {
-        $this->addInternalData('security', $security);
+        $this->data['security'][] =& $security;
         return $this;
     }
     
