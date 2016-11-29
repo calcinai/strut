@@ -13,6 +13,12 @@ class Operation extends BaseSchema
     protected $data = [];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['tags' => [], 'summary' => [], 'description' => [], 'externalDocs' => ['Definitions\\ExternalDocs'], 'operationId' => [], 'produces' => [], 'consumes' => [], 'parameters' => ['Definitions\\BodyParameter', 'Definitions\\HeaderParameterSubSchema', 'Definitions\\FormDataParameterSubSchema', 'Definitions\\QueryParameterSubSchema', 'Definitions\\PathParameterSubSchema', 'Definitions\\JsonReference'], 'responses' => ['Definitions\\Responses'], 'schemes' => [], 'deprecated' => [], 'security' => ['Definitions\\SecurityRequirement']];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

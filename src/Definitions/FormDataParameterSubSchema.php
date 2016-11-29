@@ -13,6 +13,12 @@ class FormDataParameterSubSchema extends BaseSchema
     protected $data = ['in' => 'formData'];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['required' => [], 'in' => [], 'description' => [], 'name' => [], 'allowEmptyValue' => [], 'type' => [], 'format' => [], 'items' => ['Definitions\\PrimitivesItems'], 'collectionFormat' => [], 'default' => [], 'maximum' => [], 'exclusiveMaximum' => [], 'minimum' => [], 'exclusiveMinimum' => [], 'maxLength' => [], 'minLength' => [], 'pattern' => [], 'maxItems' => [], 'minItems' => [], 'uniqueItems' => [], 'enum' => [], 'multipleOf' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

@@ -13,6 +13,12 @@ class Oauth2AccessCodeSecurity extends BaseSchema
     protected $data = ['type' => 'oauth2', 'flow' => 'accessCode'];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['type' => [], 'flow' => [], 'scopes' => ['Definitions\\Oauth2Scopes'], 'authorizationUrl' => [], 'tokenUrl' => [], 'description' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

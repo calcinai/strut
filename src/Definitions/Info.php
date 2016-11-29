@@ -16,6 +16,12 @@ class Info extends BaseSchema
     protected $data = [];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['title' => [], 'version' => [], 'description' => [], 'termsOfService' => [], 'contact' => ['Definitions\\Contact'], 'license' => ['Definitions\\License']];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

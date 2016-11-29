@@ -17,6 +17,12 @@ class Schema extends BaseSchema
     protected $data = [];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['$ref' => [], 'format' => [], 'title' => [], 'description' => [], 'default' => [], 'multipleOf' => [], 'maximum' => [], 'exclusiveMaximum' => [], 'minimum' => [], 'exclusiveMinimum' => [], 'maxLength' => [], 'minLength' => [], 'pattern' => [], 'maxItems' => [], 'minItems' => [], 'uniqueItems' => [], 'maxProperties' => [], 'minProperties' => [], 'required' => [], 'enum' => [], 'additionalProperties' => ['Definitions\\Schema'], 'type' => [], 'items' => ['Definitions\\Schema'], 'allOf' => ['Definitions\\Schema'], 'properties' => ['Definitions\\Schema\\Properties\\Properties'], 'discriminator' => [], 'readOnly' => [], 'xml' => ['Definitions\\Xml'], 'externalDocs' => ['Definitions\\ExternalDocs'], 'example' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

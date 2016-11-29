@@ -13,6 +13,12 @@ class NonBodyParameter extends BaseSchema
     protected $data = [];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = [];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

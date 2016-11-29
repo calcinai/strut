@@ -13,6 +13,12 @@ class Tag extends BaseSchema
     protected $data = [];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['name' => [], 'description' => [], 'externalDocs' => ['Definitions\\ExternalDocs']];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

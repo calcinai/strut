@@ -13,6 +13,12 @@ class HeaderParameterSubSchema extends BaseSchema
     protected $data = ['in' => 'header'];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['required' => [], 'in' => [], 'description' => [], 'name' => [], 'type' => [], 'format' => [], 'items' => ['Definitions\\PrimitivesItems'], 'collectionFormat' => [], 'default' => [], 'maximum' => [], 'exclusiveMaximum' => [], 'minimum' => [], 'exclusiveMinimum' => [], 'maxLength' => [], 'minLength' => [], 'pattern' => [], 'maxItems' => [], 'minItems' => [], 'uniqueItems' => [], 'enum' => [], 'multipleOf' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

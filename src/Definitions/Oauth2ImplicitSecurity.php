@@ -13,6 +13,12 @@ class Oauth2ImplicitSecurity extends BaseSchema
     protected $data = ['type' => 'oauth2', 'flow' => 'implicit'];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['type' => [], 'flow' => [], 'scopes' => ['Definitions\\Oauth2Scopes'], 'authorizationUrl' => [], 'description' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

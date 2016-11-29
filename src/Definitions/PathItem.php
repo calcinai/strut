@@ -13,6 +13,12 @@ class PathItem extends BaseSchema
     protected $data = [];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['$ref' => [], 'get' => ['Definitions\\Operation'], 'put' => ['Definitions\\Operation'], 'post' => ['Definitions\\Operation'], 'delete' => ['Definitions\\Operation'], 'options' => ['Definitions\\Operation'], 'head' => ['Definitions\\Operation'], 'patch' => ['Definitions\\Operation'], 'parameters' => ['Definitions\\BodyParameter', 'Definitions\\HeaderParameterSubSchema', 'Definitions\\FormDataParameterSubSchema', 'Definitions\\QueryParameterSubSchema', 'Definitions\\PathParameterSubSchema', 'Definitions\\JsonReference']];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

@@ -16,6 +16,12 @@ class Contact extends BaseSchema
     protected $data = [];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['name' => [], 'url' => [], 'email' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

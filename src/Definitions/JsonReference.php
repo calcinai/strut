@@ -13,6 +13,12 @@ class JsonReference extends BaseSchema
     protected $data = [];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['$ref' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

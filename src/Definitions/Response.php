@@ -13,6 +13,12 @@ class Response extends BaseSchema
     protected $data = [];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['description' => [], 'schema' => ['Definitions\\Schema', 'Definitions\\FileSchema'], 'headers' => ['Definitions\\Headers'], 'examples' => ['Definitions\\Examples']];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

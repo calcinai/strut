@@ -16,6 +16,12 @@ class FileSchema extends BaseSchema
     protected $data = ['type' => 'file'];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['format' => [], 'title' => [], 'description' => [], 'default' => [], 'required' => [], 'type' => [], 'readOnly' => [], 'externalDocs' => ['Definitions\\ExternalDocs'], 'example' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

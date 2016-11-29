@@ -13,6 +13,12 @@ class Oauth2ApplicationSecurity extends BaseSchema
     protected $data = ['type' => 'oauth2', 'flow' => 'application'];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['type' => [], 'flow' => [], 'scopes' => ['Definitions\\Oauth2Scopes'], 'tokenUrl' => [], 'description' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

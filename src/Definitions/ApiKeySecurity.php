@@ -13,6 +13,12 @@ class ApiKeySecurity extends BaseSchema
     protected $data = ['type' => 'apiKey'];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['type' => [], 'name' => [], 'in' => [], 'description' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

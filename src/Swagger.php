@@ -21,6 +21,12 @@ class Swagger extends BaseSchema
     protected $data = ['swagger' => '2.0'];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['swagger' => [], 'info' => ['Definitions\\Info'], 'host' => [], 'basePath' => [], 'schemes' => [], 'consumes' => [], 'produces' => [], 'paths' => ['Definitions\\Paths'], 'definitions' => ['Definitions\\Definitions'], 'parameters' => ['Definitions\\ParameterDefinitions'], 'responses' => ['Definitions\\ResponseDefinitions'], 'security' => ['Definitions\\SecurityRequirement'], 'securityDefinitions' => ['Definitions\\SecurityDefinitions'], 'tags' => ['Definitions\\Tag'], 'externalDocs' => ['Definitions\\ExternalDocs']];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

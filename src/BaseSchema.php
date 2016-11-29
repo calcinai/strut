@@ -8,9 +8,9 @@ namespace Calcinai\Strut;
 
 abstract class BaseSchema implements \JsonSerializable
 {
-    protected $parent_schema;
-    
     protected $data;
+    
+    protected static $properties = [];
     
     protected static $pattern_properties = [];
     
@@ -21,6 +21,11 @@ abstract class BaseSchema implements \JsonSerializable
      * @var bool|array
      */
     protected static $additional_properties = [];
+    
+    public function __construct($data)
+    {
+        $this->parseData($data);
+    }
     
     /**
      * Pattern property setter.  Could do with a clean up - too many return points
@@ -79,18 +84,55 @@ abstract class BaseSchema implements \JsonSerializable
     }
     
     /**
-     * This should be overloaded if there's actually a id
+     * Parse a schema object into the correct objects
      *
-     * It's probably not the best implementation, but it's used rarely.
-     *
-     * @return $this
+     * @param $data
      */
-    public function getId()
+    private function parseData($data)
     {
-        if ($this->parent_schema instanceof BaseSchema) {
-            return sprintf('%s/%s', $this->parent_schema->getId(), array_search($this, $this->parent_schema->data));
-        } else {
-            return '#';
+        foreach ($data as $property_name => $property) {
+            //In here is for direct (real) properties.
+            if (isset(static::$properties[$property_name])) {
+                foreach (static::$properties[$property_name] as $class) {
+                    /** @var self $class */
+                    $class = self::getFQCN($class);
+                    if (is_array($property)) {
+                        foreach ($property as $property_element) {
+                            $this->data[$property_name][] = $class::create($property_element);
+                        }
+                    } else {
+                        $this->data[$property_name] = $class::create($property);
+                    }
+                }
+                //If it's not a typed variable, just assign it.
+                if (!isset($this->data[$property_name])) {
+                    $this->data[$property_name] = $property;
+                }
+                //Otherwise try for pattern and extra
+            } else {
+                //I think the best way to handle this, a little bit inefficient, but will at least always be consistent
+                //without writing the same code twice.
+                $types_to_try = [];
+                //Collect pattern props
+                foreach (static::$pattern_properties as $pattern_property) {
+                    $types_to_try = array_merge($types_to_try, $pattern_property);
+                }
+                //Collect additional props
+                if (is_array(static::$additional_properties)) {
+                    $types_to_try = array_merge($types_to_try, static::$additional_properties);
+                }
+                foreach ($types_to_try as $type) {
+                    /** @var self $class */
+                    $class = self::getFQCN($type);
+                    try {
+                        $this->set($property_name, $class::create($property));
+                        continue 2;
+                    } catch (\InvalidArgumentException $e) {
+                        //let it continue to the next type
+                    }
+                }
+                //What to do here? It's invalid at this point
+            }
         }
     }
     

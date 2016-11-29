@@ -13,6 +13,12 @@ class BasicAuthenticationSecurity extends BaseSchema
     protected $data = ['type' => 'basic'];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['type' => [], 'description' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

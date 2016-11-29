@@ -16,6 +16,12 @@ class ExternalDocs extends BaseSchema
     protected $data = [];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['description' => [], 'url' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */

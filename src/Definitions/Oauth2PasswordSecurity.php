@@ -13,6 +13,12 @@ class Oauth2PasswordSecurity extends BaseSchema
     protected $data = ['type' => 'oauth2', 'flow' => 'password'];
     
     /**
+     * Properties and types
+     * @var array
+     */
+    protected static $properties = ['type' => [], 'flow' => [], 'scopes' => ['Definitions\\Oauth2Scopes'], 'tokenUrl' => [], 'description' => []];
+    
+    /**
      * Allowed additional properties
      * @var array
      */
