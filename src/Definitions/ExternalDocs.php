@@ -16,6 +16,12 @@ class ExternalDocs extends BaseSchema
     protected $data = [];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = [];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -39,7 +45,7 @@ class ExternalDocs extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->set('description', $description);
         return $this;
     }
     
@@ -48,7 +54,7 @@ class ExternalDocs extends BaseSchema
      */
     public function getDescription()
     {
-        return $this->data['description'];
+        return $this->get('description');
     }
     
     /**
@@ -57,7 +63,7 @@ class ExternalDocs extends BaseSchema
      */
     public function setUrl($url)
     {
-        $this->data['url'] = $url;
+        $this->set('url', $url);
         return $this;
     }
     
@@ -66,7 +72,7 @@ class ExternalDocs extends BaseSchema
      */
     public function getUrl()
     {
-        return $this->data['url'];
+        return $this->get('url');
     }
 
 }

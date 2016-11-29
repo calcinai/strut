@@ -13,6 +13,12 @@ class Tag extends BaseSchema
     protected $data = [];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = [];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -36,7 +42,7 @@ class Tag extends BaseSchema
      */
     public function setName($name)
     {
-        $this->data['name'] = $name;
+        $this->set('name', $name);
         return $this;
     }
     
@@ -45,7 +51,7 @@ class Tag extends BaseSchema
      */
     public function getName()
     {
-        return $this->data['name'];
+        return $this->get('name');
     }
     
     /**
@@ -54,7 +60,7 @@ class Tag extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->set('description', $description);
         return $this;
     }
     
@@ -63,7 +69,7 @@ class Tag extends BaseSchema
      */
     public function getDescription()
     {
-        return $this->data['description'];
+        return $this->get('description');
     }
     
     /**
@@ -73,7 +79,7 @@ class Tag extends BaseSchema
      */
     public function setExternalDocs(ExternalDocs $externalDocs)
     {
-        $this->data['externalDocs'] = $externalDocs;
+        $this->set('externalDocs', $externalDocs);
         return $this;
     }
     
@@ -83,7 +89,7 @@ class Tag extends BaseSchema
      */
     public function getExternalDocs()
     {
-        return $this->data['externalDocs'];
+        return $this->get('externalDocs');
     }
 
 }

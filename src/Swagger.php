@@ -21,6 +21,12 @@ class Swagger extends BaseSchema
     protected $data = ['swagger' => '2.0'];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = ['swagger' => ['2.0']];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -45,7 +51,7 @@ class Swagger extends BaseSchema
      */
     public function setSwagger($swagger)
     {
-        $this->data['swagger'] = $swagger;
+        $this->set('swagger', $swagger);
         return $this;
     }
     
@@ -55,7 +61,7 @@ class Swagger extends BaseSchema
      */
     public function getSwagger()
     {
-        return $this->data['swagger'];
+        return $this->get('swagger');
     }
     
     /**
@@ -65,7 +71,7 @@ class Swagger extends BaseSchema
      */
     public function setInfo(Info $info)
     {
-        $this->data['info'] = $info;
+        $this->set('info', $info);
         return $this;
     }
     
@@ -75,7 +81,7 @@ class Swagger extends BaseSchema
      */
     public function getInfo()
     {
-        return $this->data['info'];
+        return $this->get('info');
     }
     
     /**
@@ -85,7 +91,7 @@ class Swagger extends BaseSchema
      */
     public function setHost($host)
     {
-        $this->data['host'] = $host;
+        $this->set('host', $host);
         return $this;
     }
     
@@ -95,7 +101,7 @@ class Swagger extends BaseSchema
      */
     public function getHost()
     {
-        return $this->data['host'];
+        return $this->get('host');
     }
     
     /**
@@ -105,7 +111,7 @@ class Swagger extends BaseSchema
      */
     public function setBasePath($basePath)
     {
-        $this->data['basePath'] = $basePath;
+        $this->set('basePath', $basePath);
         return $this;
     }
     
@@ -115,7 +121,7 @@ class Swagger extends BaseSchema
      */
     public function getBasePath()
     {
-        return $this->data['basePath'];
+        return $this->get('basePath');
     }
     
     /**
@@ -125,7 +131,7 @@ class Swagger extends BaseSchema
      */
     public function addScheme($schemes)
     {
-        $this->data['schemes'][] =& $schemes;
+        $this->add('schemes', $schemes);
         return $this;
     }
     
@@ -135,7 +141,7 @@ class Swagger extends BaseSchema
      */
     public function getSchemes()
     {
-        return $this->data['schemes'];
+        return $this->get('schemes');
     }
     
     /**
@@ -145,7 +151,7 @@ class Swagger extends BaseSchema
      */
     public function setConsumes($consumes)
     {
-        $this->data['consumes'] = $consumes;
+        $this->set('consumes', $consumes);
         return $this;
     }
     
@@ -155,7 +161,7 @@ class Swagger extends BaseSchema
      */
     public function getConsumes()
     {
-        return $this->data['consumes'];
+        return $this->get('consumes');
     }
     
     /**
@@ -165,7 +171,7 @@ class Swagger extends BaseSchema
      */
     public function setProduces($produces)
     {
-        $this->data['produces'] = $produces;
+        $this->set('produces', $produces);
         return $this;
     }
     
@@ -175,7 +181,7 @@ class Swagger extends BaseSchema
      */
     public function getProduces()
     {
-        return $this->data['produces'];
+        return $this->get('produces');
     }
     
     /**
@@ -185,7 +191,7 @@ class Swagger extends BaseSchema
      */
     public function setPaths(Paths $paths)
     {
-        $this->data['paths'] = $paths;
+        $this->set('paths', $paths);
         return $this;
     }
     
@@ -195,7 +201,7 @@ class Swagger extends BaseSchema
      */
     public function getPaths()
     {
-        return $this->data['paths'];
+        return $this->get('paths');
     }
     
     /**
@@ -205,7 +211,7 @@ class Swagger extends BaseSchema
      */
     public function setDefinitions(Definitions $definitions)
     {
-        $this->data['definitions'] = $definitions;
+        $this->set('definitions', $definitions);
         return $this;
     }
     
@@ -215,7 +221,7 @@ class Swagger extends BaseSchema
      */
     public function getDefinitions()
     {
-        return $this->data['definitions'];
+        return $this->get('definitions');
     }
     
     /**
@@ -225,7 +231,7 @@ class Swagger extends BaseSchema
      */
     public function setParameters(ParameterDefinitions $parameters)
     {
-        $this->data['parameters'] = $parameters;
+        $this->set('parameters', $parameters);
         return $this;
     }
     
@@ -235,7 +241,7 @@ class Swagger extends BaseSchema
      */
     public function getParameters()
     {
-        return $this->data['parameters'];
+        return $this->get('parameters');
     }
     
     /**
@@ -245,7 +251,7 @@ class Swagger extends BaseSchema
      */
     public function setResponses(ResponseDefinitions $responses)
     {
-        $this->data['responses'] = $responses;
+        $this->set('responses', $responses);
         return $this;
     }
     
@@ -255,7 +261,7 @@ class Swagger extends BaseSchema
      */
     public function getResponses()
     {
-        return $this->data['responses'];
+        return $this->get('responses');
     }
     
     /**
@@ -264,7 +270,7 @@ class Swagger extends BaseSchema
      */
     public function addSecurity(SecurityRequirement $security)
     {
-        $this->data['security'][] =& $security;
+        $this->add('security', $security);
         return $this;
     }
     
@@ -273,7 +279,7 @@ class Swagger extends BaseSchema
      */
     public function getSecurity()
     {
-        return $this->data['security'];
+        return $this->get('security');
     }
     
     /**
@@ -282,7 +288,7 @@ class Swagger extends BaseSchema
      */
     public function setSecurityDefinitions(SecurityDefinitions $securityDefinitions)
     {
-        $this->data['securityDefinitions'] = $securityDefinitions;
+        $this->set('securityDefinitions', $securityDefinitions);
         return $this;
     }
     
@@ -291,7 +297,7 @@ class Swagger extends BaseSchema
      */
     public function getSecurityDefinitions()
     {
-        return $this->data['securityDefinitions'];
+        return $this->get('securityDefinitions');
     }
     
     /**
@@ -300,7 +306,7 @@ class Swagger extends BaseSchema
      */
     public function addTag(Tag $tags)
     {
-        $this->data['tags'][] =& $tags;
+        $this->add('tags', $tags);
         return $this;
     }
     
@@ -309,7 +315,7 @@ class Swagger extends BaseSchema
      */
     public function getTags()
     {
-        return $this->data['tags'];
+        return $this->get('tags');
     }
     
     /**
@@ -319,7 +325,7 @@ class Swagger extends BaseSchema
      */
     public function setExternalDocs(ExternalDocs $externalDocs)
     {
-        $this->data['externalDocs'] = $externalDocs;
+        $this->set('externalDocs', $externalDocs);
         return $this;
     }
     
@@ -329,7 +335,7 @@ class Swagger extends BaseSchema
      */
     public function getExternalDocs()
     {
-        return $this->data['externalDocs'];
+        return $this->get('externalDocs');
     }
 
 }

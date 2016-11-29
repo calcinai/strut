@@ -13,6 +13,12 @@ class PathItem extends BaseSchema
     protected $data = [];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = [];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -36,7 +42,7 @@ class PathItem extends BaseSchema
      */
     public function setRef($ref)
     {
-        $this->data['$ref'] = $ref;
+        $this->set('$ref', $ref);
         return $this;
     }
     
@@ -45,7 +51,7 @@ class PathItem extends BaseSchema
      */
     public function getRef()
     {
-        return $this->data['$ref'];
+        return $this->get('$ref');
     }
     
     /**
@@ -54,7 +60,7 @@ class PathItem extends BaseSchema
      */
     public function setGet(Operation $get)
     {
-        $this->data['get'] = $get;
+        $this->set('get', $get);
         return $this;
     }
     
@@ -63,7 +69,7 @@ class PathItem extends BaseSchema
      */
     public function getGet()
     {
-        return $this->data['get'];
+        return $this->get('get');
     }
     
     /**
@@ -72,7 +78,7 @@ class PathItem extends BaseSchema
      */
     public function setPut(Operation $put)
     {
-        $this->data['put'] = $put;
+        $this->set('put', $put);
         return $this;
     }
     
@@ -81,7 +87,7 @@ class PathItem extends BaseSchema
      */
     public function getPut()
     {
-        return $this->data['put'];
+        return $this->get('put');
     }
     
     /**
@@ -90,7 +96,7 @@ class PathItem extends BaseSchema
      */
     public function setPost(Operation $post)
     {
-        $this->data['post'] = $post;
+        $this->set('post', $post);
         return $this;
     }
     
@@ -99,7 +105,7 @@ class PathItem extends BaseSchema
      */
     public function getPost()
     {
-        return $this->data['post'];
+        return $this->get('post');
     }
     
     /**
@@ -108,7 +114,7 @@ class PathItem extends BaseSchema
      */
     public function setDelete(Operation $delete)
     {
-        $this->data['delete'] = $delete;
+        $this->set('delete', $delete);
         return $this;
     }
     
@@ -117,7 +123,7 @@ class PathItem extends BaseSchema
      */
     public function getDelete()
     {
-        return $this->data['delete'];
+        return $this->get('delete');
     }
     
     /**
@@ -126,7 +132,7 @@ class PathItem extends BaseSchema
      */
     public function setOptions(Operation $options)
     {
-        $this->data['options'] = $options;
+        $this->set('options', $options);
         return $this;
     }
     
@@ -135,7 +141,7 @@ class PathItem extends BaseSchema
      */
     public function getOptions()
     {
-        return $this->data['options'];
+        return $this->get('options');
     }
     
     /**
@@ -144,7 +150,7 @@ class PathItem extends BaseSchema
      */
     public function setHead(Operation $head)
     {
-        $this->data['head'] = $head;
+        $this->set('head', $head);
         return $this;
     }
     
@@ -153,7 +159,7 @@ class PathItem extends BaseSchema
      */
     public function getHead()
     {
-        return $this->data['head'];
+        return $this->get('head');
     }
     
     /**
@@ -162,7 +168,7 @@ class PathItem extends BaseSchema
      */
     public function setPatch(Operation $patch)
     {
-        $this->data['patch'] = $patch;
+        $this->set('patch', $patch);
         return $this;
     }
     
@@ -171,7 +177,7 @@ class PathItem extends BaseSchema
      */
     public function getPatch()
     {
-        return $this->data['patch'];
+        return $this->get('patch');
     }
     
     /**
@@ -181,7 +187,7 @@ class PathItem extends BaseSchema
      */
     public function addParameter($parameters)
     {
-        $this->data['parameters'][] =& $parameters;
+        $this->add('parameters', $parameters);
         return $this;
     }
     
@@ -191,7 +197,7 @@ class PathItem extends BaseSchema
      */
     public function getParameters()
     {
-        return $this->data['parameters'];
+        return $this->get('parameters');
     }
 
 }

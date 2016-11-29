@@ -16,6 +16,12 @@ class Contact extends BaseSchema
     protected $data = [];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = [];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -40,7 +46,7 @@ class Contact extends BaseSchema
      */
     public function setName($name)
     {
-        $this->data['name'] = $name;
+        $this->set('name', $name);
         return $this;
     }
     
@@ -50,7 +56,7 @@ class Contact extends BaseSchema
      */
     public function getName()
     {
-        return $this->data['name'];
+        return $this->get('name');
     }
     
     /**
@@ -60,7 +66,7 @@ class Contact extends BaseSchema
      */
     public function setUrl($url)
     {
-        $this->data['url'] = $url;
+        $this->set('url', $url);
         return $this;
     }
     
@@ -70,7 +76,7 @@ class Contact extends BaseSchema
      */
     public function getUrl()
     {
-        return $this->data['url'];
+        return $this->get('url');
     }
     
     /**
@@ -80,7 +86,7 @@ class Contact extends BaseSchema
      */
     public function setEmail($email)
     {
-        $this->data['email'] = $email;
+        $this->set('email', $email);
         return $this;
     }
     
@@ -90,7 +96,7 @@ class Contact extends BaseSchema
      */
     public function getEmail()
     {
-        return $this->data['email'];
+        return $this->get('email');
     }
 
 }

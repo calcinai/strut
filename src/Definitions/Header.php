@@ -13,6 +13,12 @@ class Header extends BaseSchema
     protected $data = [];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = ['type' => ['string', 'number', 'integer', 'boolean', 'array'], 'collectionFormat' => ['csv', 'ssv', 'tsv', 'pipes']];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -36,7 +42,7 @@ class Header extends BaseSchema
      */
     public function setType($type)
     {
-        $this->data['type'] = $type;
+        $this->set('type', $type);
         return $this;
     }
     
@@ -45,7 +51,7 @@ class Header extends BaseSchema
      */
     public function getType()
     {
-        return $this->data['type'];
+        return $this->get('type');
     }
     
     /**
@@ -54,7 +60,7 @@ class Header extends BaseSchema
      */
     public function setFormat($format)
     {
-        $this->data['format'] = $format;
+        $this->set('format', $format);
         return $this;
     }
     
@@ -63,7 +69,7 @@ class Header extends BaseSchema
      */
     public function getFormat()
     {
-        return $this->data['format'];
+        return $this->get('format');
     }
     
     /**
@@ -72,7 +78,7 @@ class Header extends BaseSchema
      */
     public function setItems(PrimitivesItems $items)
     {
-        $this->data['items'] = $items;
+        $this->set('items', $items);
         return $this;
     }
     
@@ -81,7 +87,7 @@ class Header extends BaseSchema
      */
     public function getItems()
     {
-        return $this->data['items'];
+        return $this->get('items');
     }
     
     /**
@@ -90,7 +96,7 @@ class Header extends BaseSchema
      */
     public function setCollectionFormat($collectionFormat)
     {
-        $this->data['collectionFormat'] = $collectionFormat;
+        $this->set('collectionFormat', $collectionFormat);
         return $this;
     }
     
@@ -99,7 +105,7 @@ class Header extends BaseSchema
      */
     public function getCollectionFormat()
     {
-        return $this->data['collectionFormat'];
+        return $this->get('collectionFormat');
     }
     
     /**
@@ -108,7 +114,7 @@ class Header extends BaseSchema
      */
     public function setDefault($default)
     {
-        $this->data['default'] = $default;
+        $this->set('default', $default);
         return $this;
     }
     
@@ -117,7 +123,7 @@ class Header extends BaseSchema
      */
     public function getDefault()
     {
-        return $this->data['default'];
+        return $this->get('default');
     }
     
     /**
@@ -126,7 +132,7 @@ class Header extends BaseSchema
      */
     public function setMaximum($maximum)
     {
-        $this->data['maximum'] = $maximum;
+        $this->set('maximum', $maximum);
         return $this;
     }
     
@@ -135,7 +141,7 @@ class Header extends BaseSchema
      */
     public function getMaximum()
     {
-        return $this->data['maximum'];
+        return $this->get('maximum');
     }
     
     /**
@@ -144,7 +150,7 @@ class Header extends BaseSchema
      */
     public function setExclusiveMaximum($exclusiveMaximum)
     {
-        $this->data['exclusiveMaximum'] = $exclusiveMaximum;
+        $this->set('exclusiveMaximum', $exclusiveMaximum);
         return $this;
     }
     
@@ -153,7 +159,7 @@ class Header extends BaseSchema
      */
     public function getExclusiveMaximum()
     {
-        return $this->data['exclusiveMaximum'];
+        return $this->get('exclusiveMaximum');
     }
     
     /**
@@ -162,7 +168,7 @@ class Header extends BaseSchema
      */
     public function setMinimum($minimum)
     {
-        $this->data['minimum'] = $minimum;
+        $this->set('minimum', $minimum);
         return $this;
     }
     
@@ -171,7 +177,7 @@ class Header extends BaseSchema
      */
     public function getMinimum()
     {
-        return $this->data['minimum'];
+        return $this->get('minimum');
     }
     
     /**
@@ -180,7 +186,7 @@ class Header extends BaseSchema
      */
     public function setExclusiveMinimum($exclusiveMinimum)
     {
-        $this->data['exclusiveMinimum'] = $exclusiveMinimum;
+        $this->set('exclusiveMinimum', $exclusiveMinimum);
         return $this;
     }
     
@@ -189,7 +195,7 @@ class Header extends BaseSchema
      */
     public function getExclusiveMinimum()
     {
-        return $this->data['exclusiveMinimum'];
+        return $this->get('exclusiveMinimum');
     }
     
     /**
@@ -198,7 +204,7 @@ class Header extends BaseSchema
      */
     public function setMaxLength($maxLength)
     {
-        $this->data['maxLength'] = $maxLength;
+        $this->set('maxLength', $maxLength);
         return $this;
     }
     
@@ -207,7 +213,7 @@ class Header extends BaseSchema
      */
     public function getMaxLength()
     {
-        return $this->data['maxLength'];
+        return $this->get('maxLength');
     }
     
     /**
@@ -216,7 +222,7 @@ class Header extends BaseSchema
      */
     public function setMinLength($minLength)
     {
-        $this->data['minLength'] = $minLength;
+        $this->set('minLength', $minLength);
         return $this;
     }
     
@@ -225,7 +231,7 @@ class Header extends BaseSchema
      */
     public function getMinLength()
     {
-        return $this->data['minLength'];
+        return $this->get('minLength');
     }
     
     /**
@@ -234,7 +240,7 @@ class Header extends BaseSchema
      */
     public function setPattern($pattern)
     {
-        $this->data['pattern'] = $pattern;
+        $this->set('pattern', $pattern);
         return $this;
     }
     
@@ -243,7 +249,7 @@ class Header extends BaseSchema
      */
     public function getPattern()
     {
-        return $this->data['pattern'];
+        return $this->get('pattern');
     }
     
     /**
@@ -252,7 +258,7 @@ class Header extends BaseSchema
      */
     public function setMaxItems($maxItems)
     {
-        $this->data['maxItems'] = $maxItems;
+        $this->set('maxItems', $maxItems);
         return $this;
     }
     
@@ -261,7 +267,7 @@ class Header extends BaseSchema
      */
     public function getMaxItems()
     {
-        return $this->data['maxItems'];
+        return $this->get('maxItems');
     }
     
     /**
@@ -270,7 +276,7 @@ class Header extends BaseSchema
      */
     public function setMinItems($minItems)
     {
-        $this->data['minItems'] = $minItems;
+        $this->set('minItems', $minItems);
         return $this;
     }
     
@@ -279,7 +285,7 @@ class Header extends BaseSchema
      */
     public function getMinItems()
     {
-        return $this->data['minItems'];
+        return $this->get('minItems');
     }
     
     /**
@@ -288,7 +294,7 @@ class Header extends BaseSchema
      */
     public function setUniqueItems($uniqueItems)
     {
-        $this->data['uniqueItems'] = $uniqueItems;
+        $this->set('uniqueItems', $uniqueItems);
         return $this;
     }
     
@@ -297,7 +303,7 @@ class Header extends BaseSchema
      */
     public function getUniqueItems()
     {
-        return $this->data['uniqueItems'];
+        return $this->get('uniqueItems');
     }
     
     /**
@@ -306,7 +312,7 @@ class Header extends BaseSchema
      */
     public function addEnum($enum)
     {
-        $this->data['enum'][] =& $enum;
+        $this->add('enum', $enum);
         return $this;
     }
     
@@ -315,7 +321,7 @@ class Header extends BaseSchema
      */
     public function getEnum()
     {
-        return $this->data['enum'];
+        return $this->get('enum');
     }
     
     /**
@@ -324,7 +330,7 @@ class Header extends BaseSchema
      */
     public function setMultipleOf($multipleOf)
     {
-        $this->data['multipleOf'] = $multipleOf;
+        $this->set('multipleOf', $multipleOf);
         return $this;
     }
     
@@ -333,7 +339,7 @@ class Header extends BaseSchema
      */
     public function getMultipleOf()
     {
-        return $this->data['multipleOf'];
+        return $this->get('multipleOf');
     }
     
     /**
@@ -342,7 +348,7 @@ class Header extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->set('description', $description);
         return $this;
     }
     
@@ -351,7 +357,7 @@ class Header extends BaseSchema
      */
     public function getDescription()
     {
-        return $this->data['description'];
+        return $this->get('description');
     }
 
 }

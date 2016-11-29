@@ -10,6 +10,8 @@ abstract class BaseSchema implements \JsonSerializable
 {
     protected $data;
     
+    protected static $enums = [];
+    
     protected static $properties = [];
     
     protected static $pattern_properties = [];
@@ -53,8 +55,19 @@ abstract class BaseSchema implements \JsonSerializable
     public function add($property_name, $value)
     {
         $this->validateProperty($property_name, $value);
-        $this->data[$property_name][] = $value;
+        $this->data[$property_name][] =& $value;
         return $this;
+    }
+    
+    /**
+     * Property getter
+     *
+     * @param $property_name
+     * @return $this
+     */
+    public function get($property_name)
+    {
+        return $this->data[$property_name];
     }
     
     /**
@@ -64,6 +77,10 @@ abstract class BaseSchema implements \JsonSerializable
      */
     private function validateProperty($property_name, $value)
     {
+        //First check enums
+        if (isset(static::$enums[$property_name]) && !in_array($value, static::$enums[$property_name])) {
+            throw new \InvalidArgumentException(sprintf('Value for %s is not specified in the enum', $property_name));
+        }
         //Test regular properties
         if (isset(static::$properties[$property_name])) {
             //There's no way to constrain it at this point
@@ -154,7 +171,11 @@ abstract class BaseSchema implements \JsonSerializable
                 }
             }
             //At this point we've done our best to cast, just leave as-is.
-            $this->data[$property_name] = $property;
+            if (is_scalar($property)) {
+                $this->set($property_name, $property);
+            } else {
+                $this->data[$property_name] = $property;
+            }
         }
     }
     

@@ -16,6 +16,12 @@ class Info extends BaseSchema
     protected $data = [];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = [];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -40,7 +46,7 @@ class Info extends BaseSchema
      */
     public function setTitle($title)
     {
-        $this->data['title'] = $title;
+        $this->set('title', $title);
         return $this;
     }
     
@@ -50,7 +56,7 @@ class Info extends BaseSchema
      */
     public function getTitle()
     {
-        return $this->data['title'];
+        return $this->get('title');
     }
     
     /**
@@ -60,7 +66,7 @@ class Info extends BaseSchema
      */
     public function setVersion($version)
     {
-        $this->data['version'] = $version;
+        $this->set('version', $version);
         return $this;
     }
     
@@ -70,7 +76,7 @@ class Info extends BaseSchema
      */
     public function getVersion()
     {
-        return $this->data['version'];
+        return $this->get('version');
     }
     
     /**
@@ -80,7 +86,7 @@ class Info extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->set('description', $description);
         return $this;
     }
     
@@ -90,7 +96,7 @@ class Info extends BaseSchema
      */
     public function getDescription()
     {
-        return $this->data['description'];
+        return $this->get('description');
     }
     
     /**
@@ -100,7 +106,7 @@ class Info extends BaseSchema
      */
     public function setTermsOfService($termsOfService)
     {
-        $this->data['termsOfService'] = $termsOfService;
+        $this->set('termsOfService', $termsOfService);
         return $this;
     }
     
@@ -110,7 +116,7 @@ class Info extends BaseSchema
      */
     public function getTermsOfService()
     {
-        return $this->data['termsOfService'];
+        return $this->get('termsOfService');
     }
     
     /**
@@ -120,7 +126,7 @@ class Info extends BaseSchema
      */
     public function setContact(Contact $contact)
     {
-        $this->data['contact'] = $contact;
+        $this->set('contact', $contact);
         return $this;
     }
     
@@ -130,7 +136,7 @@ class Info extends BaseSchema
      */
     public function getContact()
     {
-        return $this->data['contact'];
+        return $this->get('contact');
     }
     
     /**
@@ -139,7 +145,7 @@ class Info extends BaseSchema
      */
     public function setLicense(License $license)
     {
-        $this->data['license'] = $license;
+        $this->set('license', $license);
         return $this;
     }
     
@@ -148,7 +154,7 @@ class Info extends BaseSchema
      */
     public function getLicense()
     {
-        return $this->data['license'];
+        return $this->get('license');
     }
 
 }

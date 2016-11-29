@@ -13,6 +13,12 @@ class ApiKeySecurity extends BaseSchema
     protected $data = ['type' => 'apiKey'];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = ['type' => ['apiKey'], 'in' => ['header', 'query']];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -36,7 +42,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function setType($type)
     {
-        $this->data['type'] = $type;
+        $this->set('type', $type);
         return $this;
     }
     
@@ -45,7 +51,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function getType()
     {
-        return $this->data['type'];
+        return $this->get('type');
     }
     
     /**
@@ -54,7 +60,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function setName($name)
     {
-        $this->data['name'] = $name;
+        $this->set('name', $name);
         return $this;
     }
     
@@ -63,7 +69,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function getName()
     {
-        return $this->data['name'];
+        return $this->get('name');
     }
     
     /**
@@ -72,7 +78,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function setIn($in)
     {
-        $this->data['in'] = $in;
+        $this->set('in', $in);
         return $this;
     }
     
@@ -81,7 +87,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function getIn()
     {
-        return $this->data['in'];
+        return $this->get('in');
     }
     
     /**
@@ -90,7 +96,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->set('description', $description);
         return $this;
     }
     
@@ -99,7 +105,7 @@ class ApiKeySecurity extends BaseSchema
      */
     public function getDescription()
     {
-        return $this->data['description'];
+        return $this->get('description');
     }
 
 }

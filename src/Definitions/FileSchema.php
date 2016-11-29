@@ -16,6 +16,12 @@ class FileSchema extends BaseSchema
     protected $data = ['type' => 'file'];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = ['type' => ['file']];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -39,7 +45,7 @@ class FileSchema extends BaseSchema
      */
     public function setFormat($format)
     {
-        $this->data['format'] = $format;
+        $this->set('format', $format);
         return $this;
     }
     
@@ -48,7 +54,7 @@ class FileSchema extends BaseSchema
      */
     public function getFormat()
     {
-        return $this->data['format'];
+        return $this->get('format');
     }
     
     /**
@@ -57,7 +63,7 @@ class FileSchema extends BaseSchema
      */
     public function setTitle($title)
     {
-        $this->data['title'] = $title;
+        $this->set('title', $title);
         return $this;
     }
     
@@ -66,7 +72,7 @@ class FileSchema extends BaseSchema
      */
     public function getTitle()
     {
-        return $this->data['title'];
+        return $this->get('title');
     }
     
     /**
@@ -75,7 +81,7 @@ class FileSchema extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->set('description', $description);
         return $this;
     }
     
@@ -84,7 +90,7 @@ class FileSchema extends BaseSchema
      */
     public function getDescription()
     {
-        return $this->data['description'];
+        return $this->get('description');
     }
     
     /**
@@ -93,7 +99,7 @@ class FileSchema extends BaseSchema
      */
     public function setDefault($default)
     {
-        $this->data['default'] = $default;
+        $this->set('default', $default);
         return $this;
     }
     
@@ -102,7 +108,7 @@ class FileSchema extends BaseSchema
      */
     public function getDefault()
     {
-        return $this->data['default'];
+        return $this->get('default');
     }
     
     /**
@@ -111,7 +117,7 @@ class FileSchema extends BaseSchema
      */
     public function addRequired($required)
     {
-        $this->data['required'][] =& $required;
+        $this->add('required', $required);
         return $this;
     }
     
@@ -120,7 +126,7 @@ class FileSchema extends BaseSchema
      */
     public function getRequired()
     {
-        return $this->data['required'];
+        return $this->get('required');
     }
     
     /**
@@ -129,7 +135,7 @@ class FileSchema extends BaseSchema
      */
     public function setType($type)
     {
-        $this->data['type'] = $type;
+        $this->set('type', $type);
         return $this;
     }
     
@@ -138,7 +144,7 @@ class FileSchema extends BaseSchema
      */
     public function getType()
     {
-        return $this->data['type'];
+        return $this->get('type');
     }
     
     /**
@@ -147,7 +153,7 @@ class FileSchema extends BaseSchema
      */
     public function setReadOnly($readOnly)
     {
-        $this->data['readOnly'] = $readOnly;
+        $this->set('readOnly', $readOnly);
         return $this;
     }
     
@@ -156,7 +162,7 @@ class FileSchema extends BaseSchema
      */
     public function getReadOnly()
     {
-        return $this->data['readOnly'];
+        return $this->get('readOnly');
     }
     
     /**
@@ -166,7 +172,7 @@ class FileSchema extends BaseSchema
      */
     public function setExternalDocs(ExternalDocs $externalDocs)
     {
-        $this->data['externalDocs'] = $externalDocs;
+        $this->set('externalDocs', $externalDocs);
         return $this;
     }
     
@@ -176,7 +182,7 @@ class FileSchema extends BaseSchema
      */
     public function getExternalDocs()
     {
-        return $this->data['externalDocs'];
+        return $this->get('externalDocs');
     }
     
     /**
@@ -185,7 +191,7 @@ class FileSchema extends BaseSchema
      */
     public function setExample($example)
     {
-        $this->data['example'] = $example;
+        $this->set('example', $example);
         return $this;
     }
     
@@ -194,7 +200,7 @@ class FileSchema extends BaseSchema
      */
     public function getExample()
     {
-        return $this->data['example'];
+        return $this->get('example');
     }
 
 }

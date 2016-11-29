@@ -13,6 +13,12 @@ class BasicAuthenticationSecurity extends BaseSchema
     protected $data = ['type' => 'basic'];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = ['type' => ['basic']];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -36,7 +42,7 @@ class BasicAuthenticationSecurity extends BaseSchema
      */
     public function setType($type)
     {
-        $this->data['type'] = $type;
+        $this->set('type', $type);
         return $this;
     }
     
@@ -45,7 +51,7 @@ class BasicAuthenticationSecurity extends BaseSchema
      */
     public function getType()
     {
-        return $this->data['type'];
+        return $this->get('type');
     }
     
     /**
@@ -54,7 +60,7 @@ class BasicAuthenticationSecurity extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->set('description', $description);
         return $this;
     }
     
@@ -63,7 +69,7 @@ class BasicAuthenticationSecurity extends BaseSchema
      */
     public function getDescription()
     {
-        return $this->data['description'];
+        return $this->get('description');
     }
 
 }

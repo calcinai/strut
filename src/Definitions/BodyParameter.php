@@ -13,6 +13,12 @@ class BodyParameter extends BaseSchema
     protected $data = ['in' => 'body'];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = ['in' => ['body']];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -37,7 +43,7 @@ class BodyParameter extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->set('description', $description);
         return $this;
     }
     
@@ -47,7 +53,7 @@ class BodyParameter extends BaseSchema
      */
     public function getDescription()
     {
-        return $this->data['description'];
+        return $this->get('description');
     }
     
     /**
@@ -57,7 +63,7 @@ class BodyParameter extends BaseSchema
      */
     public function setName($name)
     {
-        $this->data['name'] = $name;
+        $this->set('name', $name);
         return $this;
     }
     
@@ -67,7 +73,7 @@ class BodyParameter extends BaseSchema
      */
     public function getName()
     {
-        return $this->data['name'];
+        return $this->get('name');
     }
     
     /**
@@ -77,7 +83,7 @@ class BodyParameter extends BaseSchema
      */
     public function setIn($in)
     {
-        $this->data['in'] = $in;
+        $this->set('in', $in);
         return $this;
     }
     
@@ -87,7 +93,7 @@ class BodyParameter extends BaseSchema
      */
     public function getIn()
     {
-        return $this->data['in'];
+        return $this->get('in');
     }
     
     /**
@@ -97,7 +103,7 @@ class BodyParameter extends BaseSchema
      */
     public function setRequired($required)
     {
-        $this->data['required'] = $required;
+        $this->set('required', $required);
         return $this;
     }
     
@@ -107,7 +113,7 @@ class BodyParameter extends BaseSchema
      */
     public function getRequired()
     {
-        return $this->data['required'];
+        return $this->get('required');
     }
     
     /**
@@ -117,7 +123,7 @@ class BodyParameter extends BaseSchema
      */
     public function setSchema(Schema $schema)
     {
-        $this->data['schema'] = $schema;
+        $this->set('schema', $schema);
         return $this;
     }
     
@@ -127,7 +133,7 @@ class BodyParameter extends BaseSchema
      */
     public function getSchema()
     {
-        return $this->data['schema'];
+        return $this->get('schema');
     }
 
 }

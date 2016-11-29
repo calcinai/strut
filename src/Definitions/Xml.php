@@ -13,6 +13,12 @@ class Xml extends BaseSchema
     protected $data = [];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = [];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -36,7 +42,7 @@ class Xml extends BaseSchema
      */
     public function setName($name)
     {
-        $this->data['name'] = $name;
+        $this->set('name', $name);
         return $this;
     }
     
@@ -45,7 +51,7 @@ class Xml extends BaseSchema
      */
     public function getName()
     {
-        return $this->data['name'];
+        return $this->get('name');
     }
     
     /**
@@ -54,7 +60,7 @@ class Xml extends BaseSchema
      */
     public function setNamespace($namespace)
     {
-        $this->data['namespace'] = $namespace;
+        $this->set('namespace', $namespace);
         return $this;
     }
     
@@ -63,7 +69,7 @@ class Xml extends BaseSchema
      */
     public function getNamespace()
     {
-        return $this->data['namespace'];
+        return $this->get('namespace');
     }
     
     /**
@@ -72,7 +78,7 @@ class Xml extends BaseSchema
      */
     public function setPrefix($prefix)
     {
-        $this->data['prefix'] = $prefix;
+        $this->set('prefix', $prefix);
         return $this;
     }
     
@@ -81,7 +87,7 @@ class Xml extends BaseSchema
      */
     public function getPrefix()
     {
-        return $this->data['prefix'];
+        return $this->get('prefix');
     }
     
     /**
@@ -90,7 +96,7 @@ class Xml extends BaseSchema
      */
     public function setAttribute($attribute)
     {
-        $this->data['attribute'] = $attribute;
+        $this->set('attribute', $attribute);
         return $this;
     }
     
@@ -99,7 +105,7 @@ class Xml extends BaseSchema
      */
     public function getAttribute()
     {
-        return $this->data['attribute'];
+        return $this->get('attribute');
     }
     
     /**
@@ -108,7 +114,7 @@ class Xml extends BaseSchema
      */
     public function setWrapped($wrapped)
     {
-        $this->data['wrapped'] = $wrapped;
+        $this->set('wrapped', $wrapped);
         return $this;
     }
     
@@ -117,7 +123,7 @@ class Xml extends BaseSchema
      */
     public function getWrapped()
     {
-        return $this->data['wrapped'];
+        return $this->get('wrapped');
     }
 
 }

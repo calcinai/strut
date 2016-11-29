@@ -13,6 +13,12 @@ class Response extends BaseSchema
     protected $data = [];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = [];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -36,7 +42,7 @@ class Response extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->set('description', $description);
         return $this;
     }
     
@@ -45,7 +51,7 @@ class Response extends BaseSchema
      */
     public function getDescription()
     {
-        return $this->data['description'];
+        return $this->get('description');
     }
     
     /**
@@ -54,7 +60,7 @@ class Response extends BaseSchema
      */
     public function setSchema($schema)
     {
-        $this->data['schema'] = $schema;
+        $this->set('schema', $schema);
         return $this;
     }
     
@@ -63,7 +69,7 @@ class Response extends BaseSchema
      */
     public function getSchema()
     {
-        return $this->data['schema'];
+        return $this->get('schema');
     }
     
     /**
@@ -72,7 +78,7 @@ class Response extends BaseSchema
      */
     public function setHeaders(Headers $headers)
     {
-        $this->data['headers'] = $headers;
+        $this->set('headers', $headers);
         return $this;
     }
     
@@ -81,7 +87,7 @@ class Response extends BaseSchema
      */
     public function getHeaders()
     {
-        return $this->data['headers'];
+        return $this->get('headers');
     }
     
     /**
@@ -90,7 +96,7 @@ class Response extends BaseSchema
      */
     public function setExamples(Examples $examples)
     {
-        $this->data['examples'] = $examples;
+        $this->set('examples', $examples);
         return $this;
     }
     
@@ -99,7 +105,7 @@ class Response extends BaseSchema
      */
     public function getExamples()
     {
-        return $this->data['examples'];
+        return $this->get('examples');
     }
 
 }

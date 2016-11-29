@@ -13,6 +13,12 @@ class JsonReference extends BaseSchema
     protected $data = [];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = [];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -36,7 +42,7 @@ class JsonReference extends BaseSchema
      */
     public function setRef($ref)
     {
-        $this->data['$ref'] = $ref;
+        $this->set('$ref', $ref);
         return $this;
     }
     
@@ -45,7 +51,7 @@ class JsonReference extends BaseSchema
      */
     public function getRef()
     {
-        return $this->data['$ref'];
+        return $this->get('$ref');
     }
 
 }

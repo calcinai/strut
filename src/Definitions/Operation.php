@@ -13,6 +13,12 @@ class Operation extends BaseSchema
     protected $data = [];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = [];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -36,7 +42,7 @@ class Operation extends BaseSchema
      */
     public function addTag($tags)
     {
-        $this->data['tags'][] =& $tags;
+        $this->add('tags', $tags);
         return $this;
     }
     
@@ -45,7 +51,7 @@ class Operation extends BaseSchema
      */
     public function getTags()
     {
-        return $this->data['tags'];
+        return $this->get('tags');
     }
     
     /**
@@ -55,7 +61,7 @@ class Operation extends BaseSchema
      */
     public function setSummary($summary)
     {
-        $this->data['summary'] = $summary;
+        $this->set('summary', $summary);
         return $this;
     }
     
@@ -65,7 +71,7 @@ class Operation extends BaseSchema
      */
     public function getSummary()
     {
-        return $this->data['summary'];
+        return $this->get('summary');
     }
     
     /**
@@ -75,7 +81,7 @@ class Operation extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->set('description', $description);
         return $this;
     }
     
@@ -85,7 +91,7 @@ class Operation extends BaseSchema
      */
     public function getDescription()
     {
-        return $this->data['description'];
+        return $this->get('description');
     }
     
     /**
@@ -95,7 +101,7 @@ class Operation extends BaseSchema
      */
     public function setExternalDocs(ExternalDocs $externalDocs)
     {
-        $this->data['externalDocs'] = $externalDocs;
+        $this->set('externalDocs', $externalDocs);
         return $this;
     }
     
@@ -105,7 +111,7 @@ class Operation extends BaseSchema
      */
     public function getExternalDocs()
     {
-        return $this->data['externalDocs'];
+        return $this->get('externalDocs');
     }
     
     /**
@@ -115,7 +121,7 @@ class Operation extends BaseSchema
      */
     public function setOperationId($operationId)
     {
-        $this->data['operationId'] = $operationId;
+        $this->set('operationId', $operationId);
         return $this;
     }
     
@@ -125,7 +131,7 @@ class Operation extends BaseSchema
      */
     public function getOperationId()
     {
-        return $this->data['operationId'];
+        return $this->get('operationId');
     }
     
     /**
@@ -135,7 +141,7 @@ class Operation extends BaseSchema
      */
     public function setProduces($produces)
     {
-        $this->data['produces'] = $produces;
+        $this->set('produces', $produces);
         return $this;
     }
     
@@ -145,7 +151,7 @@ class Operation extends BaseSchema
      */
     public function getProduces()
     {
-        return $this->data['produces'];
+        return $this->get('produces');
     }
     
     /**
@@ -155,7 +161,7 @@ class Operation extends BaseSchema
      */
     public function setConsumes($consumes)
     {
-        $this->data['consumes'] = $consumes;
+        $this->set('consumes', $consumes);
         return $this;
     }
     
@@ -165,7 +171,7 @@ class Operation extends BaseSchema
      */
     public function getConsumes()
     {
-        return $this->data['consumes'];
+        return $this->get('consumes');
     }
     
     /**
@@ -175,7 +181,7 @@ class Operation extends BaseSchema
      */
     public function addParameter($parameters)
     {
-        $this->data['parameters'][] =& $parameters;
+        $this->add('parameters', $parameters);
         return $this;
     }
     
@@ -185,7 +191,7 @@ class Operation extends BaseSchema
      */
     public function getParameters()
     {
-        return $this->data['parameters'];
+        return $this->get('parameters');
     }
     
     /**
@@ -195,7 +201,7 @@ class Operation extends BaseSchema
      */
     public function setResponses(Responses $responses)
     {
-        $this->data['responses'] = $responses;
+        $this->set('responses', $responses);
         return $this;
     }
     
@@ -205,7 +211,7 @@ class Operation extends BaseSchema
      */
     public function getResponses()
     {
-        return $this->data['responses'];
+        return $this->get('responses');
     }
     
     /**
@@ -215,7 +221,7 @@ class Operation extends BaseSchema
      */
     public function addScheme($schemes)
     {
-        $this->data['schemes'][] =& $schemes;
+        $this->add('schemes', $schemes);
         return $this;
     }
     
@@ -225,7 +231,7 @@ class Operation extends BaseSchema
      */
     public function getSchemes()
     {
-        return $this->data['schemes'];
+        return $this->get('schemes');
     }
     
     /**
@@ -234,7 +240,7 @@ class Operation extends BaseSchema
      */
     public function setDeprecated($deprecated)
     {
-        $this->data['deprecated'] = $deprecated;
+        $this->set('deprecated', $deprecated);
         return $this;
     }
     
@@ -243,7 +249,7 @@ class Operation extends BaseSchema
      */
     public function getDeprecated()
     {
-        return $this->data['deprecated'];
+        return $this->get('deprecated');
     }
     
     /**
@@ -252,7 +258,7 @@ class Operation extends BaseSchema
      */
     public function addSecurity(SecurityRequirement $security)
     {
-        $this->data['security'][] =& $security;
+        $this->add('security', $security);
         return $this;
     }
     
@@ -261,7 +267,7 @@ class Operation extends BaseSchema
      */
     public function getSecurity()
     {
-        return $this->data['security'];
+        return $this->get('security');
     }
 
 }

@@ -13,6 +13,12 @@ class Oauth2AccessCodeSecurity extends BaseSchema
     protected $data = ['type' => 'oauth2', 'flow' => 'accessCode'];
     
     /**
+     * Any enums that exist on this object
+     * @var array
+     */
+    protected static $enums = ['type' => ['oauth2'], 'flow' => ['accessCode']];
+    
+    /**
      * Properties and types
      * @var array
      */
@@ -36,7 +42,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setType($type)
     {
-        $this->data['type'] = $type;
+        $this->set('type', $type);
         return $this;
     }
     
@@ -45,7 +51,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function getType()
     {
-        return $this->data['type'];
+        return $this->get('type');
     }
     
     /**
@@ -54,7 +60,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setFlow($flow)
     {
-        $this->data['flow'] = $flow;
+        $this->set('flow', $flow);
         return $this;
     }
     
@@ -63,7 +69,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function getFlow()
     {
-        return $this->data['flow'];
+        return $this->get('flow');
     }
     
     /**
@@ -72,7 +78,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setScopes(Oauth2Scopes $scopes)
     {
-        $this->data['scopes'] = $scopes;
+        $this->set('scopes', $scopes);
         return $this;
     }
     
@@ -81,7 +87,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function getScopes()
     {
-        return $this->data['scopes'];
+        return $this->get('scopes');
     }
     
     /**
@@ -90,7 +96,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setAuthorizationUrl($authorizationUrl)
     {
-        $this->data['authorizationUrl'] = $authorizationUrl;
+        $this->set('authorizationUrl', $authorizationUrl);
         return $this;
     }
     
@@ -99,7 +105,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function getAuthorizationUrl()
     {
-        return $this->data['authorizationUrl'];
+        return $this->get('authorizationUrl');
     }
     
     /**
@@ -108,7 +114,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setTokenUrl($tokenUrl)
     {
-        $this->data['tokenUrl'] = $tokenUrl;
+        $this->set('tokenUrl', $tokenUrl);
         return $this;
     }
     
@@ -117,7 +123,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function getTokenUrl()
     {
-        return $this->data['tokenUrl'];
+        return $this->get('tokenUrl');
     }
     
     /**
@@ -126,7 +132,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function setDescription($description)
     {
-        $this->data['description'] = $description;
+        $this->set('description', $description);
         return $this;
     }
     
@@ -135,7 +141,7 @@ class Oauth2AccessCodeSecurity extends BaseSchema
      */
     public function getDescription()
     {
-        return $this->data['description'];
+        return $this->get('description');
     }
 
 }
