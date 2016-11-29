@@ -16,9 +16,7 @@ The test case for this is the OpenAPI petstore.
 
 ```php
 $schema = json_decode(file_get_contents('http://petstore.swagger.io/v2/swagger.json'));
-
 $swagger = \Calcinai\Strut\Swagger::create($schema);
-
 print_r($swagger);
 ```
 
@@ -27,64 +25,64 @@ This will produce (snipped):
 ```
 Swagger Object
 (
-    [data:protected] => Array
+  [data:protected] => Array
+    (
+      [swagger] => 2.0
+      [info] => Calcinai\Strut\Definitions\Info Object
         (
-            [swagger] => 2.0
-            [info] => Calcinai\Strut\Definitions\Info Object
+          [data:protected] => Array
+            (
+              [description] => This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.
+              [version] => 1.0.0
+              [title] => Swagger Petstore
+              [termsOfService] => http://swagger.io/terms/
+              [contact] => Calcinai\Strut\Definitions\Contact Object
                 (
-                    [data:protected] => Array
-                        (
-                            [description] => This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.
-                            [version] => 1.0.0
-                            [title] => Swagger Petstore
-                            [termsOfService] => http://swagger.io/terms/
-                            [contact] => Calcinai\Strut\Definitions\Contact Object
-                                (
-                                    [data:protected] => Array
-                                        (
-                                            [email] => apiteam@swagger.io
-                                        )
-
-                                )
-
-                            [license] => Calcinai\Strut\Definitions\License Object
-                                (
-                                    [data:protected] => Array
-                                        (
-                                            [name] => Apache 2.0
-                                            [url] => http://www.apache.org/licenses/LICENSE-2.0.html
-                                        )
-
-                                )
-
-                        )
+                  [data:protected] => Array
+                    (
+                      [email] => apiteam@swagger.io
+                    )
 
                 )
 
-            [host] => petstore.swagger.io
-            [basePath] => /v2
-            [tags] => Array
+              [license] => Calcinai\Strut\Definitions\License Object
                 (
-                    [0] => Calcinai\Strut\Definitions\Tag Object
-                        (
-                            [data:protected] => Array
-                                (
-                                    [name] => pet
-                                    [description] => Everything about your Pets
-                                    [externalDocs] => Calcinai\Strut\Definitions\ExternalDocs Object
-                                        (
-                                            [data:protected] => Array
-                                                (
-                                                    [description] => Find out more
-                                                    [url] => http://swagger.io
-                                                )
+                  [data:protected] => Array
+                    (
+                      [name] => Apache 2.0
+                      [url] => http://www.apache.org/licenses/LICENSE-2.0.html
+                    )
 
-                                        )
+                )
+
+            )
+
+        )
+
+      [host] => petstore.swagger.io
+      [basePath] => /v2
+      [tags] => Array
+        (
+          [0] => Calcinai\Strut\Definitions\Tag Object
+            (
+              [data:protected] => Array
+                (
+                  [name] => pet
+                  [description] => Everything about your Pets
+                  [externalDocs] => Calcinai\Strut\Definitions\ExternalDocs Object
+                    (
+                      [data:protected] => Array
+                        (
+                          [description] => Find out more
+                          [url] => http://swagger.io
+                        )
+
+                    )
 ...
 ```
 
 
-### Creating documents
+### Creating and modifying documents
 
 The following is an example of how that schema would be programatically generated:
 
