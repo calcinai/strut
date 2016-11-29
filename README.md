@@ -12,6 +12,8 @@ composer require calcinai/strut
 ## Usage
 The test case for this is the OpenAPI petstore.
 
+The library will deserialize an OpenAPI specification into native PHP objects, then serialize it back into its original form, with the only differences (sometimes) being the order of properties in objects (which is of no consequence).
+
 ### Loading documents
 
 ```php

@@ -28,7 +28,7 @@ abstract class BaseSchema implements \JsonSerializable
     }
     
     /**
-     * Pattern property setter.  Could do with a clean up - too many return points
+     * Pattern property setter
      *
      * @param $property_name
      * @param $value
@@ -43,12 +43,41 @@ abstract class BaseSchema implements \JsonSerializable
     }
     
     /**
+     * Pattern property array setter
+     *
+     * @param $property_name
+     * @param $value
+     * @return $this
+     * @throws \Exception
+     */
+    public function add($property_name, $value)
+    {
+        $this->validateProperty($property_name, $value);
+        $this->data[$property_name][] = $value;
+        return $this;
+    }
+    
+    /**
      * @param $property_name
      * @param $value
      * @return bool
      */
     private function validateProperty($property_name, $value)
     {
+        //Test regular properties
+        if (isset(static::$properties[$property_name])) {
+            //There's no way to constrain it at this point
+            if (empty(static::$properties[$property_name])) {
+                return true;
+            }
+            foreach (static::$properties[$property_name] as $allowed_class) {
+                $fq_class = self::getFQCN($allowed_class);
+                if ($value instanceof $fq_class) {
+                    return true;
+                }
+            }
+        }
+        //Then test additional
         if (is_bool(static::$additional_properties) && static::$additional_properties) {
             return true;
         } elseif (is_array(static::$additional_properties)) {
@@ -59,6 +88,7 @@ abstract class BaseSchema implements \JsonSerializable
                 }
             }
         }
+        //Then test pattern
         foreach (static::$pattern_properties as $pattern => $types) {
             //Find an unused delimiter
             foreach (['/', '#', '+', '~', '%'] as $delimiter) {
@@ -91,48 +121,40 @@ abstract class BaseSchema implements \JsonSerializable
     private function parseData($data)
     {
         foreach ($data as $property_name => $property) {
-            //In here is for direct (real) properties.
+            //I think the best way to handle this, will at least always be consistent
+            //without writing the same code twice.
+            $types_to_try = [];
+            //Collect regular props
             if (isset(static::$properties[$property_name])) {
-                foreach (static::$properties[$property_name] as $class) {
-                    /** @var self $class */
-                    $class = self::getFQCN($class);
+                $types_to_try = array_merge($types_to_try, static::$properties[$property_name]);
+            }
+            //Collect pattern props
+            foreach (static::$pattern_properties as $pattern_property) {
+                $types_to_try = array_merge($types_to_try, $pattern_property);
+            }
+            //Collect additional props
+            if (is_array(static::$additional_properties)) {
+                $types_to_try = array_merge($types_to_try, static::$additional_properties);
+            }
+            foreach ($types_to_try as $type) {
+                /** @var self $class */
+                $class = self::getFQCN($type);
+                try {
                     if (is_array($property)) {
                         foreach ($property as $property_element) {
-                            $this->data[$property_name][] = $class::create($property_element);
+                            $this->add($property_name, $class::create($property_element));
                         }
                     } else {
-                        $this->data[$property_name] = $class::create($property);
-                    }
-                }
-                //If it's not a typed variable, just assign it.
-                if (!isset($this->data[$property_name])) {
-                    $this->data[$property_name] = $property;
-                }
-                //Otherwise try for pattern and extra
-            } else {
-                //I think the best way to handle this, a little bit inefficient, but will at least always be consistent
-                //without writing the same code twice.
-                $types_to_try = [];
-                //Collect pattern props
-                foreach (static::$pattern_properties as $pattern_property) {
-                    $types_to_try = array_merge($types_to_try, $pattern_property);
-                }
-                //Collect additional props
-                if (is_array(static::$additional_properties)) {
-                    $types_to_try = array_merge($types_to_try, static::$additional_properties);
-                }
-                foreach ($types_to_try as $type) {
-                    /** @var self $class */
-                    $class = self::getFQCN($type);
-                    try {
                         $this->set($property_name, $class::create($property));
-                        continue 2;
-                    } catch (\InvalidArgumentException $e) {
-                        //let it continue to the next type
                     }
+                    //Didn't throw, can stop trying.
+                    continue 2;
+                } catch (\InvalidArgumentException $e) {
+                    //let it continue to the next type
                 }
-                //What to do here? It's invalid at this point
             }
+            //At this point we've done our best to cast, just leave as-is.
+            $this->data[$property_name] = $property;
         }
     }
     
