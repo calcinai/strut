@@ -6,7 +6,7 @@
 namespace Calcinai\Strut;
 
 
-abstract class BaseSchema implements \JsonSerializable
+abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerializable
 {
     protected $data;
     
@@ -214,6 +214,22 @@ abstract class BaseSchema implements \JsonSerializable
     function jsonSerialize()
     {
         return $this->data;
+    }
+    
+    /**
+     * Retrieve an external iterator
+     */
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->data);
+    }
+    
+    /**
+     * Count elements of an object
+     */
+    public function count()
+    {
+        return count($this->data);
     }
 
 }
