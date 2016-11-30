@@ -98,6 +98,9 @@ abstract class BaseSchema implements \JsonSerializable
         if (is_bool(static::$additional_properties) && static::$additional_properties) {
             return true;
         } elseif (is_array(static::$additional_properties)) {
+            if (empty(static::$additional_properties)) {
+                return true;
+            }
             foreach (static::$additional_properties as $allowed_class) {
                 $fq_class = self::getFQCN($allowed_class);
                 if ($value instanceof $fq_class) {
@@ -153,30 +156,38 @@ abstract class BaseSchema implements \JsonSerializable
             if (is_array(static::$additional_properties)) {
                 $types_to_try = array_merge($types_to_try, static::$additional_properties);
             }
-            foreach ($types_to_try as $type) {
-                /** @var self $class */
-                $class = self::getFQCN($type);
-                try {
-                    if (is_array($property)) {
-                        foreach ($property as $property_element) {
-                            $this->add($property_name, $class::create($property_element));
-                        }
-                    } else {
-                        $this->set($property_name, $class::create($property));
-                    }
-                    //Didn't throw, can stop trying.
-                    continue 2;
-                } catch (\InvalidArgumentException $e) {
-                    //let it continue to the next type
+            if (is_array($property)) {
+                foreach ($property as $property_element) {
+                    $this->add($property_name, self::tryToCast($types_to_try, $property_element));
                 }
-            }
-            //At this point we've done our best to cast, just leave as-is.
-            if (is_scalar($property)) {
-                $this->set($property_name, $property);
             } else {
-                $this->data[$property_name] = $property;
+                $this->set($property_name, self::tryToCast($types_to_try, $property));
             }
         }
+    }
+    
+    /**
+     * @param $types_to_try
+     * @param $object
+     * @return BaseSchema
+     */
+    private static function tryToCast($types_to_try, $object)
+    {
+        //If there are no types, return as-is.
+        if (empty($types_to_try)) {
+            return $object;
+        }
+        foreach ($types_to_try as $type) {
+            /** @var self $class */
+            $class = self::getFQCN($type);
+            try {
+                return $class::create($object);
+            } catch (\InvalidArgumentException $e) {
+                //let it continue to the next type
+            }
+        }
+        //If it can't go into any of the possible types, throw.
+        throw new \InvalidArgumentException();
     }
     
     /**
