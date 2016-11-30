@@ -63,11 +63,22 @@ abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerial
      * Property getter
      *
      * @param $property_name
-     * @return $this
+     * @return mixed
      */
     public function get($property_name)
     {
         return $this->data[$property_name];
+    }
+    
+    /**
+     * Property isset
+     *
+     * @param $property_name
+     * @return bool
+     */
+    public function has($property_name)
+    {
+        return isset($this->data[$property_name]);
     }
     
     /**
