@@ -80,6 +80,18 @@ abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerial
     {
         return isset($this->data[$property_name]);
     }
+	
+	/**
+	 * Property unset
+	 *
+	 * @param $property_name
+	 * @return $this
+	 */
+	public function remove($property_name)
+	{
+		unset($this->data[$property_name]);
+		return $this;
+	}
     
     /**
      * @param $property_name
