@@ -179,7 +179,10 @@ abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerial
             if (is_array(static::$additional_properties)) {
                 $types_to_try = array_merge($types_to_try, static::$additional_properties);
             }
-            if (is_array($property)) {
+
+			if (is_array($property) && 	empty($property)) {
+				$this->set($property_name, []);
+			} elseif (is_array($property)) {
                 foreach ($property as $property_element) {
                     $this->add($property_name, self::tryToCast($types_to_try, $property_element));
                 }
