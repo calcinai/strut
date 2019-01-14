@@ -17,8 +17,8 @@ abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerial
     protected static $pattern_properties = [];
     
     /**
-     * This needs to be an array in the case that thse schema has more than one
-     * subschema in a oneof, there's no point having to have an intermediary object.
+     * This needs to be an array in the case that these schema has more than one
+     * sub-schema in a oneOf, there's no point having to have an intermediary object.
      *
      * @var bool|array
      */
@@ -80,18 +80,18 @@ abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerial
     {
         return isset($this->data[$property_name]);
     }
-	
-	/**
-	 * Property unset
-	 *
-	 * @param $property_name
-	 * @return $this
-	 */
-	public function remove($property_name)
-	{
-		unset($this->data[$property_name]);
-		return $this;
-	}
+    
+    /**
+     * Property unset
+     *
+     * @param $property_name
+     * @return $this
+     */
+    public function remove($property_name)
+    {
+        unset($this->data[$property_name]);
+        return $this;
+    }
     
     /**
      * @param $property_name
