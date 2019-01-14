@@ -5,7 +5,7 @@ namespace Calcinai\Strut\Definitions;
 use Calcinai\Strut\BaseSchema;
 use Calcinai\Strut\Definitions\Schema\Properties\Properties;
 /**
- * A deterministic version of a JSON Schema object.
+ * The Schema Object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. This object is an extended subset of the JSON Schema Specification Wright Draft 00.  For more information about the properties, see JSON Schema Core and JSON Schema Validation. Unless stated otherwise, the property definitions follow the JSON Schema.
  */
 
 class Schema extends BaseSchema
@@ -26,7 +26,7 @@ class Schema extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['$ref' => [], 'format' => [], 'title' => [], 'description' => [], 'default' => [], 'multipleOf' => [], 'maximum' => [], 'exclusiveMaximum' => [], 'minimum' => [], 'exclusiveMinimum' => [], 'maxLength' => [], 'minLength' => [], 'pattern' => [], 'maxItems' => [], 'minItems' => [], 'uniqueItems' => [], 'maxProperties' => [], 'minProperties' => [], 'required' => [], 'enum' => [], 'additionalProperties' => ['Definitions\\Schema'], 'type' => [], 'items' => ['Definitions\\Schema'], 'allOf' => ['Definitions\\Schema'], 'properties' => ['Definitions\\Schema\\Properties\\Properties'], 'discriminator' => [], 'readOnly' => [], 'xml' => ['Definitions\\Xml'], 'externalDocs' => ['Definitions\\ExternalDocs'], 'example' => []];
+    protected static $properties = ['nullable' => ['boolean'], 'discriminator' => ['Definitions\\Discriminator'], 'readOnly' => ['boolean'], 'writeOnly' => ['boolean'], 'xml' => ['Definitions\\Xml'], 'externalDocs' => ['Definitions\\ExternalDocs'], 'example' => ['mixed'], 'deprecated' => ['boolean'], 'title' => ['string'], 'multipleOf' => ['integer'], 'maximum' => ['integer'], 'exclusiveMaximum' => ['boolean'], 'minimum' => ['integer'], 'exclusiveMinimum' => ['boolean'], 'maxLength' => ['integer'], 'minLength' => ['mixed'], 'pattern' => ['string'], 'maxItems' => ['integer'], 'minItems' => ['mixed'], 'uniqueItems' => ['boolean'], 'maxProperties' => ['integer'], 'minProperties' => ['mixed'], 'required' => ['string'], 'enum' => ['array'], 'type' => ['string'], 'allOf' => ['Definitions\\Schema', 'Definitions\\Reference'], 'oneOf' => ['Definitions\\Schema', 'Definitions\\Reference'], 'anyOf' => ['Definitions\\Schema', 'Definitions\\Reference'], 'not' => ['Definitions\\Schema'], 'items' => ['Definitions\\Schema', 'Definitions\\Reference'], 'properties' => ['Definitions\\Schema\\Properties\\Properties'], 'additionalProperties' => ['Definitions\\Schema', 'Definitions\\Reference', 'boolean'], 'default' => ['null', 'array', 'object', 'integer', 'boolean', 'string'], 'description' => ['string'], 'format' => ['string']];
     
     /**
      * Allowed additional properties
@@ -38,47 +38,170 @@ class Schema extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
+    protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
     
     /**
-     * @param string $ref
+     * @param boolean $nullable
      * @return $this
+     * @throws \Exception
      */
-    public function setRef($ref)
+    public function setNullable($nullable)
     {
-        $this->set('$ref', $ref);
+        $this->set('nullable', $nullable);
         return $this;
     }
     
     /**
-     * @return string
+     * @return boolean
      */
-    public function getRef()
+    public function getNullable()
     {
-        return $this->get('$ref');
+        return $this->get('nullable');
     }
     
     /**
-     * @param string $format
+     * When request bodies or response payloads may be one of a number of different schemas, a `discriminator` object can be used to aid in serialization, deserialization, and validation.  The discriminator is a specific object in a schema which is used to inform the consumer of the specification of an alternative schema based on the value associated with it.  When using the discriminator, _inline_ schemas will not be considered.
+     * @param Discriminator $discriminator
      * @return $this
+     * @throws \Exception
      */
-    public function setFormat($format)
+    public function setDiscriminator(Discriminator $discriminator)
     {
-        $this->set('format', $format);
+        $this->set('discriminator', $discriminator);
         return $this;
     }
     
     /**
-     * @return string
+     * When request bodies or response payloads may be one of a number of different schemas, a `discriminator` object can be used to aid in serialization, deserialization, and validation.  The discriminator is a specific object in a schema which is used to inform the consumer of the specification of an alternative schema based on the value associated with it.  When using the discriminator, _inline_ schemas will not be considered.
+     * @return Discriminator
      */
-    public function getFormat()
+    public function getDiscriminator()
     {
-        return $this->get('format');
+        return $this->get('discriminator');
+    }
+    
+    /**
+     * @param boolean $readOnly
+     * @return $this
+     * @throws \Exception
+     */
+    public function setReadOnly($readOnly)
+    {
+        $this->set('readOnly', $readOnly);
+        return $this;
+    }
+    
+    /**
+     * @return boolean
+     */
+    public function getReadOnly()
+    {
+        return $this->get('readOnly');
+    }
+    
+    /**
+     * @param boolean $writeOnly
+     * @return $this
+     * @throws \Exception
+     */
+    public function setWriteOnly($writeOnly)
+    {
+        $this->set('writeOnly', $writeOnly);
+        return $this;
+    }
+    
+    /**
+     * @return boolean
+     */
+    public function getWriteOnly()
+    {
+        return $this->get('writeOnly');
+    }
+    
+    /**
+     * A metadata object that allows for more fine-tuned XML model definitions.  When using arrays, XML element names are *not* inferred (for singular/plural forms) and the `name` property SHOULD be used to add that information. See examples for expected behavior.
+     * @param Xml $xml
+     * @return $this
+     * @throws \Exception
+     */
+    public function setXml(Xml $xml)
+    {
+        $this->set('xml', $xml);
+        return $this;
+    }
+    
+    /**
+     * A metadata object that allows for more fine-tuned XML model definitions.  When using arrays, XML element names are *not* inferred (for singular/plural forms) and the `name` property SHOULD be used to add that information. See examples for expected behavior.
+     * @return Xml
+     */
+    public function getXml()
+    {
+        return $this->get('xml');
+    }
+    
+    /**
+     * Allows referencing an external resource for extended documentation.
+     * @param ExternalDocs $externalDocs
+     * @return $this
+     * @throws \Exception
+     */
+    public function setExternalDocs(ExternalDocs $externalDocs)
+    {
+        $this->set('externalDocs', $externalDocs);
+        return $this;
+    }
+    
+    /**
+     * Allows referencing an external resource for extended documentation.
+     * @return ExternalDocs
+     */
+    public function getExternalDocs()
+    {
+        return $this->get('externalDocs');
+    }
+    
+    /**
+     * @param mixed $example
+     * @return $this
+     * @throws \Exception
+     */
+    public function setExample($example)
+    {
+        $this->set('example', $example);
+        return $this;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getExample()
+    {
+        return $this->get('example');
+    }
+    
+    /**
+     * @param boolean $deprecated
+     * @return $this
+     * @throws \Exception
+     */
+    public function setDeprecated($deprecated)
+    {
+        $this->set('deprecated', $deprecated);
+        return $this;
+    }
+    
+    /**
+     * @return boolean
+     */
+    public function getDeprecated()
+    {
+        return $this->get('deprecated');
     }
     
     /**
      * @param string $title
      * @return $this
+     * @throws \Exception
      */
     public function setTitle($title)
     {
@@ -95,44 +218,9 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param string $description
+     * @param integer $multipleOf
      * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->set('description', $description);
-        return $this;
-    }
-    
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->get('description');
-    }
-    
-    /**
-     * @param mixed $default
-     * @return $this
-     */
-    public function setDefault($default)
-    {
-        $this->set('default', $default);
-        return $this;
-    }
-    
-    /**
-     * @return mixed
-     */
-    public function getDefault()
-    {
-        return $this->get('default');
-    }
-    
-    /**
-     * @param int $multipleOf
-     * @return $this
+     * @throws \Exception
      */
     public function setMultipleOf($multipleOf)
     {
@@ -141,7 +229,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return integer
      */
     public function getMultipleOf()
     {
@@ -149,8 +237,9 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param int $maximum
+     * @param integer $maximum
      * @return $this
+     * @throws \Exception
      */
     public function setMaximum($maximum)
     {
@@ -159,7 +248,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return integer
      */
     public function getMaximum()
     {
@@ -167,8 +256,9 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param bool $exclusiveMaximum
+     * @param boolean $exclusiveMaximum
      * @return $this
+     * @throws \Exception
      */
     public function setExclusiveMaximum($exclusiveMaximum)
     {
@@ -177,7 +267,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @return bool
+     * @return boolean
      */
     public function getExclusiveMaximum()
     {
@@ -185,8 +275,9 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param int $minimum
+     * @param integer $minimum
      * @return $this
+     * @throws \Exception
      */
     public function setMinimum($minimum)
     {
@@ -195,7 +286,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return integer
      */
     public function getMinimum()
     {
@@ -203,8 +294,9 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param bool $exclusiveMinimum
+     * @param boolean $exclusiveMinimum
      * @return $this
+     * @throws \Exception
      */
     public function setExclusiveMinimum($exclusiveMinimum)
     {
@@ -213,7 +305,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @return bool
+     * @return boolean
      */
     public function getExclusiveMinimum()
     {
@@ -221,8 +313,9 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param int $maxLength
+     * @param integer $maxLength
      * @return $this
+     * @throws \Exception
      */
     public function setMaxLength($maxLength)
     {
@@ -231,7 +324,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return integer
      */
     public function getMaxLength()
     {
@@ -241,6 +334,7 @@ class Schema extends BaseSchema
     /**
      * @param mixed $minLength
      * @return $this
+     * @throws \Exception
      */
     public function setMinLength($minLength)
     {
@@ -259,6 +353,7 @@ class Schema extends BaseSchema
     /**
      * @param string $pattern
      * @return $this
+     * @throws \Exception
      */
     public function setPattern($pattern)
     {
@@ -275,8 +370,9 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param int $maxItems
+     * @param integer $maxItems
      * @return $this
+     * @throws \Exception
      */
     public function setMaxItems($maxItems)
     {
@@ -285,7 +381,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return integer
      */
     public function getMaxItems()
     {
@@ -295,6 +391,7 @@ class Schema extends BaseSchema
     /**
      * @param mixed $minItems
      * @return $this
+     * @throws \Exception
      */
     public function setMinItems($minItems)
     {
@@ -311,8 +408,9 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param bool $uniqueItems
+     * @param boolean $uniqueItems
      * @return $this
+     * @throws \Exception
      */
     public function setUniqueItems($uniqueItems)
     {
@@ -321,7 +419,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @return bool
+     * @return boolean
      */
     public function getUniqueItems()
     {
@@ -329,8 +427,9 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param int $maxProperties
+     * @param integer $maxProperties
      * @return $this
+     * @throws \Exception
      */
     public function setMaxProperties($maxProperties)
     {
@@ -339,7 +438,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @return int
+     * @return integer
      */
     public function getMaxProperties()
     {
@@ -349,6 +448,7 @@ class Schema extends BaseSchema
     /**
      * @param mixed $minProperties
      * @return $this
+     * @throws \Exception
      */
     public function setMinProperties($minProperties)
     {
@@ -367,6 +467,7 @@ class Schema extends BaseSchema
     /**
      * @param string $required
      * @return $this
+     * @throws \Exception
      */
     public function addRequired($required)
     {
@@ -383,8 +484,9 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param mixed $enum
+     * @param array $enum
      * @return $this
+     * @throws \Exception
      */
     public function addEnum($enum)
     {
@@ -393,7 +495,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @return mixed[]
+     * @return array[]
      */
     public function getEnum()
     {
@@ -401,26 +503,9 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param Schema|bool $additionalProperties
+     * @param string $type
      * @return $this
-     */
-    public function setAdditionalProperties($additionalProperties)
-    {
-        $this->set('additionalProperties', $additionalProperties);
-        return $this;
-    }
-    
-    /**
-     * @return Schema|bool
-     */
-    public function getAdditionalProperties()
-    {
-        return $this->get('additionalProperties');
-    }
-    
-    /**
-     * @param mixed $type
-     * @return $this
+     * @throws \Exception
      */
     public function setType($type)
     {
@@ -429,7 +514,7 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @return mixed
+     * @return string
      */
     public function getType()
     {
@@ -437,35 +522,18 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param Schema $items
+     * @param Schema|Reference $allOf
      * @return $this
+     * @throws \Exception
      */
-    public function setItems(Schema $items)
-    {
-        $this->set('items', $items);
-        return $this;
-    }
-    
-    /**
-     * @return Schema
-     */
-    public function getItems()
-    {
-        return $this->get('items');
-    }
-    
-    /**
-     * @param Schema $allOf
-     * @return $this
-     */
-    public function addAllOf(Schema $allOf)
+    public function addAllOf($allOf)
     {
         $this->add('allOf', $allOf);
         return $this;
     }
     
     /**
-     * @return Schema[]
+     * @return Schema|Reference[]
      */
     public function getAllOf()
     {
@@ -473,8 +541,87 @@ class Schema extends BaseSchema
     }
     
     /**
+     * @param Schema|Reference $oneOf
+     * @return $this
+     * @throws \Exception
+     */
+    public function addOneOf($oneOf)
+    {
+        $this->add('oneOf', $oneOf);
+        return $this;
+    }
+    
+    /**
+     * @return Schema|Reference[]
+     */
+    public function getOneOf()
+    {
+        return $this->get('oneOf');
+    }
+    
+    /**
+     * @param Schema|Reference $anyOf
+     * @return $this
+     * @throws \Exception
+     */
+    public function addAnyOf($anyOf)
+    {
+        $this->add('anyOf', $anyOf);
+        return $this;
+    }
+    
+    /**
+     * @return Schema|Reference[]
+     */
+    public function getAnyOf()
+    {
+        return $this->get('anyOf');
+    }
+    
+    /**
+     * The Schema Object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. This object is an extended subset of the JSON Schema Specification Wright Draft 00.  For more information about the properties, see JSON Schema Core and JSON Schema Validation. Unless stated otherwise, the property definitions follow the JSON Schema.
+     * @param Schema $not
+     * @return $this
+     * @throws \Exception
+     */
+    public function setNot(Schema $not)
+    {
+        $this->set('not', $not);
+        return $this;
+    }
+    
+    /**
+     * The Schema Object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. This object is an extended subset of the JSON Schema Specification Wright Draft 00.  For more information about the properties, see JSON Schema Core and JSON Schema Validation. Unless stated otherwise, the property definitions follow the JSON Schema.
+     * @return Schema
+     */
+    public function getNot()
+    {
+        return $this->get('not');
+    }
+    
+    /**
+     * @param Schema|Reference $items
+     * @return $this
+     * @throws \Exception
+     */
+    public function setItems($items)
+    {
+        $this->set('items', $items);
+        return $this;
+    }
+    
+    /**
+     * @return Schema|Reference
+     */
+    public function getItems()
+    {
+        return $this->get('items');
+    }
+    
+    /**
      * @param Properties $properties
      * @return $this
+     * @throws \Exception
      */
     public function setProperties(Properties $properties)
     {
@@ -491,95 +638,79 @@ class Schema extends BaseSchema
     }
     
     /**
-     * @param string $discriminator
+     * @param Schema|Reference|boolean $additionalProperties
      * @return $this
+     * @throws \Exception
      */
-    public function setDiscriminator($discriminator)
+    public function setAdditionalProperties($additionalProperties)
     {
-        $this->set('discriminator', $discriminator);
+        $this->set('additionalProperties', $additionalProperties);
+        return $this;
+    }
+    
+    /**
+     * @return Schema|Reference|boolean
+     */
+    public function getAdditionalProperties()
+    {
+        return $this->get('additionalProperties');
+    }
+    
+    /**
+     * @param null|array|object|integer|boolean|string $default
+     * @return $this
+     * @throws \Exception
+     */
+    public function setDefault($default)
+    {
+        $this->set('default', $default);
+        return $this;
+    }
+    
+    /**
+     * @return null|array|object|integer|boolean|string
+     */
+    public function getDefault()
+    {
+        return $this->get('default');
+    }
+    
+    /**
+     * @param string $description
+     * @return $this
+     * @throws \Exception
+     */
+    public function setDescription($description)
+    {
+        $this->set('description', $description);
         return $this;
     }
     
     /**
      * @return string
      */
-    public function getDiscriminator()
+    public function getDescription()
     {
-        return $this->get('discriminator');
+        return $this->get('description');
     }
     
     /**
-     * @param bool $readOnly
+     * @param string $format
      * @return $this
+     * @throws \Exception
      */
-    public function setReadOnly($readOnly)
+    public function setFormat($format)
     {
-        $this->set('readOnly', $readOnly);
+        $this->set('format', $format);
         return $this;
     }
     
     /**
-     * @return bool
+     * @return string
      */
-    public function getReadOnly()
+    public function getFormat()
     {
-        return $this->get('readOnly');
-    }
-    
-    /**
-     * @param Xml $xml
-     * @return $this
-     */
-    public function setXml(Xml $xml)
-    {
-        $this->set('xml', $xml);
-        return $this;
-    }
-    
-    /**
-     * @return Xml
-     */
-    public function getXml()
-    {
-        return $this->get('xml');
-    }
-    
-    /**
-     * information about external documentation
-     * @param ExternalDocs $externalDocs
-     * @return $this
-     */
-    public function setExternalDocs(ExternalDocs $externalDocs)
-    {
-        $this->set('externalDocs', $externalDocs);
-        return $this;
-    }
-    
-    /**
-     * information about external documentation
-     * @return ExternalDocs
-     */
-    public function getExternalDocs()
-    {
-        return $this->get('externalDocs');
-    }
-    
-    /**
-     * @param mixed $example
-     * @return $this
-     */
-    public function setExample($example)
-    {
-        $this->set('example', $example);
-        return $this;
-    }
-    
-    /**
-     * @return mixed
-     */
-    public function getExample()
-    {
-        return $this->get('example');
+        return $this->get('format');
     }
 
 }

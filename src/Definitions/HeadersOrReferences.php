@@ -4,7 +4,7 @@ namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
 
-class Headers extends BaseSchema
+class HeadersOrReferences extends BaseSchema
 {
     /**
      * Array to store schema data and default values
@@ -28,7 +28,7 @@ class Headers extends BaseSchema
      * Allowed additional properties
      * @var array
      */
-    protected static $additional_properties = ['Definitions\\Header'];
+    protected static $additional_properties = ['Definitions\\Header', 'Definitions\\Reference'];
     
     /**
      * Array to store any allowed pattern properties

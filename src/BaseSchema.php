@@ -24,6 +24,10 @@ abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerial
      */
     protected static $additional_properties = [];
     
+    /**
+     * @param array $data
+     * @throws \Exception
+     */
     public function __construct($data = [])
     {
         $this->parseData($data);
@@ -110,8 +114,11 @@ abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerial
             if (empty(static::$properties[$property_name])) {
                 return true;
             }
-            foreach (static::$properties[$property_name] as $allowed_class) {
-                $fq_class = self::getFQCN($allowed_class);
+            foreach (static::$properties[$property_name] as $allowed_type) {
+                if (gettype($value) === $allowed_type) {
+                    return true;
+                }
+                $fq_class = self::getFQCN($allowed_type);
                 if ($value instanceof $fq_class) {
                     return true;
                 }
@@ -124,8 +131,11 @@ abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerial
             if (empty(static::$additional_properties)) {
                 return true;
             }
-            foreach (static::$additional_properties as $allowed_class) {
-                $fq_class = self::getFQCN($allowed_class);
+            foreach (static::$additional_properties as $allowed_type) {
+                if (gettype($value) === $allowed_type) {
+                    return true;
+                }
+                $fq_class = self::getFQCN($allowed_type);
                 if ($value instanceof $fq_class) {
                     return true;
                 }
@@ -145,8 +155,11 @@ abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerial
                 if (!isset($types[0])) {
                     return true;
                 }
-                foreach ($types as $allowed_class) {
-                    $fq_class = self::getFQCN($allowed_class);
+                foreach ($types as $allowed_type) {
+                    if (gettype($value) === $allowed_type) {
+                        return true;
+                    }
+                    $fq_class = self::getFQCN($allowed_type);
                     if ($value instanceof $fq_class) {
                         return true;
                     }
@@ -160,6 +173,7 @@ abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerial
      * Parse a schema object into the correct objects
      *
      * @param $data
+     * @throws \Exception
      */
     private function parseData($data)
     {
@@ -193,6 +207,7 @@ abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerial
      * @param $types_to_try
      * @param $object
      * @return BaseSchema
+     * @throws \Exception
      */
     private static function tryToCast($types_to_try, $object)
     {
@@ -225,6 +240,7 @@ abstract class BaseSchema implements \IteratorAggregate, \Countable, \JsonSerial
     /**
      * @param array $data
      * @return static
+     * @throws \Exception
      */
     public static function create($data = [])
     {

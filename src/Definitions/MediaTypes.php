@@ -4,7 +4,7 @@ namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
 
-class SecurityDefinitions extends BaseSchema
+class MediaTypes extends BaseSchema
 {
     /**
      * Array to store schema data and default values
@@ -28,7 +28,7 @@ class SecurityDefinitions extends BaseSchema
      * Allowed additional properties
      * @var array
      */
-    protected static $additional_properties = ['Definitions\\BasicAuthenticationSecurity', 'Definitions\\ApiKeySecurity', 'Definitions\\Oauth2ImplicitSecurity', 'Definitions\\Oauth2PasswordSecurity', 'Definitions\\Oauth2ApplicationSecurity', 'Definitions\\Oauth2AccessCodeSecurity'];
+    protected static $additional_properties = ['Definitions\\MediaType'];
     
     /**
      * Array to store any allowed pattern properties

@@ -1,10 +1,10 @@
 <?php
 
-namespace Calcinai\Strut\Definitions\Schema\Properties;
+namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
 
-class Properties extends BaseSchema
+class SchemasOrReferences extends BaseSchema
 {
     /**
      * Array to store schema data and default values

@@ -4,10 +4,10 @@ namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
 /**
- * The Header Object follows the structure of the Parameter Object with the following changes:  1. `name` MUST NOT be specified, it is given in the corresponding `headers` map. 1. `in` MUST NOT be specified, it is implicitly in `header`. 1. All traits that are affected by the location MUST be applicable to a location of `header` (for example, `style`).
+ * Describes a single operation parameter.  A unique parameter is defined by a combination of a name and location.
  */
 
-class Header extends BaseSchema
+class Parameter extends BaseSchema
 {
     /**
      * Array to store schema data and default values
@@ -25,7 +25,7 @@ class Header extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['description' => ['string'], 'required' => ['boolean'], 'deprecated' => ['boolean'], 'allowEmptyValue' => ['boolean'], 'style' => ['string'], 'explode' => ['boolean'], 'allowReserved' => ['boolean'], 'schema' => ['Definitions\\Schema', 'Definitions\\Reference'], 'example' => ['mixed'], 'examples' => ['Definitions\\ExamplesOrReferences'], 'content' => ['Definitions\\MediaTypes']];
+    protected static $properties = ['name' => ['string'], 'in' => ['string'], 'description' => ['string'], 'required' => ['boolean'], 'deprecated' => ['boolean'], 'allowEmptyValue' => ['boolean'], 'style' => ['string'], 'explode' => ['boolean'], 'allowReserved' => ['boolean'], 'schema' => ['Definitions\\Schema', 'Definitions\\Reference'], 'example' => ['mixed'], 'examples' => ['Definitions\\ExamplesOrReferences'], 'content' => ['Definitions\\MediaTypes']];
     
     /**
      * Allowed additional properties
@@ -38,6 +38,44 @@ class Header extends BaseSchema
      * @var array
      */
     protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
+    
+    /**
+     * @param string $name
+     * @return $this
+     * @throws \Exception
+     */
+    public function setName($name)
+    {
+        $this->set('name', $name);
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->get('name');
+    }
+    
+    /**
+     * @param string $in
+     * @return $this
+     * @throws \Exception
+     */
+    public function setIn($in)
+    {
+        $this->set('in', $in);
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getIn()
+    {
+        return $this->get('in');
+    }
     
     /**
      * @param string $description

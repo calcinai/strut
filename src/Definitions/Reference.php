@@ -3,8 +3,11 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+/**
+ * A simple object to allow referencing other components in the specification, internally and externally.  The Reference Object is defined by JSON Reference and follows the same structure, behavior and rules.   For this specification, reference resolution is accomplished as defined by the JSON Reference specification and not by the JSON Schema specification.
+ */
 
-class JsonReference extends BaseSchema
+class Reference extends BaseSchema
 {
     /**
      * Array to store schema data and default values
@@ -22,7 +25,7 @@ class JsonReference extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['$ref' => []];
+    protected static $properties = ['$ref' => ['string']];
     
     /**
      * Allowed additional properties
@@ -39,6 +42,7 @@ class JsonReference extends BaseSchema
     /**
      * @param string $ref
      * @return $this
+     * @throws \Exception
      */
     public function setRef($ref)
     {

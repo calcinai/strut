@@ -4,10 +4,10 @@ namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
 /**
- * Holds the relative paths to the individual endpoints and their operations. The path is appended to the URL from the `Server Object` in order to construct the full URL.  The Paths MAY be empty, due to ACL constraints.
+ * A map of possible out-of band callbacks related to the parent operation. Each value in the map is a Path Item Object that describes a set of requests that may be initiated by the API provider and the expected responses. The key value used to identify the callback object is an expression, evaluated at runtime, that identifies a URL to use for the callback operation.
  */
 
-class Paths extends BaseSchema
+class Callback extends BaseSchema
 {
     /**
      * Array to store schema data and default values
@@ -37,6 +37,6 @@ class Paths extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^/' => ['Definitions\\PathItem'], '^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
+    protected static $pattern_properties = ['^' => ['Definitions\\PathItem'], '^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
 
 }

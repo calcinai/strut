@@ -3,6 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+/**
+ * License information for the exposed API.
+ */
 
 class License extends BaseSchema
 {
@@ -22,7 +25,7 @@ class License extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['name' => [], 'url' => []];
+    protected static $properties = ['name' => ['string'], 'url' => ['string']];
     
     /**
      * Allowed additional properties
@@ -34,12 +37,12 @@ class License extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
+    protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
     
     /**
-     * The name of the license type. It's encouraged to use an OSI compatible license.
      * @param string $name
      * @return $this
+     * @throws \Exception
      */
     public function setName($name)
     {
@@ -48,7 +51,6 @@ class License extends BaseSchema
     }
     
     /**
-     * The name of the license type. It's encouraged to use an OSI compatible license.
      * @return string
      */
     public function getName()
@@ -57,9 +59,9 @@ class License extends BaseSchema
     }
     
     /**
-     * The URL pointing to the license.
      * @param string $url
      * @return $this
+     * @throws \Exception
      */
     public function setUrl($url)
     {
@@ -68,7 +70,6 @@ class License extends BaseSchema
     }
     
     /**
-     * The URL pointing to the license.
      * @return string
      */
     public function getUrl()

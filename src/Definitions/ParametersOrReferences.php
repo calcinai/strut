@@ -4,7 +4,7 @@ namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
 
-class Oauth2Scopes extends BaseSchema
+class ParametersOrReferences extends BaseSchema
 {
     /**
      * Array to store schema data and default values
@@ -28,7 +28,7 @@ class Oauth2Scopes extends BaseSchema
      * Allowed additional properties
      * @var array
      */
-    protected static $additional_properties = [];
+    protected static $additional_properties = ['Definitions\\Parameter', 'Definitions\\Reference'];
     
     /**
      * Array to store any allowed pattern properties

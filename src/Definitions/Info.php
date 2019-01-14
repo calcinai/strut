@@ -4,7 +4,7 @@ namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
 /**
- * General information about the API.
+ * The object provides metadata about the API. The metadata MAY be used by the clients if needed, and MAY be presented in editing or documentation generation tools for convenience.
  */
 
 class Info extends BaseSchema
@@ -25,7 +25,7 @@ class Info extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['title' => [], 'version' => [], 'description' => [], 'termsOfService' => [], 'contact' => ['Definitions\\Contact'], 'license' => ['Definitions\\License']];
+    protected static $properties = ['title' => ['string'], 'description' => ['string'], 'termsOfService' => ['string'], 'contact' => ['Definitions\\Contact'], 'license' => ['Definitions\\License'], 'version' => ['string']];
     
     /**
      * Allowed additional properties
@@ -37,12 +37,12 @@ class Info extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
+    protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
     
     /**
-     * A unique and precise title of the API.
      * @param string $title
      * @return $this
+     * @throws \Exception
      */
     public function setTitle($title)
     {
@@ -51,7 +51,6 @@ class Info extends BaseSchema
     }
     
     /**
-     * A unique and precise title of the API.
      * @return string
      */
     public function getTitle()
@@ -60,29 +59,9 @@ class Info extends BaseSchema
     }
     
     /**
-     * A semantic version number of the API.
-     * @param string $version
-     * @return $this
-     */
-    public function setVersion($version)
-    {
-        $this->set('version', $version);
-        return $this;
-    }
-    
-    /**
-     * A semantic version number of the API.
-     * @return string
-     */
-    public function getVersion()
-    {
-        return $this->get('version');
-    }
-    
-    /**
-     * A longer description of the API. Should be different from the title.  GitHub Flavored Markdown is allowed.
      * @param string $description
      * @return $this
+     * @throws \Exception
      */
     public function setDescription($description)
     {
@@ -91,7 +70,6 @@ class Info extends BaseSchema
     }
     
     /**
-     * A longer description of the API. Should be different from the title.  GitHub Flavored Markdown is allowed.
      * @return string
      */
     public function getDescription()
@@ -100,9 +78,9 @@ class Info extends BaseSchema
     }
     
     /**
-     * The terms of service for the API.
      * @param string $termsOfService
      * @return $this
+     * @throws \Exception
      */
     public function setTermsOfService($termsOfService)
     {
@@ -111,7 +89,6 @@ class Info extends BaseSchema
     }
     
     /**
-     * The terms of service for the API.
      * @return string
      */
     public function getTermsOfService()
@@ -120,9 +97,10 @@ class Info extends BaseSchema
     }
     
     /**
-     * Contact information for the owners of the API.
+     * Contact information for the exposed API.
      * @param Contact $contact
      * @return $this
+     * @throws \Exception
      */
     public function setContact(Contact $contact)
     {
@@ -131,7 +109,7 @@ class Info extends BaseSchema
     }
     
     /**
-     * Contact information for the owners of the API.
+     * Contact information for the exposed API.
      * @return Contact
      */
     public function getContact()
@@ -140,8 +118,10 @@ class Info extends BaseSchema
     }
     
     /**
+     * License information for the exposed API.
      * @param License $license
      * @return $this
+     * @throws \Exception
      */
     public function setLicense(License $license)
     {
@@ -150,11 +130,31 @@ class Info extends BaseSchema
     }
     
     /**
+     * License information for the exposed API.
      * @return License
      */
     public function getLicense()
     {
         return $this->get('license');
+    }
+    
+    /**
+     * @param string $version
+     * @return $this
+     * @throws \Exception
+     */
+    public function setVersion($version)
+    {
+        $this->set('version', $version);
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->get('version');
     }
 
 }

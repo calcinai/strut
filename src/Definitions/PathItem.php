@@ -3,6 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+/**
+ * Describes the operations available on a single path. A Path Item MAY be empty, due to ACL constraints. The path itself is still exposed to the documentation viewer but they will not know which operations and parameters are available.
+ */
 
 class PathItem extends BaseSchema
 {
@@ -22,7 +25,7 @@ class PathItem extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['$ref' => [], 'get' => ['Definitions\\Operation'], 'put' => ['Definitions\\Operation'], 'post' => ['Definitions\\Operation'], 'delete' => ['Definitions\\Operation'], 'options' => ['Definitions\\Operation'], 'head' => ['Definitions\\Operation'], 'patch' => ['Definitions\\Operation'], 'parameters' => ['Definitions\\BodyParameter', 'Definitions\\HeaderParameterSubSchema', 'Definitions\\FormDataParameterSubSchema', 'Definitions\\QueryParameterSubSchema', 'Definitions\\PathParameterSubSchema', 'Definitions\\JsonReference']];
+    protected static $properties = ['$ref' => ['string'], 'summary' => ['string'], 'description' => ['string'], 'get' => ['Definitions\\Operation'], 'put' => ['Definitions\\Operation'], 'post' => ['Definitions\\Operation'], 'delete' => ['Definitions\\Operation'], 'options' => ['Definitions\\Operation'], 'head' => ['Definitions\\Operation'], 'patch' => ['Definitions\\Operation'], 'trace' => ['Definitions\\Operation'], 'servers' => ['Definitions\\Server'], 'parameters' => ['Definitions\\Parameter', 'Definitions\\Reference']];
     
     /**
      * Allowed additional properties
@@ -34,11 +37,12 @@ class PathItem extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
+    protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
     
     /**
      * @param string $ref
      * @return $this
+     * @throws \Exception
      */
     public function setRef($ref)
     {
@@ -55,8 +59,48 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * @param string $summary
+     * @return $this
+     * @throws \Exception
+     */
+    public function setSummary($summary)
+    {
+        $this->set('summary', $summary);
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getSummary()
+    {
+        return $this->get('summary');
+    }
+    
+    /**
+     * @param string $description
+     * @return $this
+     * @throws \Exception
+     */
+    public function setDescription($description)
+    {
+        $this->set('description', $description);
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->get('description');
+    }
+    
+    /**
+     * Describes a single API operation on a path.
      * @param Operation $get
      * @return $this
+     * @throws \Exception
      */
     public function setGet(Operation $get)
     {
@@ -65,6 +109,7 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @return Operation
      */
     public function getGet()
@@ -73,8 +118,10 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @param Operation $put
      * @return $this
+     * @throws \Exception
      */
     public function setPut(Operation $put)
     {
@@ -83,6 +130,7 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @return Operation
      */
     public function getPut()
@@ -91,8 +139,10 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @param Operation $post
      * @return $this
+     * @throws \Exception
      */
     public function setPost(Operation $post)
     {
@@ -101,6 +151,7 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @return Operation
      */
     public function getPost()
@@ -109,8 +160,10 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @param Operation $delete
      * @return $this
+     * @throws \Exception
      */
     public function setDelete(Operation $delete)
     {
@@ -119,6 +172,7 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @return Operation
      */
     public function getDelete()
@@ -127,8 +181,10 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @param Operation $options
      * @return $this
+     * @throws \Exception
      */
     public function setOptions(Operation $options)
     {
@@ -137,6 +193,7 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @return Operation
      */
     public function getOptions()
@@ -145,8 +202,10 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @param Operation $head
      * @return $this
+     * @throws \Exception
      */
     public function setHead(Operation $head)
     {
@@ -155,6 +214,7 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @return Operation
      */
     public function getHead()
@@ -163,8 +223,10 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @param Operation $patch
      * @return $this
+     * @throws \Exception
      */
     public function setPatch(Operation $patch)
     {
@@ -173,6 +235,7 @@ class PathItem extends BaseSchema
     }
     
     /**
+     * Describes a single API operation on a path.
      * @return Operation
      */
     public function getPatch()
@@ -181,9 +244,49 @@ class PathItem extends BaseSchema
     }
     
     /**
-     * The parameters needed to send a valid API call.
-     * @param BodyParameter|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema|PathParameterSubSchema|JsonReference $parameters
+     * Describes a single API operation on a path.
+     * @param Operation $trace
      * @return $this
+     * @throws \Exception
+     */
+    public function setTrace(Operation $trace)
+    {
+        $this->set('trace', $trace);
+        return $this;
+    }
+    
+    /**
+     * Describes a single API operation on a path.
+     * @return Operation
+     */
+    public function getTrace()
+    {
+        return $this->get('trace');
+    }
+    
+    /**
+     * @param Server $servers
+     * @return $this
+     * @throws \Exception
+     */
+    public function addServer(Server $servers)
+    {
+        $this->add('servers', $servers);
+        return $this;
+    }
+    
+    /**
+     * @return Server[]
+     */
+    public function getServers()
+    {
+        return $this->get('servers');
+    }
+    
+    /**
+     * @param Parameter|Reference $parameters
+     * @return $this
+     * @throws \Exception
      */
     public function addParameter($parameters)
     {
@@ -192,8 +295,7 @@ class PathItem extends BaseSchema
     }
     
     /**
-     * The parameters needed to send a valid API call.
-     * @return BodyParameter|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema|PathParameterSubSchema|JsonReference[]
+     * @return Parameter|Reference[]
      */
     public function getParameters()
     {

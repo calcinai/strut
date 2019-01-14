@@ -4,10 +4,10 @@ namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
 /**
- * Describes a single response from an API Operation, including design-time, static  `links` to operations based on the response.
+ * A single encoding definition applied to a single schema property.
  */
 
-class Response extends BaseSchema
+class Encoding extends BaseSchema
 {
     /**
      * Array to store schema data and default values
@@ -25,7 +25,7 @@ class Response extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['description' => ['string'], 'headers' => ['Definitions\\HeadersOrReferences'], 'content' => ['Definitions\\MediaTypes'], 'links' => ['Definitions\\LinksOrReferences']];
+    protected static $properties = ['contentType' => ['string'], 'headers' => ['Definitions\\HeadersOrReferences'], 'style' => ['string'], 'explode' => ['boolean'], 'allowReserved' => ['boolean']];
     
     /**
      * Allowed additional properties
@@ -40,22 +40,22 @@ class Response extends BaseSchema
     protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
     
     /**
-     * @param string $description
+     * @param string $contentType
      * @return $this
      * @throws \Exception
      */
-    public function setDescription($description)
+    public function setContentType($contentType)
     {
-        $this->set('description', $description);
+        $this->set('contentType', $contentType);
         return $this;
     }
     
     /**
      * @return string
      */
-    public function getDescription()
+    public function getContentType()
     {
-        return $this->get('description');
+        return $this->get('contentType');
     }
     
     /**
@@ -78,41 +78,60 @@ class Response extends BaseSchema
     }
     
     /**
-     * @param MediaTypes $content
+     * @param string $style
      * @return $this
      * @throws \Exception
      */
-    public function setContent(MediaTypes $content)
+    public function setStyle($style)
     {
-        $this->set('content', $content);
+        $this->set('style', $style);
         return $this;
     }
     
     /**
-     * @return MediaTypes
+     * @return string
      */
-    public function getContent()
+    public function getStyle()
     {
-        return $this->get('content');
+        return $this->get('style');
     }
     
     /**
-     * @param LinksOrReferences $links
+     * @param boolean $explode
      * @return $this
      * @throws \Exception
      */
-    public function setLinks(LinksOrReferences $links)
+    public function setExplode($explode)
     {
-        $this->set('links', $links);
+        $this->set('explode', $explode);
         return $this;
     }
     
     /**
-     * @return LinksOrReferences
+     * @return boolean
      */
-    public function getLinks()
+    public function getExplode()
     {
-        return $this->get('links');
+        return $this->get('explode');
+    }
+    
+    /**
+     * @param boolean $allowReserved
+     * @return $this
+     * @throws \Exception
+     */
+    public function setAllowReserved($allowReserved)
+    {
+        $this->set('allowReserved', $allowReserved);
+        return $this;
+    }
+    
+    /**
+     * @return boolean
+     */
+    public function getAllowReserved()
+    {
+        return $this->get('allowReserved');
     }
 
 }

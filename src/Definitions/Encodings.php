@@ -4,7 +4,7 @@ namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
 
-class NonBodyParameter extends BaseSchema
+class Encodings extends BaseSchema
 {
     /**
      * Array to store schema data and default values
@@ -28,7 +28,7 @@ class NonBodyParameter extends BaseSchema
      * Allowed additional properties
      * @var array
      */
-    protected static $additional_properties = null;
+    protected static $additional_properties = ['Definitions\\Encoding'];
     
     /**
      * Array to store any allowed pattern properties
