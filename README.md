@@ -25,61 +25,153 @@ print_r($swagger);
 This will produce (snipped):
 
 ```
-Swagger Object
+Calcinai\Strut\OpenAPI Object
 (
-  [data:protected] => Array
-    (
-      [swagger] => 2.0
-      [info] => Calcinai\Strut\Definitions\Info Object
+    [data:protected] => Array
         (
-          [data:protected] => Array
-            (
-              [description] => This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.
-              [version] => 1.0.0
-              [title] => Swagger Petstore
-              [termsOfService] => http://swagger.io/terms/
-              [contact] => Calcinai\Strut\Definitions\Contact Object
+            [openapi] => 3.0
+            [info] => Calcinai\Strut\Definitions\Info Object
                 (
-                  [data:protected] => Array
-                    (
-                      [email] => apiteam@swagger.io
-                    )
-
-                )
-
-              [license] => Calcinai\Strut\Definitions\License Object
-                (
-                  [data:protected] => Array
-                    (
-                      [name] => Apache 2.0
-                      [url] => http://www.apache.org/licenses/LICENSE-2.0.html
-                    )
-
-                )
-
-            )
-
-        )
-
-      [host] => petstore.swagger.io
-      [basePath] => /v2
-      [tags] => Array
-        (
-          [0] => Calcinai\Strut\Definitions\Tag Object
-            (
-              [data:protected] => Array
-                (
-                  [name] => pet
-                  [description] => Everything about your Pets
-                  [externalDocs] => Calcinai\Strut\Definitions\ExternalDocs Object
-                    (
-                      [data:protected] => Array
+                    [data:protected] => Array
                         (
-                          [description] => Find out more
-                          [url] => http://swagger.io
+                            [version] => 1.0.0
+                            [title] => OpenAPI Petstore
+                            [license] => Calcinai\Strut\Definitions\License Object
+                                (
+                                    [data:protected] => Array
+                                        (
+                                            [name] => MIT
+                                        )
+
+                                )
+
                         )
 
-                    )
+                )
+
+            [servers] => Array
+                (
+                    [0] => Calcinai\Strut\Definitions\Server Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [url] => https://petstore.openapis.org/v1
+                                    [description] => Development server
+                                )
+
+                        )
+
+                )
+
+            [paths] => Calcinai\Strut\Definitions\Paths Object
+                (
+                    [data:protected] => Array
+                        (
+                            [/pets] => Calcinai\Strut\Definitions\PathItem Object
+                                (
+                                    [data:protected] => Array
+                                        (
+                                            [get] => Calcinai\Strut\Definitions\Operation Object
+                                                (
+                                                    [data:protected] => Array
+                                                        (
+                                                            [summary] => List all pets
+                                                            [operationId] => listPets
+                                                            [tags] => Array
+                                                                (
+                                                                    [0] => pets
+                                                                )
+
+                                                            [parameters] => Array
+                                                                (
+                                                                    [0] => Calcinai\Strut\Definitions\Parameter Object
+                                                                        (
+                                                                            [data:protected] => Array
+                                                                                (
+                                                                                    [name] => limit
+                                                                                    [in] => query
+                                                                                    [description] => How many items to return at one time (max 100)
+                                                                                    [required] => 
+                                                                                    [schema] => Calcinai\Strut\Definitions\Schema Object
+                                                                                        (
+                                                                                            [data:protected] => Array
+                                                                                                (
+                                                                                                    [type] => integer
+                                                                                                    [format] => int32
+                                                                                                )
+
+                                                                                        )
+
+                                                                                )
+
+                                                                        )
+
+                                                                )
+
+                                                            [responses] => Calcinai\Strut\Definitions\Responses Object
+                                                                (
+                                                                    [data:protected] => Array
+                                                                        (
+                                                                            [200] => Calcinai\Strut\Definitions\Response Object
+                                                                                (
+                                                                                    [data:protected] => Array
+                                                                                        (
+                                                                                            [description] => An paged array of pets
+                                                                                            [headers] => Calcinai\Strut\Definitions\HeadersOrReferences Object
+                                                                                                (
+                                                                                                    [data:protected] => Array
+                                                                                                        (
+                                                                                                            [x-next] => Calcinai\Strut\Definitions\Header Object
+                                                                                                                (
+                                                                                                                    [data:protected] => Array
+                                                                                                                        (
+                                                                                                                            [schema] => Calcinai\Strut\Definitions\Schema Object
+                                                                                                                                (
+                                                                                                                                    [data:protected] => Array
+                                                                                                                                        (
+                                                                                                                                            [type] => string
+                                                                                                                                        )
+
+                                                                                                                                )
+
+                                                                                                                            [description] => A link to the next page of responses
+                                                                                                                        )
+
+                                                                                                                )
+
+                                                                                                        )
+
+                                                                                                )
+
+                                                                                            [content] => Calcinai\Strut\Definitions\MediaTypes Object
+                                                                                                (
+                                                                                                    [data:protected] => Array
+                                                                                                        (
+                                                                                                            [application/json] => Calcinai\Strut\Definitions\MediaType Object
+                                                                                                                (
+                                                                                                                    [data:protected] => Array
+                                                                                                                        (
+                                                                                                                            [schema] => Calcinai\Strut\Definitions\Reference Object
+                                                                                                                                (
+                                                                                                                                    [data:protected] => Array
+                                                                                                                                        (
+                                                                                                                                            [$ref] => #/components/schemas/Pets
+                                                                                                                                        )
+
+                                                                                                                                )
+
+                                                                                                                        )
+
+                                                                                                                )
+
+                                                                                                        )
+
+                                                                                                )
+
+                                                                                        )
+
+                                                                                )
+
 ...
 ```
 
@@ -92,7 +184,6 @@ The following is an example of how that schema would be programatically generate
 $pet = Schema::create()
     ->addRequired('id')
     ->addRequired('name')
-
     ->setProperties(Properties::create()
         ->set('id', Schema::create()
             ->setType('integer')
@@ -114,7 +205,6 @@ $pets = Schema::create()
 $error = Schema::create()
     ->addRequired('code')
     ->addRequired('message')
-
     ->setProperties(Properties::create()
         ->set('code', Schema::create()
             ->setType('integer')
@@ -126,65 +216,41 @@ $error = Schema::create()
     );
 
 
-$swagger = Swagger::create()
+$schema = OpenAPI::create()
     ->setInfo(
         Info::create()
             ->setTitle('Swagger Petstore')
             ->setVersion('1.0.0')
             ->setLicense(
                 License::create()
-                ->setName('MIT')
+                    ->setName('MIT')
             )
     )
-
-    ->setHost('petstore.swagger.io')
-    ->setBasePath('/v1')
-    ->addScheme('http')
-
-    ->setConsumes(['application/json'])
-    ->setProduces(['application/json'])
-
+    ->addServer(\Calcinai\Strut\Definitions\Server::create()->setUrl('petstore.swagger.io'))
     ->setPaths(Paths::create()
         ->set('/pets', PathItem::create()
             ->setGet(Operation::create()
                 ->setSummary('List all pets')
                 ->setOperationId('listPets')
                 ->addTag('pets')
-
-                ->addParameter(QueryParameterSubSchema::create()
-                    ->setName('Limit')
-                    ->setDescription('How many items to return at one time (max 100)')
-                    ->setRequired(false)
-                    ->setType('integer')
-                    ->setFormat('int32')
-
-                )
-
                 ->setResponses(Responses::create()
                     ->set('200', Response::create()
                         ->setDescription('A paged array of pets')
-                        ->setHeaders(Headers::create()
-                            ->set('x-next', Header::create()
-                                ->setType('string')
-                                ->setDescription('A link to the next page of responses')
-                            )
-                        )
-                        ->setSchema($pets)
                     )
                     ->set('default', Response::create()
                         ->setDescription('Unexpected error')
-                        ->setSchema($error)
                     )
                 )
             )
         )
     )
-    ->setDefinitions(Definitions::create()
-        ->set('Pet', $pet)
-        ->set('Pets', $pets)
-        ->set('Error', $error)
-    )
-
+    ->setComponents(\Calcinai\Strut\Definitions\Components::create()
+        ->setSchemas(\Calcinai\Strut\Definitions\SchemasOrReferences::create()
+            ->set('Pet', $pet)
+            ->set('Pets', $pets)
+            ->set('Error', $error)
+        )
+    );
 
 echo json_encode($schema, JSON_PRETTY_PRINT);
 ```
@@ -193,7 +259,6 @@ This will output:
 
 ```json
 {
-    "swagger": "2.0",
     "info": {
         "title": "Swagger Petstore",
         "version": "1.0.0",
@@ -201,16 +266,10 @@ This will output:
             "name": "MIT"
         }
     },
-    "host": "petstore.swagger.io",
-    "basePath": "\/v1",
-    "schemes": [
-        "http"
-    ],
-    "consumes": [
-        "application\/json"
-    ],
-    "produces": [
-        "application\/json"
+    "servers": [
+        {
+            "url": "petstore.swagger.io"
+        }
     ],
     "paths": {
         "\/pets": {
@@ -220,20 +279,70 @@ This will output:
                 "tags": [
                     "pets"
                 ],
-                "parameters": [
-                    {
-                        "in": "query",
-                        "collectionFormat": "csv",
-                        "name": "Limit",
-                        "description": "How many items to return at one time (max 100)",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
-                    }
-                ],
                 "responses": {
                     "200": {
-                        "description": "pet response"
+                        "description": "A paged array of pets"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Pet": {
+                "required": [
+                    "id",
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "tag": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Pets": {
+                "type": "array",
+                "items": {
+                    "required": [
+                        "id",
+                        "name"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "tag": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "Error": {
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "error": {
+                        "type": "string"
                     }
                 }
             }
