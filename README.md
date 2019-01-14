@@ -27,150 +27,150 @@ This will produce (snipped):
 ```
 Calcinai\Strut\OpenAPI Object
 (
-    [data:protected] => Array
+ [data:protected] => Array
+  (
+   [openapi] => 3.0
+   [info] => Calcinai\Strut\Definitions\Info Object
+    (
+     [data:protected] => Array
+      (
+       [version] => 1.0.0
+       [title] => OpenAPI Petstore
+       [license] => Calcinai\Strut\Definitions\License Object
         (
-            [openapi] => 3.0
-            [info] => Calcinai\Strut\Definitions\Info Object
+         [data:protected] => Array
+          (
+           [name] => MIT
+          )
+
+        )
+
+      )
+
+    )
+
+   [servers] => Array
+    (
+     [0] => Calcinai\Strut\Definitions\Server Object
+      (
+       [data:protected] => Array
+        (
+         [url] => https://petstore.openapis.org/v1
+         [description] => Development server
+        )
+
+      )
+
+    )
+
+   [paths] => Calcinai\Strut\Definitions\Paths Object
+    (
+     [data:protected] => Array
+      (
+       [/pets] => Calcinai\Strut\Definitions\PathItem Object
+        (
+         [data:protected] => Array
+          (
+           [get] => Calcinai\Strut\Definitions\Operation Object
+            (
+             [data:protected] => Array
+              (
+               [summary] => List all pets
+               [operationId] => listPets
+               [tags] => Array
                 (
-                    [data:protected] => Array
+                 [0] => pets
+                )
+
+               [parameters] => Array
+                (
+                 [0] => Calcinai\Strut\Definitions\Parameter Object
+                  (
+                   [data:protected] => Array
+                    (
+                     [name] => limit
+                     [in] => query
+                     [description] => How many items to return at one time (max 100)
+                     [required] =>
+                     [schema] => Calcinai\Strut\Definitions\Schema Object
+                      (
+                       [data:protected] => Array
                         (
-                            [version] => 1.0.0
-                            [title] => OpenAPI Petstore
-                            [license] => Calcinai\Strut\Definitions\License Object
-                                (
-                                    [data:protected] => Array
-                                        (
-                                            [name] => MIT
-                                        )
-
-                                )
-
+                         [type] => integer
+                         [format] => int32
                         )
+
+                      )
+
+                    )
+
+                  )
 
                 )
 
-            [servers] => Array
+               [responses] => Calcinai\Strut\Definitions\Responses Object
                 (
-                    [0] => Calcinai\Strut\Definitions\Server Object
+                 [data:protected] => Array
+                  (
+                   [200] => Calcinai\Strut\Definitions\Response Object
+                    (
+                     [data:protected] => Array
+                      (
+                       [description] => An paged array of pets
+                       [headers] => Calcinai\Strut\Definitions\HeadersOrReferences Object
                         (
-                            [data:protected] => Array
+                         [data:protected] => Array
+                          (
+                           [x-next] => Calcinai\Strut\Definitions\Header Object
+                            (
+                             [data:protected] => Array
+                              (
+                               [schema] => Calcinai\Strut\Definitions\Schema Object
                                 (
-                                    [url] => https://petstore.openapis.org/v1
-                                    [description] => Development server
+                                 [data:protected] => Array
+                                  (
+                                   [type] => string
+                                  )
+
                                 )
+
+                               [description] => A link to the next page of responses
+                              )
+
+                            )
+
+                          )
 
                         )
 
-                )
-
-            [paths] => Calcinai\Strut\Definitions\Paths Object
-                (
-                    [data:protected] => Array
+                       [content] => Calcinai\Strut\Definitions\MediaTypes Object
                         (
-                            [/pets] => Calcinai\Strut\Definitions\PathItem Object
+                         [data:protected] => Array
+                          (
+                           [application/json] => Calcinai\Strut\Definitions\MediaType Object
+                            (
+                             [data:protected] => Array
+                              (
+                               [schema] => Calcinai\Strut\Definitions\Reference Object
                                 (
-                                    [data:protected] => Array
-                                        (
-                                            [get] => Calcinai\Strut\Definitions\Operation Object
-                                                (
-                                                    [data:protected] => Array
-                                                        (
-                                                            [summary] => List all pets
-                                                            [operationId] => listPets
-                                                            [tags] => Array
-                                                                (
-                                                                    [0] => pets
-                                                                )
+                                 [data:protected] => Array
+                                  (
+                                   [$ref] => #/components/schemas/Pets
+                                  )
 
-                                                            [parameters] => Array
-                                                                (
-                                                                    [0] => Calcinai\Strut\Definitions\Parameter Object
-                                                                        (
-                                                                            [data:protected] => Array
-                                                                                (
-                                                                                    [name] => limit
-                                                                                    [in] => query
-                                                                                    [description] => How many items to return at one time (max 100)
-                                                                                    [required] => 
-                                                                                    [schema] => Calcinai\Strut\Definitions\Schema Object
-                                                                                        (
-                                                                                            [data:protected] => Array
-                                                                                                (
-                                                                                                    [type] => integer
-                                                                                                    [format] => int32
-                                                                                                )
+                                )
 
-                                                                                        )
+                              )
 
-                                                                                )
+                            )
 
-                                                                        )
+                          )
 
-                                                                )
+                        )
 
-                                                            [responses] => Calcinai\Strut\Definitions\Responses Object
-                                                                (
-                                                                    [data:protected] => Array
-                                                                        (
-                                                                            [200] => Calcinai\Strut\Definitions\Response Object
-                                                                                (
-                                                                                    [data:protected] => Array
-                                                                                        (
-                                                                                            [description] => An paged array of pets
-                                                                                            [headers] => Calcinai\Strut\Definitions\HeadersOrReferences Object
-                                                                                                (
-                                                                                                    [data:protected] => Array
-                                                                                                        (
-                                                                                                            [x-next] => Calcinai\Strut\Definitions\Header Object
-                                                                                                                (
-                                                                                                                    [data:protected] => Array
-                                                                                                                        (
-                                                                                                                            [schema] => Calcinai\Strut\Definitions\Schema Object
-                                                                                                                                (
-                                                                                                                                    [data:protected] => Array
-                                                                                                                                        (
-                                                                                                                                            [type] => string
-                                                                                                                                        )
+                      )
 
-                                                                                                                                )
-
-                                                                                                                            [description] => A link to the next page of responses
-                                                                                                                        )
-
-                                                                                                                )
-
-                                                                                                        )
-
-                                                                                                )
-
-                                                                                            [content] => Calcinai\Strut\Definitions\MediaTypes Object
-                                                                                                (
-                                                                                                    [data:protected] => Array
-                                                                                                        (
-                                                                                                            [application/json] => Calcinai\Strut\Definitions\MediaType Object
-                                                                                                                (
-                                                                                                                    [data:protected] => Array
-                                                                                                                        (
-                                                                                                                            [schema] => Calcinai\Strut\Definitions\Reference Object
-                                                                                                                                (
-                                                                                                                                    [data:protected] => Array
-                                                                                                                                        (
-                                                                                                                                            [$ref] => #/components/schemas/Pets
-                                                                                                                                        )
-
-                                                                                                                                )
-
-                                                                                                                        )
-
-                                                                                                                )
-
-                                                                                                        )
-
-                                                                                                )
-
-                                                                                        )
-
-                                                                                )
+                    )
 
 ...
 ```
