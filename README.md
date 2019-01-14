@@ -18,7 +18,7 @@ The library will deserialize an OpenAPI specification into native PHP objects, t
 
 ```php
 $schema = json_decode(file_get_contents('http://petstore.swagger.io/v2/swagger.json'));
-$swagger = \Calcinai\Strut\Swagger::create($schema);
+$openapi = \Calcinai\Strut\OpenAPI::create($schema);
 print_r($swagger);
 ```
 

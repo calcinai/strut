@@ -3,26 +3,29 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+/**
+ * An object representing a Server Variable for server URL template substitution.
+ */
 
-class ApiKeySecurity extends BaseSchema
+class ServerVariable extends BaseSchema
 {
     /**
      * Array to store schema data and default values
      * @var array
      */
-    protected $data = ['type' => 'apiKey'];
+    protected $data = [];
     
     /**
      * Any enums that exist on this object
      * @var array
      */
-    protected static $enums = ['type' => ['apiKey'], 'in' => ['header', 'query']];
+    protected static $enums = [];
     
     /**
      * Properties and types
      * @var array
      */
-    protected static $properties = ['type' => [], 'name' => [], 'in' => [], 'description' => []];
+    protected static $properties = ['enum' => ['string'], 'default' => ['string'], 'description' => ['string']];
     
     /**
      * Allowed additional properties
@@ -34,65 +37,50 @@ class ApiKeySecurity extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
+    protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
     
     /**
-     * @param string $type
+     * @param string $enum
      * @return $this
+     * @throws \Exception
      */
-    public function setType($type)
+    public function addEnum($enum)
     {
-        $this->set('type', $type);
+        $this->add('enum', $enum);
+        return $this;
+    }
+    
+    /**
+     * @return string[]
+     */
+    public function getEnum()
+    {
+        return $this->get('enum');
+    }
+    
+    /**
+     * @param string $default
+     * @return $this
+     * @throws \Exception
+     */
+    public function setDefault($default)
+    {
+        $this->set('default', $default);
         return $this;
     }
     
     /**
      * @return string
      */
-    public function getType()
+    public function getDefault()
     {
-        return $this->get('type');
-    }
-    
-    /**
-     * @param string $name
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->set('name', $name);
-        return $this;
-    }
-    
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->get('name');
-    }
-    
-    /**
-     * @param string $in
-     * @return $this
-     */
-    public function setIn($in)
-    {
-        $this->set('in', $in);
-        return $this;
-    }
-    
-    /**
-     * @return string
-     */
-    public function getIn()
-    {
-        return $this->get('in');
+        return $this->get('default');
     }
     
     /**
      * @param string $description
      * @return $this
+     * @throws \Exception
      */
     public function setDescription($description)
     {

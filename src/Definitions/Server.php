@@ -3,26 +3,29 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+/**
+ * An object representing a Server.
+ */
 
-class BasicAuthenticationSecurity extends BaseSchema
+class Server extends BaseSchema
 {
     /**
      * Array to store schema data and default values
      * @var array
      */
-    protected $data = ['type' => 'basic'];
+    protected $data = [];
     
     /**
      * Any enums that exist on this object
      * @var array
      */
-    protected static $enums = ['type' => ['basic']];
+    protected static $enums = [];
     
     /**
      * Properties and types
      * @var array
      */
-    protected static $properties = ['type' => [], 'description' => []];
+    protected static $properties = ['url' => ['string'], 'description' => ['string'], 'variables' => ['Definitions\\ServerVariables']];
     
     /**
      * Allowed additional properties
@@ -34,29 +37,31 @@ class BasicAuthenticationSecurity extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
+    protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
     
     /**
-     * @param string $type
+     * @param string $url
      * @return $this
+     * @throws \Exception
      */
-    public function setType($type)
+    public function setUrl($url)
     {
-        $this->set('type', $type);
+        $this->set('url', $url);
         return $this;
     }
     
     /**
      * @return string
      */
-    public function getType()
+    public function getUrl()
     {
-        return $this->get('type');
+        return $this->get('url');
     }
     
     /**
      * @param string $description
      * @return $this
+     * @throws \Exception
      */
     public function setDescription($description)
     {
@@ -70,6 +75,25 @@ class BasicAuthenticationSecurity extends BaseSchema
     public function getDescription()
     {
         return $this->get('description');
+    }
+    
+    /**
+     * @param ServerVariables $variables
+     * @return $this
+     * @throws \Exception
+     */
+    public function setVariables(ServerVariables $variables)
+    {
+        $this->set('variables', $variables);
+        return $this;
+    }
+    
+    /**
+     * @return ServerVariables
+     */
+    public function getVariables()
+    {
+        return $this->get('variables');
     }
 
 }

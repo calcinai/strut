@@ -3,6 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+/**
+ * A metadata object that allows for more fine-tuned XML model definitions.  When using arrays, XML element names are *not* inferred (for singular/plural forms) and the `name` property SHOULD be used to add that information. See examples for expected behavior.
+ */
 
 class Xml extends BaseSchema
 {
@@ -22,7 +25,7 @@ class Xml extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['name' => [], 'namespace' => [], 'prefix' => [], 'attribute' => [], 'wrapped' => []];
+    protected static $properties = ['name' => ['string'], 'namespace' => ['string'], 'prefix' => ['string'], 'attribute' => ['boolean'], 'wrapped' => ['boolean']];
     
     /**
      * Allowed additional properties
@@ -34,11 +37,12 @@ class Xml extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
+    protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
     
     /**
      * @param string $name
      * @return $this
+     * @throws \Exception
      */
     public function setName($name)
     {
@@ -57,6 +61,7 @@ class Xml extends BaseSchema
     /**
      * @param string $namespace
      * @return $this
+     * @throws \Exception
      */
     public function setNamespace($namespace)
     {
@@ -75,6 +80,7 @@ class Xml extends BaseSchema
     /**
      * @param string $prefix
      * @return $this
+     * @throws \Exception
      */
     public function setPrefix($prefix)
     {
@@ -91,8 +97,9 @@ class Xml extends BaseSchema
     }
     
     /**
-     * @param bool $attribute
+     * @param boolean $attribute
      * @return $this
+     * @throws \Exception
      */
     public function setAttribute($attribute)
     {
@@ -101,7 +108,7 @@ class Xml extends BaseSchema
     }
     
     /**
-     * @return bool
+     * @return boolean
      */
     public function getAttribute()
     {
@@ -109,8 +116,9 @@ class Xml extends BaseSchema
     }
     
     /**
-     * @param bool $wrapped
+     * @param boolean $wrapped
      * @return $this
+     * @throws \Exception
      */
     public function setWrapped($wrapped)
     {
@@ -119,7 +127,7 @@ class Xml extends BaseSchema
     }
     
     /**
-     * @return bool
+     * @return boolean
      */
     public function getWrapped()
     {

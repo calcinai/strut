@@ -4,10 +4,10 @@ namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
 /**
- * Adds metadata to a single tag that is used by the Operation Object. It is not mandatory to have a Tag Object per tag defined in the Operation Object instances.
+ * Describes a single request body.
  */
 
-class Tag extends BaseSchema
+class RequestBody extends BaseSchema
 {
     /**
      * Array to store schema data and default values
@@ -25,7 +25,7 @@ class Tag extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['name' => ['string'], 'description' => ['string'], 'externalDocs' => ['Definitions\\ExternalDocs']];
+    protected static $properties = ['description' => ['string'], 'content' => ['Definitions\\MediaTypes'], 'required' => ['boolean']];
     
     /**
      * Allowed additional properties
@@ -38,25 +38,6 @@ class Tag extends BaseSchema
      * @var array
      */
     protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
-    
-    /**
-     * @param string $name
-     * @return $this
-     * @throws \Exception
-     */
-    public function setName($name)
-    {
-        $this->set('name', $name);
-        return $this;
-    }
-    
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->get('name');
-    }
     
     /**
      * @param string $description
@@ -78,24 +59,41 @@ class Tag extends BaseSchema
     }
     
     /**
-     * Allows referencing an external resource for extended documentation.
-     * @param ExternalDocs $externalDocs
+     * @param MediaTypes $content
      * @return $this
      * @throws \Exception
      */
-    public function setExternalDocs(ExternalDocs $externalDocs)
+    public function setContent(MediaTypes $content)
     {
-        $this->set('externalDocs', $externalDocs);
+        $this->set('content', $content);
         return $this;
     }
     
     /**
-     * Allows referencing an external resource for extended documentation.
-     * @return ExternalDocs
+     * @return MediaTypes
      */
-    public function getExternalDocs()
+    public function getContent()
     {
-        return $this->get('externalDocs');
+        return $this->get('content');
+    }
+    
+    /**
+     * @param boolean $required
+     * @return $this
+     * @throws \Exception
+     */
+    public function setRequired($required)
+    {
+        $this->set('required', $required);
+        return $this;
+    }
+    
+    /**
+     * @return boolean
+     */
+    public function getRequired()
+    {
+        return $this->get('required');
     }
 
 }

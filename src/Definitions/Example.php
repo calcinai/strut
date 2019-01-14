@@ -3,11 +3,8 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
-/**
- * Adds metadata to a single tag that is used by the Operation Object. It is not mandatory to have a Tag Object per tag defined in the Operation Object instances.
- */
 
-class Tag extends BaseSchema
+class Example extends BaseSchema
 {
     /**
      * Array to store schema data and default values
@@ -25,7 +22,7 @@ class Tag extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['name' => ['string'], 'description' => ['string'], 'externalDocs' => ['Definitions\\ExternalDocs']];
+    protected static $properties = ['summary' => ['string'], 'description' => ['string'], 'value' => ['mixed'], 'externalValue' => ['string']];
     
     /**
      * Allowed additional properties
@@ -40,22 +37,22 @@ class Tag extends BaseSchema
     protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
     
     /**
-     * @param string $name
+     * @param string $summary
      * @return $this
      * @throws \Exception
      */
-    public function setName($name)
+    public function setSummary($summary)
     {
-        $this->set('name', $name);
+        $this->set('summary', $summary);
         return $this;
     }
     
     /**
      * @return string
      */
-    public function getName()
+    public function getSummary()
     {
-        return $this->get('name');
+        return $this->get('summary');
     }
     
     /**
@@ -78,24 +75,41 @@ class Tag extends BaseSchema
     }
     
     /**
-     * Allows referencing an external resource for extended documentation.
-     * @param ExternalDocs $externalDocs
+     * @param mixed $value
      * @return $this
      * @throws \Exception
      */
-    public function setExternalDocs(ExternalDocs $externalDocs)
+    public function setValue($value)
     {
-        $this->set('externalDocs', $externalDocs);
+        $this->set('value', $value);
         return $this;
     }
     
     /**
-     * Allows referencing an external resource for extended documentation.
-     * @return ExternalDocs
+     * @return mixed
      */
-    public function getExternalDocs()
+    public function getValue()
     {
-        return $this->get('externalDocs');
+        return $this->get('value');
+    }
+    
+    /**
+     * @param string $externalValue
+     * @return $this
+     * @throws \Exception
+     */
+    public function setExternalValue($externalValue)
+    {
+        $this->set('externalValue', $externalValue);
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getExternalValue()
+    {
+        return $this->get('externalValue');
     }
 
 }

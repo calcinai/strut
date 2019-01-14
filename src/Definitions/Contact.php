@@ -4,7 +4,7 @@ namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
 /**
- * Contact information for the owners of the API.
+ * Contact information for the exposed API.
  */
 
 class Contact extends BaseSchema
@@ -25,7 +25,7 @@ class Contact extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['name' => [], 'url' => [], 'email' => []];
+    protected static $properties = ['name' => ['string'], 'url' => ['string'], 'email' => ['string']];
     
     /**
      * Allowed additional properties
@@ -37,12 +37,12 @@ class Contact extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
+    protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
     
     /**
-     * The identifying name of the contact person/organization.
      * @param string $name
      * @return $this
+     * @throws \Exception
      */
     public function setName($name)
     {
@@ -51,7 +51,6 @@ class Contact extends BaseSchema
     }
     
     /**
-     * The identifying name of the contact person/organization.
      * @return string
      */
     public function getName()
@@ -60,9 +59,9 @@ class Contact extends BaseSchema
     }
     
     /**
-     * The URL pointing to the contact information.
      * @param string $url
      * @return $this
+     * @throws \Exception
      */
     public function setUrl($url)
     {
@@ -71,7 +70,6 @@ class Contact extends BaseSchema
     }
     
     /**
-     * The URL pointing to the contact information.
      * @return string
      */
     public function getUrl()
@@ -80,9 +78,9 @@ class Contact extends BaseSchema
     }
     
     /**
-     * The email address of the contact person/organization.
      * @param string $email
      * @return $this
+     * @throws \Exception
      */
     public function setEmail($email)
     {
@@ -91,7 +89,6 @@ class Contact extends BaseSchema
     }
     
     /**
-     * The email address of the contact person/organization.
      * @return string
      */
     public function getEmail()

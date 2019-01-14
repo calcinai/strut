@@ -3,6 +3,9 @@
 namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
+/**
+ * Describes a single API operation on a path.
+ */
 
 class Operation extends BaseSchema
 {
@@ -22,7 +25,7 @@ class Operation extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['tags' => [], 'summary' => [], 'description' => [], 'externalDocs' => ['Definitions\\ExternalDocs'], 'operationId' => [], 'produces' => [], 'consumes' => [], 'parameters' => ['Definitions\\BodyParameter', 'Definitions\\HeaderParameterSubSchema', 'Definitions\\FormDataParameterSubSchema', 'Definitions\\QueryParameterSubSchema', 'Definitions\\PathParameterSubSchema', 'Definitions\\JsonReference'], 'responses' => ['Definitions\\Responses'], 'schemes' => [], 'deprecated' => [], 'security' => ['Definitions\\SecurityRequirement']];
+    protected static $properties = ['tags' => ['string'], 'summary' => ['string'], 'description' => ['string'], 'externalDocs' => ['Definitions\\ExternalDocs'], 'operationId' => ['string'], 'parameters' => ['Definitions\\Parameter', 'Definitions\\Reference'], 'requestBody' => ['Definitions\\RequestBody', 'Definitions\\Reference'], 'responses' => ['Definitions\\Responses'], 'callbacks' => ['Definitions\\CallbacksOrReferences'], 'deprecated' => ['boolean'], 'security' => ['Definitions\\SecurityRequirement'], 'servers' => ['Definitions\\Server']];
     
     /**
      * Allowed additional properties
@@ -34,11 +37,12 @@ class Operation extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
+    protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
     
     /**
      * @param string $tags
      * @return $this
+     * @throws \Exception
      */
     public function addTag($tags)
     {
@@ -55,9 +59,9 @@ class Operation extends BaseSchema
     }
     
     /**
-     * A brief summary of the operation.
      * @param string $summary
      * @return $this
+     * @throws \Exception
      */
     public function setSummary($summary)
     {
@@ -66,7 +70,6 @@ class Operation extends BaseSchema
     }
     
     /**
-     * A brief summary of the operation.
      * @return string
      */
     public function getSummary()
@@ -75,9 +78,9 @@ class Operation extends BaseSchema
     }
     
     /**
-     * A longer description of the operation, GitHub Flavored Markdown is allowed.
      * @param string $description
      * @return $this
+     * @throws \Exception
      */
     public function setDescription($description)
     {
@@ -86,7 +89,6 @@ class Operation extends BaseSchema
     }
     
     /**
-     * A longer description of the operation, GitHub Flavored Markdown is allowed.
      * @return string
      */
     public function getDescription()
@@ -95,9 +97,10 @@ class Operation extends BaseSchema
     }
     
     /**
-     * information about external documentation
+     * Allows referencing an external resource for extended documentation.
      * @param ExternalDocs $externalDocs
      * @return $this
+     * @throws \Exception
      */
     public function setExternalDocs(ExternalDocs $externalDocs)
     {
@@ -106,7 +109,7 @@ class Operation extends BaseSchema
     }
     
     /**
-     * information about external documentation
+     * Allows referencing an external resource for extended documentation.
      * @return ExternalDocs
      */
     public function getExternalDocs()
@@ -115,9 +118,9 @@ class Operation extends BaseSchema
     }
     
     /**
-     * A unique identifier of the operation.
      * @param string $operationId
      * @return $this
+     * @throws \Exception
      */
     public function setOperationId($operationId)
     {
@@ -126,7 +129,6 @@ class Operation extends BaseSchema
     }
     
     /**
-     * A unique identifier of the operation.
      * @return string
      */
     public function getOperationId()
@@ -135,49 +137,9 @@ class Operation extends BaseSchema
     }
     
     /**
-     * A list of MIME types the API can produce.
-     * @param mixed $produces
+     * @param Parameter|Reference $parameters
      * @return $this
-     */
-    public function setProduces($produces)
-    {
-        $this->set('produces', $produces);
-        return $this;
-    }
-    
-    /**
-     * A list of MIME types the API can produce.
-     * @return mixed
-     */
-    public function getProduces()
-    {
-        return $this->get('produces');
-    }
-    
-    /**
-     * A list of MIME types the API can consume.
-     * @param mixed $consumes
-     * @return $this
-     */
-    public function setConsumes($consumes)
-    {
-        $this->set('consumes', $consumes);
-        return $this;
-    }
-    
-    /**
-     * A list of MIME types the API can consume.
-     * @return mixed
-     */
-    public function getConsumes()
-    {
-        return $this->get('consumes');
-    }
-    
-    /**
-     * The parameters needed to send a valid API call.
-     * @param BodyParameter|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema|PathParameterSubSchema|JsonReference $parameters
-     * @return $this
+     * @throws \Exception
      */
     public function addParameter($parameters)
     {
@@ -186,8 +148,7 @@ class Operation extends BaseSchema
     }
     
     /**
-     * The parameters needed to send a valid API call.
-     * @return BodyParameter|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema|PathParameterSubSchema|JsonReference[]
+     * @return Parameter|Reference[]
      */
     public function getParameters()
     {
@@ -195,9 +156,29 @@ class Operation extends BaseSchema
     }
     
     /**
-     * Response objects names can either be any valid HTTP status code or 'default'.
+     * @param RequestBody|Reference $requestBody
+     * @return $this
+     * @throws \Exception
+     */
+    public function setRequestBody($requestBody)
+    {
+        $this->set('requestBody', $requestBody);
+        return $this;
+    }
+    
+    /**
+     * @return RequestBody|Reference
+     */
+    public function getRequestBody()
+    {
+        return $this->get('requestBody');
+    }
+    
+    /**
+     * A container for the expected responses of an operation. The container maps a HTTP response code to the expected response.  The documentation is not necessarily expected to cover all possible HTTP response codes because they may not be known in advance. However, documentation is expected to cover a successful operation response and any known errors.  The `default` MAY be used as a default response object for all HTTP codes  that are not covered individually by the specification.  The `Responses Object` MUST contain at least one response code, and it  SHOULD be the response for a successful operation call.
      * @param Responses $responses
      * @return $this
+     * @throws \Exception
      */
     public function setResponses(Responses $responses)
     {
@@ -206,7 +187,7 @@ class Operation extends BaseSchema
     }
     
     /**
-     * Response objects names can either be any valid HTTP status code or 'default'.
+     * A container for the expected responses of an operation. The container maps a HTTP response code to the expected response.  The documentation is not necessarily expected to cover all possible HTTP response codes because they may not be known in advance. However, documentation is expected to cover a successful operation response and any known errors.  The `default` MAY be used as a default response object for all HTTP codes  that are not covered individually by the specification.  The `Responses Object` MUST contain at least one response code, and it  SHOULD be the response for a successful operation call.
      * @return Responses
      */
     public function getResponses()
@@ -215,28 +196,28 @@ class Operation extends BaseSchema
     }
     
     /**
-     * The transfer protocol of the API.
-     * @param string $schemes
+     * @param CallbacksOrReferences $callbacks
      * @return $this
+     * @throws \Exception
      */
-    public function addScheme($schemes)
+    public function setCallbacks(CallbacksOrReferences $callbacks)
     {
-        $this->add('schemes', $schemes);
+        $this->set('callbacks', $callbacks);
         return $this;
     }
     
     /**
-     * The transfer protocol of the API.
-     * @return string[]
+     * @return CallbacksOrReferences
      */
-    public function getSchemes()
+    public function getCallbacks()
     {
-        return $this->get('schemes');
+        return $this->get('callbacks');
     }
     
     /**
-     * @param bool $deprecated
+     * @param boolean $deprecated
      * @return $this
+     * @throws \Exception
      */
     public function setDeprecated($deprecated)
     {
@@ -245,7 +226,7 @@ class Operation extends BaseSchema
     }
     
     /**
-     * @return bool
+     * @return boolean
      */
     public function getDeprecated()
     {
@@ -255,6 +236,7 @@ class Operation extends BaseSchema
     /**
      * @param SecurityRequirement $security
      * @return $this
+     * @throws \Exception
      */
     public function addSecurity(SecurityRequirement $security)
     {
@@ -268,6 +250,25 @@ class Operation extends BaseSchema
     public function getSecurity()
     {
         return $this->get('security');
+    }
+    
+    /**
+     * @param Server $servers
+     * @return $this
+     * @throws \Exception
+     */
+    public function addServer(Server $servers)
+    {
+        $this->add('servers', $servers);
+        return $this;
+    }
+    
+    /**
+     * @return Server[]
+     */
+    public function getServers()
+    {
+        return $this->get('servers');
     }
 
 }

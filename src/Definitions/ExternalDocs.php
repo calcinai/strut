@@ -4,7 +4,7 @@ namespace Calcinai\Strut\Definitions;
 
 use Calcinai\Strut\BaseSchema;
 /**
- * information about external documentation
+ * Allows referencing an external resource for extended documentation.
  */
 
 class ExternalDocs extends BaseSchema
@@ -25,7 +25,7 @@ class ExternalDocs extends BaseSchema
      * Properties and types
      * @var array
      */
-    protected static $properties = ['description' => [], 'url' => []];
+    protected static $properties = ['description' => ['string'], 'url' => ['string']];
     
     /**
      * Allowed additional properties
@@ -37,11 +37,12 @@ class ExternalDocs extends BaseSchema
      * Array to store any allowed pattern properties
      * @var array
      */
-    protected static $pattern_properties = ['^x-' => []];
+    protected static $pattern_properties = ['^x-' => ['null', 'integer', 'boolean', 'string', 'object', 'array']];
     
     /**
      * @param string $description
      * @return $this
+     * @throws \Exception
      */
     public function setDescription($description)
     {
@@ -60,6 +61,7 @@ class ExternalDocs extends BaseSchema
     /**
      * @param string $url
      * @return $this
+     * @throws \Exception
      */
     public function setUrl($url)
     {
